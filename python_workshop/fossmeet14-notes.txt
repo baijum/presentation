@@ -1,0 +1,18 @@
+Slide 11 (Running Programs on GNU/Linux) - Exercise 1
+Slide 20 (Multiple Assignment) - Exercise 2
+Slide 23 (Control of Flow - if conditions) - Exercise 3
+Slide 23 (Control of Flow - if conditions) - Exercise 4
+Slide 42 (Operations on Lists Only 4) - Exercise: Ask user to input state names and its capitals and store it in a list of tuples.
+                                        Finally print the list of tuples which contains state names and capitals in this form:
+                                        [('State 1', 'Capital 1'), ('State 2', 'Capital 2')]
+Slide 46 (Using dictionaries - Continued) - Exercise: Ask user to input state names and its capitals and store it in a dictionary
+                                        with key as the name of state and value as the capital.
+                                        Finally print the dictionary which contains state names and capitals in this form:
+                                        {'State 1': 'Capital 1', 'State 2': 'Capital 2'}
+
+Slide 49 (Optional Arguments) - Exercise 5
+Slide 50 (Gotchas) - Exercise 6
+Slide 52 (Modules) - Exercise 7
+------------------------------------------
+
+Slide size: 5.04 × 3.78 inch

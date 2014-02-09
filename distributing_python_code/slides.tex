@@ -1,0 +1,348 @@
+\documentclass[12pt,handout]{beamer}
+\hypersetup{pdfstartview={Fit}}
+\usepackage[T1]{fontenc}
+\usepackage{cmap}
+\usepackage{hyperref}
+\usepackage{listings}
+\usetheme{default}
+\usefonttheme{professionalfonts}
+\usefonttheme{serif}
+\usepackage{fontspec}
+\setmainfont{Liberation Serif Bold}
+\title[Distributing Python Code]{Distributing Python Code}
+\author{Baiju Muthukadan \\ ZeOmega, Bangalore}
+%\institute{}
+\date{Feb 15, 2014}
+
+\setbeamertemplate{frametitle}
+  {\begin{centering}\smallskip
+   \insertframetitle\par
+   \smallskip\end{centering}}
+\setbeamertemplate{itemize item}{$\bullet$}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[text line]{%
+    \hfill\strut{%
+        \scriptsize\sf\color{black!60}%
+        \quad\insertframenumber
+    }%
+    \hfill
+}
+
+% Define some colors:
+\definecolor{DarkFern}{HTML}{407428}
+\definecolor{DarkCharcoal}{HTML}{4D4944}
+\colorlet{Fern}{DarkFern!85!white}
+\colorlet{Charcoal}{DarkCharcoal!85!white}
+\colorlet{LightCharcoal}{Charcoal!50!white}
+\colorlet{AlertColor}{orange!80!black}
+\colorlet{DarkRed}{red!70!black}
+\colorlet{DarkBlue}{blue!70!black}
+\colorlet{DarkGreen}{green!70!black}
+
+% Use the colors:
+%% \setbeamercolor{title}{fg=black}
+%% \setbeamercolor{frametitle}{fg=black}
+%% \setbeamercolor{normal text}{fg=black}
+%% \setbeamercolor{block title}{fg=black,bg=Fern!25!white}
+%% \setbeamercolor{block body}{fg=black,bg=Fern!25!white}
+%% \setbeamercolor{alerted text}{fg=AlertColor}
+%% \setbeamercolor{itemize item}{fg=Charcoal}
+
+\setbeamercolor{alerted text}{fg=orange}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{block body alerted}{bg=normal text.bg!90!black}
+\setbeamercolor{block body}{bg=normal text.bg!90!black}
+\setbeamercolor{block body example}{bg=normal text.bg!90!black}
+\setbeamercolor{block title alerted}{use={normal text,alerted text},fg=alerted text.fg!75!normal text.fg,bg=normal text.bg!75!black}
+\setbeamercolor{block title}{bg=blue}
+\setbeamercolor{block title example}{use={normal text,example text},fg=example text.fg!75!normal text.fg,bg=normal text.bg!75!black}
+\setbeamercolor{fine separation line}{}
+\setbeamercolor{frametitle}{fg=brown}
+\setbeamercolor{item projected}{fg=black}
+\setbeamercolor{normal text}{bg=white,fg=black}
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{section in sidebar}{fg=brown}
+\setbeamercolor{section in sidebar shaded}{fg=grey}
+\setbeamercolor{separation line}{}
+\setbeamercolor{sidebar}{bg=red}
+\setbeamercolor{sidebar}{parent=palette primary}
+\setbeamercolor{structure}{bg=white, fg=black}
+\setbeamercolor{subsection in sidebar}{fg=brown}
+\setbeamercolor{subsection in sidebar shaded}{fg=grey}
+\setbeamercolor{title}{fg=brown}
+\setbeamercolor{titlelike}{fg=brown}
+
+%% \setbeamertemplate{background canvas}{\includegraphics
+%% 	[width=\paperwidth,height=\paperheight]{alps.jpg}}
+
+\newcommand{\code}[1]{\lstinline{#1}}
+
+\usepackage[printwatermark]{xwatermark}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{lipsum}
+
+\newsavebox\mybox
+\savebox\mybox{\tikz[color=red,opacity=0.3]\node{DRAFT};}
+\newwatermark*[
+  allpages,
+  angle=45,
+  scale=6,
+  xpos=-20,
+  ypos=15
+]{\usebox\mybox}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\begin{frame}{Prerequisites}
+\begin{itemize}
+\item GNU/Linux
+\item Development tools (gcc, make etc.)
+\item Text editor
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Expectation from Participants}
+
+\center \Large{Familiarity with programming in Python}
+
+\end{frame}
+
+\begin{frame}{About Me}
+
+\begin{itemize}
+\item Founded the SMC project in 2001 while studying at REC Calicut
+\item Employed by FSF India in 2002-2003
+\item Contributor to Zope project
+\item Book Author: A Comprehensive Guide to Zope Component Architecture
+\item During PyCON India 2013, received the first Kenneth Gonsalves Award
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Installing Python}
+
+\begin{itemize}
+
+\item Download
+\item Extract
+\item ./configure --prefix=/path/to/install
+\item make
+\item make install
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Setting up development environment}
+
+\begin{itemize}
+
+\item http://www.pip-installer.org/en/latest/installing.html
+\item pip install virtualenv
+\item virtualenv venv1
+\item source venv1/bin/activate
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Distribution using Setuptools}
+
+\small{
+\begin{verbatim}
+mkdir -p hello/hello
+touch hello/hello/__init__.py
+touch hello/hello/main.py
+touch hello/setup.py
+touch README.txt
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Distribution using Setuptools - Continued}
+\small{
+\begin{verbatim}
+from setuptools import setup, find_packages
+
+setup(name='hello',
+      version='0.1.0',
+      description='Hello World!',
+      author='Baiju Muthukadan',
+      packages=find_packages(),
+      include_package_data=True,
+      zip_safe=False,
+      install_requires=[
+          'setuptools',
+      ],
+      )
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Distribution using Setuptools - Continued}
+
+Content of hello/hello/main.py:
+
+\small{
+\begin{verbatim}
+def say_hello():
+    return 'Hello, World!'
+\end{verbatim}
+}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Distribution using Setuptools - Continued}
+
+Creating source distributions:
+
+\small{
+\begin{verbatim}
+cd hello
+python setup.py sdist
+\end{verbatim}
+}
+
+Installing distributions:
+
+\small{
+\begin{verbatim}
+pip install hello-0.1.0.tar.gz
+\end{verbatim}
+}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{MANIFEST.in}
+
+Content of MANIFEST.in:
+
+\small{
+\begin{verbatim}
+include *.txt
+\end{verbatim}
+}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Console Scripts}
+
+\small{
+\begin{verbatim}
+from setuptools import setup, find_packages
+
+setup(name='hello',
+      version='0.1.0',
+      description='Hello World!',
+      author='Baiju Muthukadan',
+      packages=find_packages(),
+      include_package_data=True,
+      entry_points={
+        'console_scripts': ['hello=hello.main:run',],
+      },
+      zip_safe=False,
+      install_requires=[
+          'setuptools',
+      ],
+      )
+\end{verbatim}
+}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Console Scripts - Continued}
+
+Content of hello/hello/main.py:
+
+\small{
+\begin{verbatim}
+
+def say_hello():
+    return 'Hello, World!'
+
+def run():
+    hello = say_hello()
+    print(hello)
+
+\end{verbatim}
+}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Command line parsing}
+
+Content of hello/hello/main.py:
+
+\small{
+\begin{verbatim}
+import argparse
+
+def say_hello(name):
+    return 'Hello, %s!' % name
+
+def run():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("name", help="Your name")
+    args = parser.parse_args()
+
+    hello = say_hello(args.name)
+    print(hello)
+
+\end{verbatim}
+}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Command line parsing - Continued}
+
+Content of hello/hello/main.py:
+
+\small{
+\begin{verbatim}
+import argparse
+
+def say_hello(name, count):
+    hello_list = []
+    for i in range(count):
+        hello_list.append('Hello, %s!' % name)
+    return hello_list
+
+def run():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("name", help="Your name")
+    parser.add_argument("--count", type=int)
+    args = parser.parse_args()
+
+    for hello in say_hello(args.name, args.count):
+        print(hello)
+
+\end{verbatim}
+}
+
+\end{frame}
+
+\begin{frame}{Thanks!}
+\center http://muthukadan.net
+\end{frame}
+
+
+\end{document}

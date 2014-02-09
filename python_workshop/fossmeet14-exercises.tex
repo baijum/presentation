@@ -1,0 +1,394 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Liberation Serif}
+
+\title{\bf{Python Workshop Exercises}}
+\author{Baiju Muthukadan \\ ZeOmega, Bangalore \\ FOSSMeet'14, NIT Calicut}
+\date{Feb 15, 2014}
+
+\begin{document}
+\maketitle
+
+\vspace*{2cm}
+
+\centerline{\LARGE\bf Exercises}
+\section*{Exercise 1}
+Write a Python program to print "Hello, World!" and save this in a
+file named {\it helloworld.py}.  Make this program executable and run
+it like: {\it./helloworld.py}
+
+\section*{Exercise 2}
+Write a Python program ({\it ex2.py}) to swap values of two variables.
+
+\section*{Exercise 3}
+Write a program that asks for two numbers.  If the sum of the numbers
+is greater than 100, print "That is a big number."
+
+\section*{Exercise 4}
+Write a program that asks the user their name, if they enter your name
+say "That is a nice name", if they enter "John Cleese" or "Michael
+Palin", tell them how you feel about them ;), otherwise tell them "You
+have a nice name."
+
+\section*{Exercise 5}
+Rewrite the below program ({\it ex5.py}) to have a separate function
+for the area of a square, the area of a rectangle, and the area of a
+circle (3.14 * radius ** 2). This program should include a menu
+interface.
+
+\begin{verbatim}
+# By Amos Satterlee
+print
+def hello():
+    print 'Hello!'
+ 
+def area(width, height):
+    return width * height
+ 
+def print_welcome(name):
+    print 'Welcome,', name
+ 
+name = raw_input('Your Name: ')
+hello(),
+print_welcome(name)
+print
+print 'To find the area of a rectangle,'
+print 'enter the width and height below.'
+print
+w = input('Width: ')
+while w <= 0:
+    print 'Must be a positive number'
+    w = input('Width: ')
+ 
+h = input('Height: ')
+while h <= 0:
+    print 'Must be a positive number'
+    h = input('Height: ')
+ 
+print 'Width =', w, 'Height =', h, 'so Area =', area(w, h)
+\end{verbatim}
+
+\section*{Exercise 6}
+Expand the {\it ex6.py} program given below so it has a menu giving
+the option of taking the test, viewing the list of questions and
+answers, and an option to quit. Also, add a new question to ask, "What
+noise does a truly advanced machine make?" with the answer of "ping".
+
+\begin{verbatim}
+## This program runs a test of knowledge
+ 
+# First get the test questions
+# Later this will be modified to use file io.
+def get_questions():
+    # notice how the data is stored as a list of lists
+    return [["What color is the daytime sky on a clear day? ", "blue"],
+            ["What is the answer to life, the universe and everything? ", "42"],
+            ["What is a three letter word for mouse trap? ", "cat"]]
+ 
+# This will test a single question
+# it takes a single question in
+# it returns True if the user typed the correct answer, otherwise False
+ 
+def check_question(question_and_answer):
+    # extract the question and the answer from the list
+    question = question_and_answer[0]
+    answer = question_and_answer[1]
+    # give the question to the user
+    given_answer = raw_input(question)
+    # compare the user's answer to the testers answer
+    if answer == given_answer:
+        print "Correct"
+        return True
+    else:
+        print "Incorrect, correct was:", answer
+        return False
+ 
+# This will run through all the questions
+def run_test(questions):
+    if len(questions) == 0:
+        print "No questions were given."
+        # the return exits the function
+        return
+    index = 0
+    right = 0
+    while index < len(questions):
+        # Check the question
+        if check_question(questions[index]):
+            right = right + 1
+            index = index + 1
+        # go to the next question
+        else:
+            index = index + 1
+    # notice the order of the computation, first multiply, then divide
+    print "You got", right * 100 / len(questions),\
+           "% right out of", len(questions)
+ 
+# now let's run the questions
+ 
+run_test(get_questions())
+\end{verbatim}
+
+\section*{Exercise 7}
+Rewrite the below program ({\it ex7.py}) to use a random integer
+between 0 and 99 instead of the hard-coded 78.  Use the Python
+documentation to find an appropriate module and function to do this.
+
+\begin{verbatim}
+# Plays the guessing game higher or lower 
+ 
+number = 78
+guess = 0
+ 
+while guess != number: 
+    guess = input("Guess a number: ")
+    if guess > number:
+        print "Too high"
+    elif guess < number:
+        print "Too low"
+ 
+print "Just right"
+\end{verbatim}
+
+\newpage
+
+\centerline{\LARGE\bf Answers}
+\section*{Answer 1}
+
+\begin{enumerate}
+\item Content of {\it helloworld.py}:
+\begin{verbatim}
+#!/usr/bin/env python
+
+print "Hello, World!"
+\end{verbatim}
+
+\item Change mode from shell:
+\begin{verbatim}
+$ chmod +x helloworld.py
+\end{verbatim}
+
+\item Run program and verify output like this:
+\begin{verbatim}
+$ ./helloworld.py
+Hello, World!
+\end{verbatim}
+\end{enumerate}
+
+\section*{Answer 2}
+\begin{enumerate}
+\item Content of the file {\it ex2.py}:
+\begin{verbatim}
+x, y = 2, 3
+x, y = y, x
+print x, y
+\end{verbatim}
+
+\item Run program and verify output like this:
+\begin{verbatim}
+$ python ex2.py
+3 2
+\end{verbatim}
+
+\end{enumerate}
+
+\section*{Answer 3}
+\begin{enumerate}
+\item Content of the file {\it ex3.py}:
+\begin{verbatim}
+number1 = input('1st number: ')
+number2 = input('2nd number: ')
+if number1 + number2 > 100:
+    print 'That is a big number.'
+\end{verbatim}
+
+\item Run program and verify output like this:
+\begin{verbatim}
+$ python ex3.py
+1st number: 56
+2nd number: 78
+That is a big number.
+\end{verbatim}
+
+\end{enumerate}
+
+\section*{Answer 4}
+\begin{enumerate}
+\item Content of the file {\it ex4.py}:
+\begin{verbatim}
+name = raw_input('Your name: ')
+if name == 'Ada':
+    print 'That is a nice name.'
+elif name == 'John Cleese' or name == 'Michael Palin':
+    print 'Wow. that\'s a great name!'
+else:
+    print 'You have a nice name.'
+\end{verbatim}
+
+\item Run program and verify output like this:
+\begin{verbatim}
+$ python ex4.py
+Your name: Ada
+That is a nice name.
+$ python ex4.py
+Your name: John Cleese
+Wow. that's a great name!
+$ python ex4.py
+Your name: Jack
+You have a nice name.
+\end{verbatim}
+
+\end{enumerate}
+
+\section*{Answer 5}
+\begin{enumerate}
+\item Content of the file {\it ex5.py}:
+\begin{verbatim}
+def square(length):
+    return length * length
+ 
+def rectangle(width , height):
+    return width * height
+ 
+def circle(radius):
+    return 3.14 * radius ** 2
+ 
+def options():
+    print
+    print "Options:"
+    print "s = calculate the area of a square."
+    print "c = calculate the area of a circle."
+    print "r = calculate the area of a rectangle."
+    print "q = quit"
+    print
+ 
+print "This program will calculate the area of a square, circle or rectangle."
+choice = "x"
+options()
+while choice != "q":
+    choice = raw_input("Please enter your choice: ")
+    if choice == "s":
+        length = input("Length of square: ")
+        print "The area of this square is", square(length)
+        options()
+    elif choice == "c":
+        radius = input("Radius of the circle: ")
+        print "The area of the circle is", circle(radius)
+        options()
+    elif choice == "r":
+        width = input("Width of the rectangle: ")
+        height = input("Height of the rectangle: ")
+        print "The area of the rectangle is", rectangle(width, height)
+        options()
+    elif choice == "q":
+        print "",
+    else:
+        print "Unrecognized option."
+        options()
+\end{verbatim}
+
+\end{enumerate}
+
+\section*{Answer 6}
+\begin{enumerate}
+\item Content of the file {\it ex6.py}:
+\begin{verbatim}
+## This program runs a test of knowledge
+ 
+questions = [["What color is the daytime sky on a clear day? ", "blue"],
+             ["What is the answer to life, the universe and everything? ", "42"],
+             ["What is a three letter word for mouse trap? ", "cat"],
+             ["What noise does a truly advanced machine make?", "ping"]]
+ 
+# This will test a single question
+# it takes a single question in
+# it returns True if the user typed the correct answer, otherwise False
+ 
+def check_question(question_and_answer):
+    # extract the question and the answer from the list
+    question = question_and_answer[0]
+    answer = question_and_answer[1]
+    # give the question to the user
+    given_answer = raw_input(question)
+    # compare the user's answer to the testers answer
+    if answer == given_answer:
+        print "Correct"
+        return True
+    else:
+        print "Incorrect, correct was:", answer
+        return False
+ 
+# This will run through all the questions
+ 
+def run_test(questions):
+ 
+    if len(questions) == 0:
+        print "No questions were given."
+        # the return exits the function
+        return
+    index = 0
+    right = 0
+    while index < len(questions):
+        # Check the question
+        if check_question(questions[index]):
+            right = right + 1
+        # go to the next question
+        index = index + 1
+    # notice the order of the computation, first multiply, then divide
+    print ("You got", right * 100 / len(questions),
+           "% right out of", len(questions))
+ 
+#showing a list of questions and answers
+def showquestions(questions):
+    q = 0
+    while q < len(questions):
+        a = 0
+        print "Q:" , questions[q][a]
+        a = 1
+        print "A:" , questions[q][a]
+        q = q + 1
+ 
+# now let's define the menu function
+def menu():
+    print "-----------------"
+    print "Menu:"
+    print "1 - Take the test"
+    print "2 - View a list of questions and answers"
+    print "3 - View the menu"
+    print "5 - Quit"
+    print "-----------------"
+ 
+choice = "3"
+while choice != "5":
+    if choice == "1":
+        run_test(questions)
+    elif choice == "2":
+        showquestions(questions)
+    elif choice == "3":
+        menu()
+    print
+    choice = raw_input("Choose your option from the menu above: ")
+\end{verbatim}
+\end{enumerate}
+
+\section*{Answer 7}
+\begin{enumerate}
+\item Content of the file {\it ex7.py}:
+\begin{verbatim}
+from random import randint
+number = randint(0, 99)
+guess = -1
+while guess != number: 
+    guess = input ("Guess a number: ")
+    if guess > number:
+        print "Too high"
+    elif guess < number:
+            print "Too low"
+print "Just right"
+\end{verbatim}
+\end{enumerate}
+
+\vspace*{2cm}
+Please write your 2 minute feedback here: {\it http://bit.ly/fossmeet14feedback}
+
+\end{document}

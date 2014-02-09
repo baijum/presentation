@@ -1,0 +1,1226 @@
+\documentclass[12pt,handout]{beamer}
+\hypersetup{pdfstartview={Fit}}
+\usepackage[T1]{fontenc}
+\usepackage{cmap}
+\usepackage{hyperref}
+\usepackage{listings}
+\usetheme{default}
+\usefonttheme{professionalfonts}
+\usefonttheme{serif}
+\usepackage{fontspec}
+\setmainfont{Liberation Serif Bold}
+\title[Python Workshop]{Python Workshop}
+\author{Baiju Muthukadan \\ ZeOmega, Bangalore}
+\institute{FOSSMeet'14, NIT Calicut}
+\date{Feb 15, 2014}
+
+\setbeamertemplate{frametitle}
+  {\begin{centering}\smallskip
+   \insertframetitle\par
+   \smallskip\end{centering}}
+\setbeamertemplate{itemize item}{$\bullet$}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[text line]{%
+    \hfill\strut{%
+        \scriptsize\sf\color{black!60}%
+        \quad\insertframenumber
+    }%
+    \hfill
+}
+
+% Define some colors:
+\definecolor{DarkFern}{HTML}{407428}
+\definecolor{DarkCharcoal}{HTML}{4D4944}
+\colorlet{Fern}{DarkFern!85!white}
+\colorlet{Charcoal}{DarkCharcoal!85!white}
+\colorlet{LightCharcoal}{Charcoal!50!white}
+\colorlet{AlertColor}{orange!80!black}
+\colorlet{DarkRed}{red!70!black}
+\colorlet{DarkBlue}{blue!70!black}
+\colorlet{DarkGreen}{green!70!black}
+
+% Use the colors:
+%% \setbeamercolor{title}{fg=black}
+%% \setbeamercolor{frametitle}{fg=black}
+%% \setbeamercolor{normal text}{fg=black}
+%% \setbeamercolor{block title}{fg=black,bg=Fern!25!white}
+%% \setbeamercolor{block body}{fg=black,bg=Fern!25!white}
+%% \setbeamercolor{alerted text}{fg=AlertColor}
+%% \setbeamercolor{itemize item}{fg=Charcoal}
+
+\setbeamercolor{alerted text}{fg=orange}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{block body alerted}{bg=normal text.bg!90!black}
+\setbeamercolor{block body}{bg=normal text.bg!90!black}
+\setbeamercolor{block body example}{bg=normal text.bg!90!black}
+\setbeamercolor{block title alerted}{use={normal text,alerted text},fg=alerted text.fg!75!normal text.fg,bg=normal text.bg!75!black}
+\setbeamercolor{block title}{bg=blue}
+\setbeamercolor{block title example}{use={normal text,example text},fg=example text.fg!75!normal text.fg,bg=normal text.bg!75!black}
+\setbeamercolor{fine separation line}{}
+\setbeamercolor{frametitle}{fg=red}
+\setbeamercolor{item projected}{fg=black}
+\setbeamercolor{normal text}{bg=white,fg=black}
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{section in sidebar}{fg=brown}
+\setbeamercolor{section in sidebar shaded}{fg=grey}
+\setbeamercolor{separation line}{}
+\setbeamercolor{sidebar}{bg=red}
+\setbeamercolor{sidebar}{parent=palette primary}
+\setbeamercolor{structure}{bg=white, fg=black}
+\setbeamercolor{subsection in sidebar}{fg=brown}
+\setbeamercolor{subsection in sidebar shaded}{fg=grey}
+\setbeamercolor{title}{fg=red}
+\setbeamercolor{titlelike}{fg=white}
+
+\setbeamertemplate{background canvas}{\includegraphics
+	[width=\paperwidth,height=\paperheight]{fossmeet14.jpg}}
+
+\newcommand{\code}[1]{\lstinline{#1}}
+
+% \usepackage[printwatermark]{xwatermark}
+% \usepackage{xcolor}
+% \usepackage{graphicx}
+% \usepackage{tikz}
+% \usepackage{lipsum}
+
+% \newsavebox\mybox
+% \savebox\mybox{\tikz[color=red,opacity=0.3]\node{DRAFT};}
+% \newwatermark*[
+%   allpages,
+%   angle=45,
+%   scale=6,
+%   xpos=-20,
+%   ypos=15
+% ]{\usebox\mybox}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\begin{frame}{Prerequisites}
+\begin{itemize}
+\item GNU/Linux
+\item Python 2.7
+\item Text editor
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Expectation from Participants}
+
+\center \Large{Familiarity with programming in another language (C/C++/Java/C\#/Ruby/PHP)}
+
+\end{frame}
+
+\begin{frame}{About Me}
+
+\begin{itemize}
+\item Founded the SMC project in 2001 while studying at REC Calicut
+\item Employed by FSF India in 2002-2003
+\item Contributor to Zope project
+\item Book Author: A Comprehensive Guide to Zope Component Architecture
+\item During PyCON India 2013, received the first Kenneth Gonsalves Award
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Attribution}
+
+This presentation and exercises are based on:
+\\[.5cm]
+\url{http://tdc-www.harvard.edu/Python.pdf}
+\\
+\url{http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6}
+
+\end{frame}
+
+\begin{frame}{Introduction}
+
+\begin{itemize}
+\item Free/Open source general-purpose language
+\item Multi-paradigm -- Object Oriented, Procedural, Functional
+\item Easy to interface with C/C++/ObjC/Java/Fortran
+\item Great interactive environment
+\item very clear, readable syntax
+\item strong introspection capabilities
+\item intuitive object orientation
+\item full modularity, supporting hierarchical packages
+\item exception-based error handling
+\item very high level dynamic data types
+\item extensive standard libraries and third party modules for virtually every task
+\item embeddable within applications as a scripting interface
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Python Version}
+
+\begin{itemize}
+\item ``Current'' version is 3.3
+\item ``Mainstream'' version is 2.7
+\item Use 3.3 if dependencies are available, otherwise use 2.7
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Installation}
+
+\begin{itemize}
+\item Python comes pre-installed with GNU/Linux and Mac
+\item Windows binaries from \url{http://python.org/}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Python Interactive Interpreter}
+
+\begin{itemize}
+
+\item{Interactive interface to Python
+
+\small{
+\begin{verbatim}
+$ python
+Python 2.7.5 (default, Nov 12 2013, 16:45:54)
+[GCC 4.8.2 20131017 (Red Hat 4.8.2-1)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+\end{verbatim}
+}
+}
+
+\item{Python interpreter evaluates inputs
+
+\small{
+\begin{verbatim}
+>>> 3 * (7 + 2)
+27
+>>> 'Hello ' + 'World!'
+'Hello World!'
+\end{verbatim}
+}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Python Interactive Interpreter - Continued}
+
+\begin{itemize}
+
+\item{Python prompts with '>>>' (Primary) and '...' (Secondary)
+
+\small{
+\begin{verbatim}
+>>> if 1 < 2:
+...     print "1 is less than 2"
+...
+1 is less than 2
+\end{verbatim}
+}
+}
+
+\item To exit Python:  CTRL-D
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Running Programs on GNU/Linux}
+
+\begin{itemize}
+\item Easy way to run a program:
+
+\small{
+\begin{verbatim}
+$ python filename.py
+\end{verbatim}
+}
+
+\item You could make the *.py file executable and add the
+following \#!/usr/bin/env python to the top to make it
+runnable.
+
+\small{
+\begin{verbatim}
+$ ./filename.py
+\end{verbatim}
+}
+
+\item Better cross platform solution is to make use setuptools console scripts
+  (This is discussed later)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Batteries Included}
+
+Large collection of proven modules are included in the
+standard distribution:
+\\[.5cm]
+\url{http://docs.python.org/2/library/index.html}
+\\[.5cm]
+And many more third part packages are available from PyPI
+(Python Package Index Server aka. Cheeseshop):
+\\[.5cm]
+\url{https://pypi.python.org/pypi}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{A Code Sample}
+
+\small{
+\begin{verbatim}
+x = 34 - 23 # A comment.
+y = "Hello" # Another one.
+z = 3.45
+if z == 3.45 or y == "Hello":
+    x = x + 1
+    y = y + " World" # String concat.
+print x
+print y
+\end{verbatim}
+}
+
+\end{frame}
+
+\begin{frame}{Enough to Understand the Code}
+
+\begin{itemize}
+
+\item Assignment uses = and comparison uses ==.
+\item For numbers + - * / \% are as expected.
+\begin{itemize}
+\item Special use of + for string concatenation.
+\item Special use of \% for string formatting (as with printf in C)
+\end{itemize}
+\item Logical operators are words (and, or, not)
+not symbols
+\item The basic printing command is print.
+\item The first assignment to a variable creates it.
+\begin{itemize}
+\item Variable types don't need to be declared.
+\item Python figures out the variable types on its own.
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Basic Datatypes}
+
+\begin{itemize}
+
+\item Integers (default for numbers)
+  \code{z = 5 / 2} \# Answer is 2, integer division.
+\item Floats
+  x = 3.456
+\item Strings
+\item Can use \code{" "} or \code{' '} to specify.
+  \code{"abc" 'abc'} (Same thing.)
+\item Unmatched can occur within the string.
+  \code{"matt's"}
+\item Use triple double-quotes for multi-line strings or strings than contain both '
+  and \code{"} inside of them:
+  \code{"""a'b"c"""}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Whitespace}
+
+Whitespace is meaningful in Python: especially
+indentation and placement of newlines.
+
+\begin{itemize}
+\item Use a newline to end a line of code.
+\begin{itemize}
+\item Use \ when must go to next line prematurely.
+\item No braces { } to mark blocks of code in Python...
+\end{itemize}
+Use consistent indentation instead.
+\begin{itemize}
+\item The first line with less indentation is outside of the block.
+\item The first line with more indentation starts a nested block
+\end{itemize}
+\item Often a colon appears at the start of a new block.
+(E.g. for function and class definitions.)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Comments}
+
+\begin{itemize}
+\item Start comments with \# - the rest of line is ignored.
+\item Can include a ''documentation string'' as the first line of any
+new function or class that you define.
+\item The development environment, debugger, and other tools use
+it: it's good style to include one.
+\small{
+\begin{verbatim}
+def my_function(x, y):
+    """This is the docstring. This
+    function does blah blah blah."""
+    # The code would go here...
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Assignment}
+
+\begin{itemize}
+\item Binding a variable in Python means setting a name to hold a
+reference to some object.
+\begin{itemize}
+\item Assignment creates references, not copies
+\end{itemize}
+\item Names in Python do not have an intrinsic type. Objects have
+types.
+\begin{itemize}
+\item Python determines the type of the reference automatically based on the
+data object assigned to it.
+\end{itemize}
+\item You create a name the first time it appears on the left side of
+an assignment expression:
+\small{
+\begin{verbatim}
+ x = 3
+\end{verbatim}
+}
+\item A reference is deleted via garbage collection after any names
+bound to it have passed out of scope.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Accessing Non-Existent Names}
+\begin{itemize}
+\item If you try to access a name before it's been properly created
+(by placing it on the left side of an assignment), you'll get an
+error.
+\small{
+\begin{verbatim}
+>>> y
+Traceback (most recent call last):
+ File "<pyshell#16>", line 1, in -toplevel-
+ y
+NameError: name 'y' is not defined
+>>> y = 3
+>>> y
+3
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Multiple Assignment}
+
+\begin{itemize}
+\item You can also assign to multiple names at the same time.
+\small{
+\begin{verbatim}
+>>> x, y = 2, 3
+>>> x
+2
+>>> y
+3
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Naming Rules}
+
+\begin{itemize}
+\item Names are case sensitive and cannot start with a number.
+They can contain letters, numbers, and underscores.\\
+\small{
+\begin{verbatim}
+ bob Bob _bob _2_bob_ bob_2 BoB
+\end{verbatim}
+}
+\item There are some reserved words:\\
+\small{
+\begin{verbatim}
+ and, assert, break, class, continue, def, del, elif,
+else, except, exec, finally, for, from, global, if,
+import, in, is, lambda, not, or, pass, print, raise,
+return, try, while
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{User Input}
+
+\begin{itemize}
+\item Use {\it raw\_input} function to get user input as a string.
+\item Use {\it input} function to get user input with evaluation
+of the given expression
+\small{
+\begin{verbatim}
+ name = raw_input("Enter name: ")
+ age = raw_input("Enter age: ")
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Control of Flow - if conditions}
+\small{
+\begin{verbatim}
+if x == 3:
+    print "X equals 3."
+elif x == 2:
+    print "X equals 2."
+else:
+    print "X equals something else."
+
+print "This is outside the 'if'."
+
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Control of Flow - while loop}
+\small{
+\begin{verbatim}
+while x < 10:
+    if x > 7:
+        x += 2
+        continue
+    x = x + 1
+    print "Still in the loop."
+    if x == 8:
+        break
+print "Outside of the loop."
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Control of Flow - for loop}
+\small{
+\begin{verbatim}
+
+for x in range(10):
+    
+    if x > 7:
+        x += 2
+        continue
+    x = x + 1
+    print "Still in the loop."
+    if x == 8:
+        break
+
+print "Outside of the loop."
+\end{verbatim}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Sequence Types}
+\begin{enumerate}
+\item Tuple
+\begin{itemize}
+\item A simple immutable ordered sequence of items
+\item Items can be of mixed types, including collection types
+\end{itemize}
+\item Strings
+\begin{itemize}
+\item Immutable
+\item Conceptually very much like a tuple
+\end{itemize}
+\item List
+\begin{itemize}
+\item Mutable ordered sequence of items of mixed types
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Similar Syntax}
+\begin{itemize}
+\item All three sequence types (tuples, strings, and lists)
+share much of the same syntax and functionality.
+\item Key difference:
+\begin{itemize}
+\item Tuples and strings are immutable
+\item Lists are mutable
+\end{itemize}
+\item The operations shown in this section can be
+applied to all sequence types
+\begin{itemize}
+\item most examples will just show the operation
+performed on one
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Sequence Types 1}
+\begin{itemize}
+\item Tuples are defined using parentheses (and commas).
+\small{
+\begin{verbatim}
+>>> tu = (23, 'abc', 4.56, (2,3), 'def')
+\end{verbatim}
+}
+\item Lists are defined using square brackets (and commas).
+\small{
+\begin{verbatim}
+>>> li = ["abc", 34, 4.34, 23]
+\end{verbatim}
+}
+\item Strings are defined using quotes (\code{", ', ''', """}).
+\small{
+\begin{verbatim}
+>>> st = "Hello World"
+>>> st = 'Hello World'
+>>> st = '''This is a multi-line
+string that uses triple single quotes.'''
+>>> st = """This is a multi-line
+string that uses triple double quotes."""
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Sequence Types 2}
+\begin{itemize}
+\item We can access individual members of a tuple, list, or string
+  using square bracket ''array'' notation.
+\item Note that all are 0 based...
+\small{
+\begin{verbatim}
+>>> tu = (23, 'abc', 4.56, (2,3), 'def')
+>>> tu[1] # Second item in the tuple.
+ 'abc'
+>>> li = ["abc", 34, 4.34, 23]
+>>> li[1] # Second item in the list.
+ 34
+>>> st = "Hello World"
+>>> st[1] # Second character in string.
+ 'e'
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Positive and negative indices}
+\small{
+\begin{verbatim}
+>>> t = (23, 'abc', 4.56, (2,3), 'def')
+\end{verbatim}
+}
+Positive index: count from the left, starting with 0.
+\small{
+\begin{verbatim}
+ >>> t[1]
+ 'abc'
+\end{verbatim}
+}
+Negative lookup: count from right, starting with -1.
+\small{
+\begin{verbatim}
+ >>> t[-3]
+ 4.56
+\end{verbatim}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Slicing: Return Copy of a Subset 1}
+\small{
+\begin{verbatim}
+>>> t = (23, 'abc', 4.56, (2,3), 'def')
+\end{verbatim}
+}
+Return a copy of the container with a subset of the original
+members. Start copying at the first index, and stop copying
+before the second index.
+\small{
+\begin{verbatim}
+ >>> t[1:4]
+ ('abc', 4.56, (2,3))
+\end{verbatim}
+}
+You can also use negative indices when slicing.
+\small{
+\begin{verbatim}
+ >>> t[1:-1]
+ ('abc', 4.56, (2,3))
+\end{verbatim}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Slicing: Return Copy of a Subset 2}
+\small{
+\begin{verbatim}
+>>> t = (23, 'abc', 4.56, (2,3), 'def')
+\end{verbatim}
+}
+Omit the first index to make a copy starting from the beginning
+of the container.
+\small{
+\begin{verbatim}
+ >>> t[:2]
+ (23, 'abc')
+\end{verbatim}
+}
+Omit the second index to make a copy starting at the first index
+and going to the end of the container.
+\small{
+\begin{verbatim}
+ >>> t[2:]
+ (4.56, (2,3), 'def')
+\end{verbatim}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Copying the Whole Sequence}
+To make a copy of an entire sequence, you can use [:].
+\small{
+\begin{verbatim}
+ >>> t[:]
+ (23, 'abc', 4.56, (2,3), 'def')
+\end{verbatim}
+}
+Note the difference between these two lines for mutable
+sequences:
+\small{
+\begin{verbatim}
+>>> list2 = list1 # 2 names refer to 1 ref
+\end{verbatim}
+}
+\# Changing one affects both
+\small{
+\begin{verbatim}
+>>> list2 = list1[:] # Two independent copies, two refs
+\end{verbatim}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{The 'in' Operator}
+\begin{itemize}
+\item Boolean test whether a value is inside a container:
+\small{
+\begin{verbatim}
+>>> t = [1, 2, 4, 5]
+>>> 3 in t
+False
+>>> 4 in t
+True
+>>> 4 not in t
+False
+\end{verbatim}
+}
+\item For strings, tests for substrings
+\small{
+\begin{verbatim}
+>>> a = 'abcde'
+>>> 'c' in a
+True
+>>> 'cd' in a
+True
+>>> 'ac' in a
+False
+\end{verbatim}
+}
+\item {\it in} keyword is used in the {\it for} loops
+and list comprehensions.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{The + Operator}
+\begin{itemize}
+\item The + operator produces a new tuple, list, or string whose
+value is the concatenation of its arguments.
+\small{
+\begin{verbatim}
+>>> (1, 2, 3) + (4, 5, 6)
+ (1, 2, 3, 4, 5, 6)
+>>> [1, 2, 3] + [4, 5, 6]
+ [1, 2, 3, 4, 5, 6]
+>>> "Hello" + " " + "World"
+ 'Hello World'
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{The * Operator}
+\begin{itemize}
+\item The * operator produces a new tuple, list, or string that
+''repeats'' the original content.
+\small{
+\begin{verbatim}
+>>> (1, 2, 3) * 3
+(1, 2, 3, 1, 2, 3, 1, 2, 3)
+>>> [1, 2, 3] * 3
+[1, 2, 3, 1, 2, 3, 1, 2, 3]
+>>> "Hello" * 3
+'HelloHelloHello'
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Tuples: Immutable}
+\small{
+\begin{verbatim}
+>>> t = (23, 'abc', 4.56, (2,3), 'def')
+>>> t[2] = 3.14
+Traceback (most recent call last):
+ File "<pyshell#75>", line 1, in -toplevel-
+ tu[2] = 3.14
+TypeError: object doesn't support item assignment
+\end{verbatim}
+}
+You can't change a tuple.
+You can make a fresh tuple and assign its reference to a previously used
+name.
+\small{
+\begin{verbatim}
+ >>> t = (23, 'abc', 3.14, (2,3), 'def')
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Lists: Mutable}
+\small{
+\begin{verbatim}
+>>> li = ['abc', 23, 4.34, 23]
+>>> li[1] = 45
+>>> li
+['abc', 45, 4.34, 23]
+\end{verbatim}
+}
+\begin{itemize}
+\item We can change lists in place.
+\item Name {\it li} still points to the same memory reference when we're
+done.
+\item The mutability of lists means that they aren't as fast as tuples.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Operations on Lists Only 1}
+\small{
+\begin{verbatim}
+>>> li = [1, 11, 3, 4, 5]
+>>> li.append('a') # Our first exposure to method syntax
+>>> li
+[1, 11, 3, 4, 5, 'a']
+>>> li.insert(2, 'i')
+>>>li
+[1, 11, 'i', 3, 4, 5, 'a']
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{The extend method vs the + operator}
+\begin{itemize}
+\item + creates a fresh list (with a new memory reference)
+\item extend operates on list li in place.
+
+\small{
+\begin{verbatim}
+>>> li.extend([9, 8, 7])
+>>>li
+[1, 2, 'i', 3, 4, 5, 'a', 9, 8, 7]
+\end{verbatim}
+}
+
+Confusing:
+\item Extend takes a list as an argument.
+\item Append takes a singleton as an argument.
+
+\small{
+\begin{verbatim}
+>>> li.append([10, 11, 12])
+>>> li
+[1, 2, 'i', 3, 4, 5, 'a', 9, 8, 7, [10, 11, 12]]
+\end{verbatim}
+}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Operations on Lists Only 3}
+\small{
+\begin{verbatim}
+>>> li = ['a', 'b', 'c', 'b']
+>>> li.index('b') # index of first occurrence
+1
+>>> li.count('b') # number of occurrences
+2
+>>> li.remove('b') # remove first occurrence
+>>> li
+ ['a', 'c', 'b']
+\end{verbatim}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Operations on Lists Only 4}
+\small{
+\begin{verbatim}
+>>> li = [5, 2, 6, 8]
+>>> li.reverse() # reverse the list *in place*
+>>> li
+ [8, 6, 2, 5]
+>>> li.sort() # sort the list *in place*
+>>> li
+ [2, 5, 6, 8]
+>>> li.sort(some_function)
+ # sort in place using user-defined comparison
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Tuples vs. Lists}
+\begin{itemize}
+\item Lists slower but more powerful than tuples.
+\item Lists can be modified, and they have lots of handy operations we can
+perform on them.
+\item Tuples are immutable and have fewer features.
+\item To convert between tuples and lists use the list() and tuple()
+functions:
+\small{
+\begin{verbatim}
+li = list(tu)
+tu = tuple(li)
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Dictionaries: A Mapping type}
+\begin{itemize}
+\item Dictionaries store a mapping between a set of keys
+and a set of values.
+\item Keys can be any immutable type.
+\item Values can be any type
+\item A single dictionary can store values of different types
+\item You can define, modify, view, lookup, and delete
+the key-value pairs in the dictionary.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Using dictionaries}
+\small{
+\begin{verbatim}
+>>> d = {'user':'bozo', 'pswd':1234}
+>>> d['user'] 
+'bozo'
+>>> d['pswd']
+1234
+>>> d['bozo']
+Traceback (innermost last):
+ File '<interactive input>' line 1, in ?
+KeyError: bozo
+>>> d = {'user':'bozo', 'pswd':1234}
+>>> d['user'] = 'clown'
+>>> d
+{'user':'clown', 'pswd':1234}
+>>> d['id'] = 45
+>>> d
+{'user':'clown', 'id':45, 'pswd':1234}
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Using dictionaries - Continued}
+\small{
+\begin{verbatim}
+>>> d = {'user':'bozo', 'p':1234, 'i':34}
+>>> del d['user'] # Remove one.
+>>> d
+{'p':1234, 'i':34}
+>>> d.clear() # Remove all.
+>>> d
+{}
+>>> d = {'user':'bozo', 'p':1234, 'i':34}
+>>> d.keys() # List of keys.
+['user', 'p', 'i']
+>>> d.values() # List of values.
+['bozo', 1234, 34]
+>>> d.items() # List of item tuples.
+[('user','bozo'), ('p',1234), ('i',34)]
+\end{verbatim}
+}
+\end{frame}
+ 
+\begin{frame}[fragile]
+\frametitle{Functions}
+\begin{itemize}
+\item {\it def} creates a function and assigns it a name
+\item return sends a result back to the caller
+\item Arguments are passed by assignment
+\item Arguments and return types are not declared
+\small{
+\begin{verbatim}
+def <name>(arg1, arg2, ..., argN):
+    <statements>
+    return <value>
+
+def times(x,y):
+    return x*y
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Passing Arguments to Functions}
+\begin{itemize}
+\item Arguments are passed by assignment
+\item Passed arguments are assigned to local names
+\item Assignment to argument names don't affect the 
+caller
+\item Changing a mutable argument will affect the caller
+  and it may not be the expected behaviour
+\small{
+\begin{verbatim}
+def changer(x,y):
+    x = 2 # changes local value of x only
+    y[0] = 'hi' # changes shared object
+\end{verbatim}
+}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Optional Arguments}
+\begin{itemize}
+
+\item Can define defaults for arguments that need not be 
+passed
+\small{
+\begin{verbatim}
+
+def func(a, b, c=10, d=100):
+    print a, b, c, d
+>>> func(1,2)
+1 2 10 100
+>>> func(1,2,3,4)
+1,2,3,4
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Gotchas}
+\begin{itemize}
+\item All functions in Python have a return value
+\begin{itemize}
+\item even if no return line inside the code.
+\end{itemize}
+\item Functions without a return return the special value 
+{\it None}.
+\item There is no function overloading in Python.
+\begin{itemize}
+\item Two different functions can't have the same name, even if they 
+have different arguments.
+\end{itemize}
+\item Functions can be used as any other data type. 
+They can be:
+\begin{itemize}
+\item Arguments to function
+\item Return values of functions
+\item Assigned to variables
+\item Parts of tuples, lists, etc
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Why Use Modules?}
+\begin{itemize}
+\item Code reuse
+\begin{itemize}
+\item Routines can be called multiple times within a program
+\item Routines can be used from multiple programs
+\end{itemize}
+\item Namespace partitioning
+\begin{itemize}
+\item Group data together with functions used for that data
+\end{itemize}
+\item Implementing shared services or data
+\begin{itemize}
+\item Can provide global data structure that is accessed by multiple
+  subprograms
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modules}
+\begin{itemize}
+\item Modules are functions and variables defined in 
+separate files
+\item Items are imported using {\it from} or {\it import}
+\small{
+\begin{verbatim}
+    from module import function
+    function()
+
+    import module
+    module.function()
+\end{verbatim}
+}
+\item Modules are namespaces
+\item Can be used to organize variable names, i.e.
+\small{
+\begin{verbatim}
+ atom.position = atom.position - molecule.position
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{String Formatting}
+\begin{itemize}
+\item Substitute values using a tuple
+\small{
+\begin{verbatim}
+coins, amount, name = 2, 2.4, 'Tom'
+out = '%s has %d coins worth a total of $%.02f' % (name,
+                                          coins, amount)
+print out
+
+# Output: 'Tom has 2 coins worth a total of $2.40'
+\end{verbatim}
+}
+\item Substitute value using a dictionary
+\small{
+\begin{verbatim}
+data = {'coins': 2, 'amount': 2.4, 'name': 'Tom'}
+out = '%(name)s has %(coins)d coins \
+worth a total of $%(amount).02f' % data
+print out
+
+# Output: 'Tom has 2 coins worth a total of $2.40'
+\end{verbatim}
+}
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Exceptions}
+\small{
+\begin{verbatim}
+>>> try:
+...     1 / 0
+... except:
+...     print('That was silly!')
+... finally:
+...     print('This gets executed no matter what')
+... 
+That was silly!
+This gets executed no matter what
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{File I/O}
+\begin{itemize}
+\item Reading file content:
+\small{
+\begin{verbatim}
+fd = open('filename.txt', 'r')
+for line in fd:
+    print line
+fd.close()
+
+open('filename.txt').read()
+
+open('filename.txt').readlines()
+\end{verbatim}
+}
+
+\item Writing file content:
+
+\small{
+\begin{verbatim}
+fd open('filename.txt', 'w')
+fd.write('Hello, World!')
+fd.write('\n')
+fd.close()
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What's next ?}
+
+Documentation and pointers:
+
+\begin{itemize}
+\item \url{http://learnpythonthehardway.org/book/}
+\item \url{http://www.reddit.com/r/LearnPython} (Ask your questions here)
+\item \url{http://docs.python.org/2/}
+\item \url{http://reddit.com/r/Python} (News)
+\item \url{http://planet.python.org/} (Blog aggregator)
+\item \url{http://www.pythonweekly.com/} (Newsletter)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Thanks!}
+\center \url{http://muthukadan.net}
+\end{frame}
+
+
+\end{document}

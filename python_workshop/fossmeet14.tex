@@ -124,7 +124,7 @@
 \item Employed by FSF India in 2002-2003
 \item Contributor to Zope project
 \item Book Author: A Comprehensive Guide to Zope Component Architecture
-\item During PyCON India 2013, received the first Kenneth Gonsalves Award
+\item During PyCon India 2013, received the first Kenneth Gonsalves Award
 \end{itemize}
 
 \end{frame}
@@ -161,8 +161,8 @@ This presentation and exercises are based on:
 \begin{frame}{Python Version}
 
 \begin{itemize}
-\item ``Current'' version is 3.3
-\item ``Mainstream'' version is 2.7
+\item "Current" version is 3.3
+\item "Mainstream" version is 2.7
 \item Use 3.3 if dependencies are available, otherwise use 2.7
 
 \end{itemize}
@@ -214,7 +214,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 \begin{itemize}
 
-\item{Python prompts with '>>>' (Primary) and '...' (Secondary)
+\item{Python prompts with {\it ">>>"} (Primary) and {\it "..."} (Secondary)
 
 \small{
 \begin{verbatim}
@@ -226,7 +226,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 }
 }
 
-\item To exit Python:  CTRL-D
+\item To exit Python interactive interpreter :  CTRL+D
 
 \end{itemize}
 \end{frame}
@@ -243,9 +243,9 @@ $ python filename.py
 \end{verbatim}
 }
 
-\item You could make the *.py file executable and add the
-following \#!/usr/bin/env python to the top to make it
-runnable.
+\item You could make the {\it *.py} file executable and add
+  \code{"\#!/usr/bin/env python"} to the top of that file to make it
+  run.
 
 \small{
 \begin{verbatim}
@@ -253,8 +253,6 @@ $ ./filename.py
 \end{verbatim}
 }
 
-\item Better cross platform solution is to make use setuptools console scripts
-  (This is discussed later)
 \end{itemize}
 
 \end{frame}
@@ -299,11 +297,11 @@ print y
 \item For numbers + - * / \% are as expected.
 \begin{itemize}
 \item Special use of + for string concatenation.
-\item Special use of \% for string formatting (as with printf in C)
+\item Special use of \% for string formatting (as with {\it printf} in C)
 \end{itemize}
 \item Logical operators are words (and, or, not)
 not symbols
-\item The basic printing command is print.
+\item The basic printing command is {\it print}.
 \item The first assignment to a variable creates it.
 \begin{itemize}
 \item Variable types don't need to be declared.
@@ -314,7 +312,7 @@ not symbols
 
 \end{frame}
 
-\begin{frame}{Basic Datatypes}
+\begin{frame}{Basic Data types}
 
 \begin{itemize}
 
@@ -334,24 +332,24 @@ not symbols
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Whitespace}
+\begin{frame}{White space}
 
-Whitespace is meaningful in Python: especially
+White space is meaningful in Python: especially
 indentation and placement of newlines.
 
 \begin{itemize}
 \item Use a newline to end a line of code.
 \begin{itemize}
-\item Use \ when must go to next line prematurely.
-\item No braces { } to mark blocks of code in Python...
+\item Use \code{\\} when must go to next line prematurely.
 \end{itemize}
-Use consistent indentation instead.
+\item No braces \code{\{ \}} to mark blocks of code in Python...
+use consistent indentation instead.
 \begin{itemize}
 \item The first line with less indentation is outside of the block.
 \item The first line with more indentation starts a nested block
 \end{itemize}
 \item Often a colon appears at the start of a new block.
-(E.g. for function and class definitions.)
+(E.g. for function definitions and if conditions.)
 \end{itemize}
 \end{frame}
 
@@ -412,8 +410,7 @@ error.
 \begin{verbatim}
 >>> y
 Traceback (most recent call last):
- File "<pyshell#16>", line 1, in -toplevel-
- y
+  File "<stdin>", line 1, in <module>
 NameError: name 'y' is not defined
 >>> y = 3
 >>> y
@@ -742,7 +739,7 @@ True
 False
 \end{verbatim}
 }
-\item For strings, tests for substrings
+\item For strings, tests for sub-strings
 \small{
 \begin{verbatim}
 >>> a = 'abcde'
@@ -805,9 +802,8 @@ value is the concatenation of its arguments.
 >>> t = (23, 'abc', 4.56, (2,3), 'def')
 >>> t[2] = 3.14
 Traceback (most recent call last):
- File "<pyshell#75>", line 1, in -toplevel-
- tu[2] = 3.14
-TypeError: object doesn't support item assignment
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
 \end{verbatim}
 }
 You can't change a tuple.
@@ -1024,7 +1020,7 @@ def times(x,y):
 \item Assignment to argument names don't affect the 
 caller
 \item Changing a mutable argument will affect the caller
-  and it may not be the expected behaviour
+  and it may not be the expected behavior
 \small{
 \begin{verbatim}
 def changer(x,y):

@@ -181,8 +181,8 @@ This presentation and exercises are based on:
 \frametitle{Python Interactive Interpreter}
 
 \begin{itemize}
-
-\item{Interactive interface to Python
+\item Interactive interface to Python
+\end{itemize}
 
 \small{
 \begin{verbatim}
@@ -193,9 +193,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 \end{verbatim}
 }
-}
 
-\item{Python interpreter evaluates inputs
+\begin{itemize}
+\item Python interpreter evaluates inputs
+\end{itemize}
 
 \small{
 \begin{verbatim}
@@ -205,8 +206,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 'Hello World!'
 \end{verbatim}
 }
-}
-\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -214,7 +213,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 \begin{itemize}
 
-\item{Python prompts with {\it ">>>"} (Primary) and {\it "..."} (Secondary)
+\item Python prompts with {\it ">>>"} (Primary) and {\it "..."} (Secondary)
 
 \small{
 \begin{verbatim}
@@ -223,7 +222,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 ...
 1 is less than 2
 \end{verbatim}
-}
 }
 
 \item To exit Python interactive interpreter :  CTRL+D
@@ -465,12 +463,16 @@ return, try, while
 
 \begin{itemize}
 \item Use {\it raw\_input} function to get user input as a string.
+\small{
+\begin{verbatim}
+ name = raw_input("Enter name: ")
+\end{verbatim}
+}
 \item Use {\it input} function to get user input with evaluation
 of the given expression
 \small{
 \begin{verbatim}
- name = raw_input("Enter name: ")
- age = raw_input("Enter age: ")
+ age = input("Enter age: ")
 \end{verbatim}
 }
 \end{itemize}
@@ -478,6 +480,11 @@ of the given expression
 
 \begin{frame}[fragile]
 \frametitle{Control of Flow - if conditions}
+\begin{itemize}
+\item Branching logic can be implemented using if, elif \& else keywords.
+\item There is no "switch" statement in Python.
+\end{itemize}
+
 \small{
 \begin{verbatim}
 if x == 3:

@@ -9,10 +9,10 @@
 \usefonttheme{serif}
 \usepackage{fontspec}
 \setmainfont{Liberation Serif Bold}
-\title[Distributing Python Code]{Distributing Python Code}
-\author{Baiju Muthukadan \\ ZeOmega, Bangalore}
-%\institute{}
-\date{Feb 15, 2014}
+\title[Distributing Python Packages Using Setuptools]{Distributing Python Packages Using Setuptools}
+\author{Baiju Muthukadan}
+\institute{ZeOmega, Bangalore}
+\date{Feb 27, 2014}
 
 \setbeamertemplate{frametitle}
   {\begin{centering}\smallskip
@@ -102,31 +102,26 @@
 \titlepage
 \end{frame}
 
-
-\begin{frame}{Prerequisites}
-\begin{itemize}
-\item GNU/Linux
-\item Development tools (gcc, make etc.)
-\item Text editor
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Expectation from Participants}
-
-\center \Large{Familiarity with programming in Python}
-
-\end{frame}
-
 \begin{frame}{About Me}
 
 \begin{itemize}
 \item Founded the SMC project in 2001 while studying at REC Calicut
 \item Employed by FSF India in 2002-2003
-\item Contributor to Zope project
+\item Contributor to Zope project (2006-2010)
 \item Book Author: A Comprehensive Guide to Zope Component Architecture
-\item During PyCON India 2013, received the first Kenneth Gonsalves Award
+\item During PyCon India 2013, received the first Kenneth Gonsalves Award
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}{Agenda}
+\begin{itemize}
+\item Installing Python
+\item Setting up development environment
+\item Distribution using Setuptools
+\item MANIFEST.in
+\item Console Scripts
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Installing Python}
@@ -147,7 +142,7 @@
 
 \begin{itemize}
 
-\item http://www.pip-installer.org/en/latest/installing.html
+\item \url{http://www.pip-installer.org/en/latest/installing.html}
 \item pip install virtualenv
 \item virtualenv venv1
 \item source venv1/bin/activate
@@ -286,6 +281,10 @@ def run():
 
 \end{frame}
 
+\begin{frame}{Thanks!}
+\center \url{http://muthukadan.net}
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Command line parsing}
 
@@ -338,10 +337,6 @@ def run():
 \end{verbatim}
 }
 
-\end{frame}
-
-\begin{frame}{Thanks!}
-\center http://muthukadan.net
 \end{frame}
 
 

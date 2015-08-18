@@ -1,0 +1,37 @@
+Gorilla Websocket
+5 September 2015
+
+Baiju Muthukadan
+ZeOmega
+http://muthukadan.net
+
+* Websocket
+
+- A full-duplex single socket connection
+- Alternative to HTTP polling
+- Two-way communication between client and server
+
+* Spec
+
+- The WebSocket Protocol: [[https://tools.ietf.org/html/rfc6455][RFC 6455]]
+- The WebSocket API: [[http://www.w3.org/TR/websockets]]
+
+* API
+
+.code example1.html
+
+* Backend
+
+.code example1.go /START SERVE/,/END SERVE/
+
+* Backend Contd.
+
+.code example1.go /START UPGRADER/,/END UPGRADER/
+
+* Backend Contd.
+
+.code example1.go /START READER/,/END READER/
+
+* Backend Contd.
+
+.code example1.go /START WRITER/,/END WRITER/

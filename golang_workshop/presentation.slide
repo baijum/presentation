@@ -1,0 +1,381 @@
+Golang Workshop
+27 February 2016
+
+Baiju Muthukadan
+ZeOmega
+http://muthukadan.net
+
+* About Me
+
+- Technical Architect at ZeOmega, Bangalore
+- Python Developer for 12+ years
+- FOSS Contributor (Zope, SMC, Koha, Salt etc.)
+- Founded the Swathanthra Malayalam Computing (SMC) project in 2001 while studying at REC Calicut (NIT Kozhikode)
+- Conducted many Python related talks and workshops in India
+- In 2013, received the first Kenneth Gonsalves Award for my contributions to the Python community in India
+- In 2014, started using Go for hobby projects
+
+* Facts
+
+- General Purpose Programming Language
+- Free/Open Source
+- Created at Google by Robert Griesemer, Rob Pike and Ken Thompson
+- Development started in 2007 and publicly released in November 2009
+- C like syntax (no semicolons)
+- Object Oriented (Composition over inheritance)
+- Compiled (Statically linked)
+- Garbage collected
+- Statically typed
+- built-in concurrency
+- no classes
+
+* Facts ...
+
+- Two Compilers: gc & gccgo
+- 25+ keywords (less than C,C++,Python etc.)
+- Classification (Capitalized are exported)
+- Fast build
+- Unused imports and variables raise compile error
+- Platforms: Windows, GNU/Linux, Mac OS X, Plan 9, *BSD
+- Cross compilation
+- Standard library
+- No exceptions
+- Pointers (No pointer arithmetic!)
+
+* Hello, ലോകമേ!
+
+.play code/hello.go
+
+
+* Why Go ?
+
+- Simplicity (Minimal design)
+- Consistency (Orthogonal features)
+- Readability
+- Safety (Type safety, no buffer overflows, no pointer arithmetic)
+- Built-in concurrency features
+- Speed
+
+* Installing Go Compiler
+
+- Download Go compiler binary from [[https://golang.org/dl][https://golang.org/dl]]
+- Extract it into your home directory (`$HOME/go`)
+- Create directory named `mygo` in your home directory (`$HOME/mygo`)
+- Add the following lines to your `$HOME/.bashrc`
+
+
+    export GOROOT=$HOME/go
+    export PATH=$PATH:$GOROOT/bin
+
+    export GOPATH=$HOME/mygo
+    export PATH=$PATH:$GOPATH/bin
+
+
+* Variables
+
+- Type is explicitly specified but initialized with default zero values
+
+    var age int
+    var name, place string
+
+- Type is explicitly specified and initialized with given values
+
+    var age int = 10
+    var name, place string = "Jack", "USA"
+
+
+* Variables ...
+
+- Type is inferred from the values that is given for initialization
+
+    var x = 42             // int
+    var s, b = "foo", true // string, bool
+
+- Short variable declaration inside functions (Similar to above - type is inferred from the values that is given for initialization)
+
+    x := 42             // int
+    s, b := "foo", true // string, bool
+
+
+* Go Types (Primitive types)
+
+int, uint, int8, uint8, ...
+bool, string
+float32, float64
+complex64, complex128
+
+* Go Types (Structs)
+
+    struct {
+        Name string
+        Age  int
+    }
+
+* Go Types (Slices and Arrays)
+
+    []int, [3]string, []struct{ Name string }
+
+* Go Types (Maps)
+
+    map[string]int
+
+* Go Types (Pointers)
+
+    *int, *Person
+
+* Type declarations
+
+type [name] [specification]
+
+Example 1: Celsius is a float64 type
+
+    type Celsius float64	
+
+Example 2: Person is a struct type
+
+    type Person struct {
+        name string
+        age  int
+    }
+
+* Function declarations
+
+func [name] ([params]) [return value]
+func [name] ([params]) ([return values])
+
+A function to return sum of two int values:
+
+    func sum(a int, b int) int {
+        return a + b
+    }
+
+* Function declarations ...
+
+A function with multiple returned values:
+
+    func div(a, b int) (int, int)
+        return a / b, a % b
+    }
+
+* Function declarations ...
+
+Made clearer by naming the return values:
+
+    func div(den, div int) (q, rem int)
+        return a / b, a % b
+    }
+
+* Method declaration
+
+func ([receiver]) [name] ([params]) ([return values])
+
+* Method declaration ...
+
+A method on a struct:
+
+    func (p Person) Major() bool {
+        return p.age >= 18
+    }
+
+* Method declaration ...
+
+But also a method on a float64:
+
+    func (c Celsius) Freezing() bool {
+        return c <= 0
+    }
+
+* Method declaration ...
+
+Constraint: Methods can be defined only on types declared in the same package.
+
+    // This won't compile
+    func (s string) Length() int { return len(s) }
+
+* Pointers
+
+Use `&` to obtain the address of a variable.
+
+    a := "hello"
+    p := &a
+
+* Pointers ...
+
+Use `*` to dereference the pointer.
+
+    fmt.Print(*p + ", world")
+
+* Pointers ...
+
+No pointer arithmetic, no pointers to unsafe memory.
+
+    a := "hello"
+    p := &a
+    p += 4  // no, you can't
+
+* Pointers ...
+
+- Control what you pass to functions.
+- passing values, no side-effects:
+
+    func double(x int) {
+        x *= 2
+    }
+
+- passing pointers: side-effects possible:
+
+    func double(x *int) {
+        *x *= 2
+    }
+
+* Packages
+
+- Package name must be declared in source files
+- To create executable use name of package as main
+- Programs start running in package main
+- Import give access to exported stuff from other packages
+- Package name is the same as the last element of the import path
+- Initialization logic for package goes into a function named init
+- Use alias to avoid package name ambiguity with package imports
+- Use blank identifier (`_`) as import alias to invoke init function without using the package
+
+* For Loop
+
+- The only looping construct (no while loop)
+- Syntax inspired by C
+- No parenthesis (not even optional)
+- Curly brace is mandatory
+- Pre and post statements can be empty (and drop the semicolons!)
+- An infinite loop can be created by removing the loop condition
+
+* For Loop ...
+
+
+    sum := 0
+    for i := 0; i < 10; i++ {
+        sum += i
+    }
+    fmt.Println(sum)
+
+* If Conditions
+
+- Syntax inspired by C
+- No parenthesis (not even optional)
+- Curly brace is mandatory
+- The if statement can start with a short statement to execute before the condition
+- Variables declared by the statement are only in scope until the end of the if
+- Variables declared inside an if short statement are also available inside any of the else blocks
+
+* If Conditions ...
+
+    func pow(x, n, lim float64) float64 {
+        if v := math.Pow(x, n); v < lim {
+            return v
+        } else {
+            fmt.Printf("%g >= %g\n", v, lim)
+        }
+        // can't use v here, though
+        return lim
+    }
+
+* Switch statement
+
+- The cases are evaluated top to bottom until a match is found
+- There is no automatic fall through
+- Cases can be presented in comma-separated lists
+- break statements can be used to terminate a switch early
+
+* Switch statement ...
+
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.", os)
+	}
+
+* Switch statement ...
+
+If the switch has no expression it switches on true (useful to write an if-else-if-else chain)
+
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+
+* Defer statement
+
+- Ensure a cleanup function is called later
+- To recover from runtime panic
+- Executed in LIFO order
+
+    func main() {
+        defer fmt.Println("world")
+
+        fmt.Println("hello")
+    }
+
+* Interfaces
+
+Named collections of method signatures
+
+    type Geometry interface {
+        Area() float64
+        Perimeter() float64
+    }
+
+* Go Tools
+
+- build - compile packages and dependencies
+- fmt - run gofmt on package sources
+- get - download and install packages and dependencies
+- install - compile and install packages and dependencies
+- run - compile and run Go program
+- test - test packages
+- version - print Go version
+- vet - run go tool vet on packages
+
+* Concurrency
+
+* Concurrency ...
+
+* Who uses Go?
+
+- Google
+- Dropbox
+- BBC
+- Dailymotion
+- Docker
+- Disqus
+- SoundCloud
+- UserVoice
+- [[https://github.com/golang/go/wiki/GoUsers][https://github.com/golang/go/wiki/GoUsers]]
+- [[https://github.com/golang/go/wiki/SuccessStories][https://github.com/golang/go/wiki/SuccessStories]]
+
+* Go Resources
+
+- Use the word "golang" to search about Go in Google, Bing etc.
+- Twitter hashtag #golang #GopherCon #GopherConIndia
+- Official website: http://golang.org
+- Official blog: http://blog.golang.org
+- https://gobyexample.com
+- Forum/Mailing List: https://groups.google.com/forum/#!forum/golang-nuts
+- Subreddit: http://www.reddit.com/r/golang
+- #go-nuts in the irc.freenode.org network
+- Slack: [[https://gophersinvite.herokuapp.com/][https://gophersinvite.herokuapp.com/]]
+- More: http://dave.cheney.net/resources-for-new-go-programmers
+
+* My Book: A Comprehensive Guide to Go Programming
+
+Subscribe for sample chapters!
+
+[[http://golang.muthukadan.net][http://golang.muthukadan.net]]

@@ -1,0 +1,310 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Liberation Serif}
+
+\title{\bf{Golang Workshop Exercises}}
+\author{Baiju Muthukadan \\ Architect, ZeOmega}
+\date{Feb 27, 2016}
+
+\begin{document}
+\maketitle
+
+\vspace*{2cm}
+
+\centerline{\LARGE\bf Exercises}
+\section*{Exercise 1}
+Write a program to print "Hello, World!" and save this in a
+file named {\it helloworld.go}.  Compile the program and run
+it like this: {\it./helloworld}
+
+\section*{Exercise 2}
+
+Write a program to print sum of all numbers below 50 completely
+divisible by 3 or 5 (i.e., remainder 0)
+
+\section*{Exercise 3}
+Write a program to print whether the number given as the command line
+argument is even or odd
+
+\section*{Exercise 4}
+
+Write a program to print area and perimeter of a given circle and
+rectangle.  Use {\it struct} to represent circle and rectangle.  The
+type of shape and dimensions can be read from command line as given
+here:
+
+\begin{verbatim}
+$ ./shape circle 2
+Area: 12.56
+Perimeter: 12.56
+$ ./shape rectangle 2 3
+Area: 6
+Perimeter: 8
+\end{verbatim}
+
+\section*{Exercise 5}
+
+Update the previous program to use interfaces.
+
+\section*{Exercise 6}
+
+Download a list of web pages concurrently using Goroutines.
+
+\section*{Exercise 7}
+
+A calculator for basic arithmentic operations (addition \&
+substraction) for integers.
+
+Example run:
+
+\begin{verbatim}
+$ ./calculator
+2 + 3
+5
+5 - 2
+3
+2 + 5 - 9
+-2
+2 + 3 + 4 - 5
+4
+\end{verbatim}
+
+\newpage
+
+\centerline{\LARGE\bf Answers}
+\section*{Answer 1}
+
+\begin{enumerate}
+\item Content of {\it helloworld.go}:
+\begin{verbatim}
+package main
+
+import "fmt"
+
+func main() {
+        fmt.Println("Hello, World!")
+}
+\end{verbatim}
+
+\item Build program:
+\begin{verbatim}
+$ go build helloworld.go
+\end{verbatim}
+
+\item Run program and verify output like this:
+\begin{verbatim}
+$ ./helloworld
+Hello, World!
+\end{verbatim}
+\end{enumerate}
+
+\section*{Answer 2}
+\begin{enumerate}
+\item Content of the file {\it sum.go}:
+\begin{verbatim}
+package main
+
+import "fmt"
+
+func main() {
+        sum := 0
+        for i := 1; i < 50; i++ {
+                if i%3 == 0 {
+                        sum = sum + i
+                } else {
+                        if i%5 == 0 {
+                                sum = sum + i
+                        }
+                }
+        }
+        fmt.Println(sum)
+}
+\end{verbatim}
+
+\item Run program and verify output like this:
+\begin{verbatim}
+$ go run sum.go
+543
+\end{verbatim}
+
+\end{enumerate}
+
+\section*{Answer 3}
+\begin{enumerate}
+\item Content of the file {\it evenodd.go}:
+\begin{verbatim}
+package main
+
+import (
+        "fmt"
+        "os"
+        "strconv"
+)
+
+type Number int
+
+func (num Number) Even() bool {
+        if num%2 == 0 {
+                return true
+        } else {
+                return false
+        }
+
+}
+
+func main() {
+        i := os.Args[1]
+        n, err := strconv.Atoi(i)
+        if err != nil {
+                fmt.Println("Not a number:", i)
+                os.Exit(1)
+        }
+        num := Number(n)
+        if num.Even() == true {
+                 fmt.Println("even number", num)
+        } else {
+                 fmt.Println("odd number", num)
+        }
+}
+\end{verbatim}
+
+\item Run program and verify output like this:
+\begin{verbatim}
+$ go run evenodd.go 2
+even number 2
+$ go run evenodd.go 3
+odd number 3
+\end{verbatim}
+
+\end{enumerate}
+
+\section*{Answer 4}
+\begin{enumerate}
+\item Content of the file {\it shapes.go}:
+\begin{verbatim}
+package main
+
+import (
+        "fmt"
+        "os"
+        "strconv"
+)
+
+type Rectangle struct {
+        length float64
+        width  float64
+}
+
+type Circle struct {
+        radius float64
+}
+
+func (r Rectangle) Area() float64 {
+        return r.length * r.width
+}
+
+func (r Rectangle) Perimeter() float64 {
+        return 2 * (r.length + r.width)
+}
+
+func (c Circle) Area() float64 {
+        return 3.14 * c.radius * c.radius
+}
+
+// Circumference
+func (c Circle) Perimeter() float64 {
+        return 2 * 3.14 * c.radius
+}
+
+func main() {
+
+        shape := os.Args[1]
+
+        if shape == "circle" {
+
+                r := os.Args[2]
+                radius, _ := strconv.Atoi(r)
+
+                circle := Circle{float64(radius)}
+
+                area := circle.Area()
+                fmt.Println("Area:", area)
+
+                perimeter := circle.Perimeter()
+                fmt.Println("Perimeter:", perimeter)
+
+        } else {
+                w := os.Args[2]
+                h := os.Args[2]
+
+                width, _ := strconv.Atoi(w)
+                height, _ := strconv.Atoi(h)
+
+                rectangle := Rectangle{float64(width), float64(height)}
+
+                area := rectangle.Area()
+                fmt.Println("Area:", area)
+
+                perimeter := rectangle.Perimeter()
+                fmt.Println("Perimeter:", perimeter)
+        }
+}
+\end{verbatim}
+
+\end{enumerate}
+
+\section*{Answer 5}
+\begin{enumerate}
+\item Updat the previous program with this code:
+\begin{verbatim}
+type Geometry interface {
+	Area() float64
+	Perimeter() float64
+}
+
+func Measure(g Geometry) {
+	area := g.Area()
+	fmt.Println("Area:", area)
+
+	perimeter := g.Perimeter()
+	fmt.Println("Perimeter:", perimeter)
+}
+
+func main() {
+
+        shape := os.Args[1]
+
+        if shape == "circle" {
+
+                r := os.Args[2]
+                radius, _ := strconv.Atoi(r)
+
+                circle := Circle{float64(radius)}
+                Measure(circle)
+
+        } else {
+                w := os.Args[2]
+                h := os.Args[2]
+
+                width, _ := strconv.Atoi(w)
+                height, _ := strconv.Atoi(h)
+
+                rectangle := Rectangle{float64(width), float64(height)}
+                Measure(rectangle)
+        }
+}
+
+\end{verbatim}
+
+\end{enumerate}
+
+\section*{Answer 6}
+\begin{enumerate}
+\item Content of the file {\it download.go}:
+\begin{verbatim}
+\end{verbatim}
+\end{enumerate}
+
+
+\end{document}

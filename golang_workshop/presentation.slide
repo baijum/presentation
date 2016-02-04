@@ -130,7 +130,7 @@ type [name] [specification]
 
 Example 1: Celsius is a float64 type
 
-    type Celsius float64	
+    type Celsius float64
 
 Example 2: Person is a struct type
 
@@ -347,7 +347,27 @@ Named collections of method signatures
 
 * Concurrency
 
+- Goroutines are lightweight threads managed by the Go runtime
+- Calling a function with _go_ keyword starts the goroutine
+
+    go Sum(x, y)
+
+- Goroutines can communicate to each other via channels (typed conduit)
+
 * Concurrency ...
+
+- You can send and receive values with the channel operator: <-
+
+    ch <- v    // Send v to channel ch.
+    v := <-ch  // Receive from ch, and
+               // assign value to v.
+
+- The data flows in the direction of the arrow.
+- Channels must be created before use:
+
+    ch := make(chan int)
+
+- Sends and receives block until the other side is ready
 
 * Who uses Go?
 

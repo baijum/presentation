@@ -26,8 +26,8 @@ func main() {
 	}
 	num := Number(n)
 	if num.Even() == true {
-		fmt.Println("even number", num)
+		fmt.Println("even number:", num)
 	} else {
-		fmt.Println("odd number", num)
+		fmt.Println("odd number:", num)
 	}
 }

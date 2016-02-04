@@ -49,7 +49,11 @@ Update the previous program to use interfaces.
 
 \section*{Exercise 6}
 
-Download a list of web pages concurrently using Goroutines.
+Write a program to download a list of web pages concurrently using
+Goroutines.
+
+Hint: Use this tool for serving junk content for testing:
+https://github.com/baijum/lipsum
 
 \section*{Exercise 7}
 
@@ -162,9 +166,9 @@ func main() {
         }
         num := Number(n)
         if num.Even() == true {
-                 fmt.Println("even number", num)
+                 fmt.Println("even number:", num)
         } else {
-                 fmt.Println("odd number", num)
+                 fmt.Println("odd number:", num)
         }
 }
 \end{verbatim}
@@ -172,9 +176,9 @@ func main() {
 \item Run program and verify output like this:
 \begin{verbatim}
 $ go run evenodd.go 2
-even number 2
+even number: 2
 $ go run evenodd.go 3
-odd number 3
+odd number: 3
 \end{verbatim}
 
 \end{enumerate}
@@ -252,6 +256,16 @@ func main() {
 }
 \end{verbatim}
 
+\item Run program and verify output like this:
+\begin{verbatim}
+$ go run shapes1.go circle 4
+Area: 50.24
+Perimeter: 25.12
+$ go run shapes1.go rectangle 2 3
+Area: 4
+Perimeter: 8
+\end{verbatim}
+
 \end{enumerate}
 
 \section*{Answer 5}
@@ -259,16 +273,16 @@ func main() {
 \item Updat the previous program with this code:
 \begin{verbatim}
 type Geometry interface {
-	Area() float64
-	Perimeter() float64
+        Area() float64
+        Perimeter() float64
 }
 
 func Measure(g Geometry) {
-	area := g.Area()
-	fmt.Println("Area:", area)
+        area := g.Area()
+        fmt.Println("Area:", area)
 
-	perimeter := g.Perimeter()
-	fmt.Println("Perimeter:", perimeter)
+        perimeter := g.Perimeter()
+        fmt.Println("Perimeter:", perimeter)
 }
 
 func main() {
@@ -294,7 +308,6 @@ func main() {
                 Measure(rectangle)
         }
 }
-
 \end{verbatim}
 
 \end{enumerate}
@@ -303,6 +316,41 @@ func main() {
 \begin{enumerate}
 \item Content of the file {\it download.go}:
 \begin{verbatim}
+package main
+
+import (
+        "io/ioutil"
+        "log"
+        "net/http"
+        "net/url"
+        "sync"
+)
+
+func main() {
+        urls := []string{
+                "http://localhost:9999/1.txt",
+                "http://localhost:9999/2.txt",
+                "http://localhost:9999/3.txt",
+                "http://localhost:9999/4.txt",
+        }
+        var wg sync.WaitGroup
+        for _, u := range urls {
+                wg.Add(1)
+                go func(u string) {
+                        defer wg.Done()
+                        ul, err := url.Parse(u)
+                        fn := ul.Path[1:len(ul.Path)]
+                        res, err := http.Get(u)
+                        if err != nil {
+                                log.Println(err, u)
+                        }
+                        content, _ := ioutil.ReadAll(res.Body)
+                        ioutil.WriteFile(fn, content, 0644)
+                        res.Body.Close()
+                }(u)
+        }
+        wg.Wait()
+}
 \end{verbatim}
 \end{enumerate}
 

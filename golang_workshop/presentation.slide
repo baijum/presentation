@@ -47,7 +47,6 @@ http://muthukadan.net
 
 .play code/hello.go
 
-
 * Why Go ?
 
 - Simplicity (Minimal design)
@@ -261,24 +260,6 @@ No pointer arithmetic, no pointers to unsafe memory.
            _ "github.com/lib/pq"
     )
 
-* For Loop
-
-- The only looping construct (no while loop)
-- Syntax inspired by C
-- No parenthesis (not even optional)
-- Curly brace is mandatory
-- Pre and post statements can be empty (and drop the semicolons!)
-- An infinite loop can be created by removing the loop condition
-
-* For Loop ...
-
-
-    sum := 0
-    for i := 0; i < 10; i++ {
-        sum += i
-    }
-    fmt.Println(sum)
-
 * If Conditions
 
 - Syntax inspired by C
@@ -299,6 +280,27 @@ No pointer arithmetic, no pointers to unsafe memory.
         // can't use v here, though
         return lim
     }
+
+* For Loop
+
+- The only looping construct (no while loop)
+- Syntax inspired by C
+- No parenthesis (not even optional)
+- Curly brace is mandatory
+
+.play code/for1.go /START FORLOOP OMIT/,/END FORLOOP OMIT/
+
+* For Loop ...
+
+- Pre and post statements can be empty (and drop the semicolons!)
+
+.play code/for2.go /START FORLOOP OMIT/,/END FORLOOP OMIT/
+
+* For Loop ...
+
+- An infinite loop can be created by removing the loop condition
+
+.play code/for3.go /START FORLOOP OMIT/,/END FORLOOP OMIT/
 
 * Switch statement
 

@@ -4,10 +4,8 @@ import "fmt"
 
 func main() {
 	// START OMIT
-	i := 0
-	for i < 10 { // HL
-		i++
-		fmt.Println("Hello")
+	if 1 < 2 { // HL
+		fmt.Println("1 is less than 2")
 	}
 	// END OMIT
 }

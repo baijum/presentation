@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	// START FORLOOP OMIT
+	// START OMIT
 	i := 0
 	for { // HL
 		if i >= 10 {
@@ -12,5 +12,5 @@ func main() {
 		i++
 		fmt.Println("Hello")
 	}
-	// END FORLOOP OMIT
+	// END OMIT
 }

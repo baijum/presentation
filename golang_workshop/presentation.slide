@@ -165,6 +165,77 @@ Made clearer by naming the return values:
         return a / b, a % b
     }
 
+* If Conditions
+
+- Syntax inspired by C
+- No parenthesis (not even optional)
+- Curly brace is mandatory
+
+.play code/if1.go /START OMIT/,/END OMIT/
+
+* If Conditions ...
+
+- The if statement can start with a short statement to execute before the condition
+- Variables declared by the statement are only in scope until the end of the if
+- Variables declared inside an if short statement are also available inside any of the else blocks
+
+.play code/if2.go /START OMIT/,/END OMIT/
+
+* For Loop
+
+- The only looping construct (no while loop)
+- Syntax inspired by C
+- No parenthesis (not even optional)
+- Curly brace is mandatory
+
+.play code/for1.go /START OMIT/,/END OMIT/
+
+* For Loop ...
+
+- Pre and post statements can be empty (and drop the semicolons!)
+
+.play code/for2.go /START OMIT/,/END OMIT/
+
+* For Loop ...
+
+- An infinite loop can be created by removing the loop condition
+
+.play code/for3.go /START OMIT/,/END OMIT/
+
+* Switch statement
+
+- The cases are evaluated top to bottom until a match is found
+- There is no automatic fall through
+- Cases can be presented in comma-separated lists
+- break statements can be used to terminate a switch early
+
+* Switch statement ...
+
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.", os)
+	}
+
+* Switch statement ...
+
+If the switch has no expression it switches on true (useful to write an if-else-if-else chain)
+
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+
 * Method declaration
 
 func ([receiver]) [name] ([params]) ([return values])
@@ -259,82 +330,6 @@ No pointer arithmetic, no pointers to unsafe memory.
 
            _ "github.com/lib/pq"
     )
-
-* If Conditions
-
-- Syntax inspired by C
-- No parenthesis (not even optional)
-- Curly brace is mandatory
-- The if statement can start with a short statement to execute before the condition
-- Variables declared by the statement are only in scope until the end of the if
-- Variables declared inside an if short statement are also available inside any of the else blocks
-
-* If Conditions ...
-
-    func pow(x, n, lim float64) float64 {
-        if v := math.Pow(x, n); v < lim {
-            return v
-        } else {
-            fmt.Printf("%g >= %g\n", v, lim)
-        }
-        // can't use v here, though
-        return lim
-    }
-
-* For Loop
-
-- The only looping construct (no while loop)
-- Syntax inspired by C
-- No parenthesis (not even optional)
-- Curly brace is mandatory
-
-.play code/for1.go /START FORLOOP OMIT/,/END FORLOOP OMIT/
-
-* For Loop ...
-
-- Pre and post statements can be empty (and drop the semicolons!)
-
-.play code/for2.go /START FORLOOP OMIT/,/END FORLOOP OMIT/
-
-* For Loop ...
-
-- An infinite loop can be created by removing the loop condition
-
-.play code/for3.go /START FORLOOP OMIT/,/END FORLOOP OMIT/
-
-* Switch statement
-
-- The cases are evaluated top to bottom until a match is found
-- There is no automatic fall through
-- Cases can be presented in comma-separated lists
-- break statements can be used to terminate a switch early
-
-* Switch statement ...
-
-	switch os := runtime.GOOS; os {
-	case "darwin":
-		fmt.Println("OS X.")
-	case "linux":
-		fmt.Println("Linux.")
-	default:
-		// freebsd, openbsd,
-		// plan9, windows...
-		fmt.Printf("%s.", os)
-	}
-
-* Switch statement ...
-
-If the switch has no expression it switches on true (useful to write an if-else-if-else chain)
-
-	t := time.Now()
-	switch {
-	case t.Hour() < 12:
-		fmt.Println("Good morning!")
-	case t.Hour() < 17:
-		fmt.Println("Good afternoon.")
-	default:
-		fmt.Println("Good evening.")
-	}
 
 * Defer statement
 

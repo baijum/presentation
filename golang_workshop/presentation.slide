@@ -232,13 +232,34 @@ No pointer arithmetic, no pointers to unsafe memory.
 * Packages
 
 - Package name must be declared in source files
-- To create executable use name of package as main
+- To create executable use name of package as _main_
 - Programs start running in package main
+
+    package main
+
+* Packages ...
+
 - Import give access to exported stuff from other packages
 - Package name is the same as the last element of the import path
-- Initialization logic for package goes into a function named init
+- Initialization logic for package goes into a function named _init_
 - Use alias to avoid package name ambiguity with package imports
-- Use blank identifier (`_`) as import alias to invoke init function without using the package
+
+    import (
+    	   "fmt"
+
+           myfmt "github.com/baijum/fmt"
+    )
+
+* Packages ...
+
+- Use blank identifier (`_`) as import alias to invoke _init_ function without using the package
+
+
+    import (
+           "database/sql"
+
+           _ "github.com/lib/pq"
+    )
 
 * For Loop
 

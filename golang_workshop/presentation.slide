@@ -118,10 +118,10 @@ complex64, complex128
 
 * Go Types (Structs)
 
-    struct {
-        Name string
-        Age  int
-    }
+- A struct is a collection of fields.
+- Struct fields are accessed using a dot.
+
+.play code/struct1.go /START OMIT/,/END OMIT/
 
 * Go Types (Slices and Arrays)
 

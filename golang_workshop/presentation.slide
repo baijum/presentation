@@ -78,6 +78,8 @@ http://muthukadan.net
     var age int
     var name, place string
 
+- The zero value is 0 for numeric types, false for boolean type and empty string for strings.
+
 - Type is explicitly specified and initialized with given values
 
     var age int = 10
@@ -96,6 +98,16 @@ http://muthukadan.net
     x := 42             // int
     s, b := "foo", true // string, bool
 
+
+* Constants
+
+- Constants are declared like variables, but with the const keyword.
+- Constants can be character, string, boolean, or numeric values.
+- Constants cannot be declared using the := syntax.
+
+    const Male = true
+    const Pi = 3.14
+    const Country = "India"
 
 * Go Types (Primitive types)
 

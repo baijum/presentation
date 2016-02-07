@@ -222,6 +222,38 @@ Made clearer by naming the return values:
 - os.Args provides access to raw command-line arguments
 - Go provides a "flag" package supporting basic command-line flag parsing
 
+* Packages
+
+- Package name must be declared in source files
+- To create executable use name of package as _main_
+- Programs start running in package main
+
+    package main
+
+* Packages ...
+
+- Import give access to exported stuff from other packages
+- Package name is the same as the last element of the import path
+- Initialization logic for package goes into a function named _init_
+- Use alias to avoid package name ambiguity with package imports
+
+    import (
+    	   "fmt"
+
+           myfmt "github.com/baijum/fmt"
+    )
+
+* Packages ...
+
+- Use blank identifier (`_`) as import alias to invoke _init_ function without using the package
+
+
+    import (
+           "database/sql"
+
+           _ "github.com/lib/pq"
+    )
+
 * For Loop
 
 - The only looping construct (no while loop)
@@ -339,38 +371,6 @@ No pointer arithmetic, no pointers to unsafe memory.
     func double(x *int) {
         *x *= 2
     }
-
-* Packages
-
-- Package name must be declared in source files
-- To create executable use name of package as _main_
-- Programs start running in package main
-
-    package main
-
-* Packages ...
-
-- Import give access to exported stuff from other packages
-- Package name is the same as the last element of the import path
-- Initialization logic for package goes into a function named _init_
-- Use alias to avoid package name ambiguity with package imports
-
-    import (
-    	   "fmt"
-
-           myfmt "github.com/baijum/fmt"
-    )
-
-* Packages ...
-
-- Use blank identifier (`_`) as import alias to invoke _init_ function without using the package
-
-
-    import (
-           "database/sql"
-
-           _ "github.com/lib/pq"
-    )
 
 * Defer statement
 

@@ -70,6 +70,19 @@ http://muthukadan.net
     export GOPATH=$HOME/mygo
     export PATH=$PATH:$GOPATH/bin
 
+* Building and Running
+
+- You can run the program using "go run" command: go run hello.go
+- You can also build (compile) and run the binary like this in GNU/Linux:
+
+    go build hello.go
+    ./hello
+
+(The first command produce a binary and second comand executs the binary)
+
+- The "go build" command produce a binary file native to the operating system and the architecture of the CPU (i386, x86_64 etc.)
+
+
 
 * Variables
 
@@ -203,6 +216,11 @@ Made clearer by naming the return values:
 - Variables declared inside an if short statement are also available inside any of the else blocks
 
 .play code/if2.go /START OMIT/,/END OMIT/
+
+* Command line arguments
+
+- os.Args provides access to raw command-line arguments
+- Go provides a "flag" package supporting basic command-line flag parsing
 
 * For Loop
 

@@ -32,7 +32,7 @@ http://muthukadan.net
 
 * Facts ...
 
-- Two Compilers: gc & gccgo
+- Two main compilers: gc & gccgo
 - 25+ keywords (less than C,C++,Python etc.)
 - Classification (Capitalized are exported)
 - Fast build
@@ -125,9 +125,20 @@ complex64, complex128
 
 * Go Types (Slices and Arrays)
 
+
     []int, [3]string, []struct{ Name string }
 
+- An array's length is part of its type, so arrays cannot be resized.
+- A slice points to an array of values and also includes a length.
+- []T is a slice with elements of type T
+- len(s) returns the length of slice s
+- Slices can contain any type, including other slices
+
 * Go Types (Maps)
+
+- A map maps keys to values
+- Maps must be created with make before use
+- the nil map is empty and cannot be assigned to
 
     map[string]int
 

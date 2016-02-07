@@ -6,7 +6,7 @@ func main() {
 	// START OMIT
 	i := 0
 	for { // HL
-		if i >= 10 {
+		if i >= 5 {
 			break
 		}
 		i++

@@ -33,7 +33,7 @@ http://muthukadan.net
 * Facts ...
 
 - Two main compilers: gc & gccgo
-- 25+ keywords (less than C,C++,Python etc.)
+- 25 keywords (less than C,C++,Python etc.)
 - Classification (Capitalized are exported)
 - Fast build
 - Unused imports and variables raise compile error

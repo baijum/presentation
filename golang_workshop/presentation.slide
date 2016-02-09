@@ -38,7 +38,7 @@ http://muthukadan.net
 - Fast build
 - Unused imports and variables raise compile error
 - Operating Syatems: Windows, GNU/Linux, Mac OS X, *BSD
-- Architectures: amd64, 386, arm
+- CPU Architectures: amd64, 386, arm
 - Cross compilation
 - Standard library
 - No exceptions

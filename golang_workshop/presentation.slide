@@ -336,13 +336,6 @@ Constraint: Methods can be defined only on types declared in the same package.
     // This won't compile
     func (s string) Length() int { return len(s) }
 
-* Pointers
-
-Use `&` to obtain the address of a variable.
-
-    a := "hello"
-    p := &a
-
 * Errors
 
 - Go programs express error state with _error_ values
@@ -365,6 +358,13 @@ Use `&` to obtain the address of a variable.
     fmt.Println("Converted integer:", i)
 
 - A nil error denotes success; a non-nil error denotes failure.
+
+* Pointers
+
+Use `&` to obtain the address of a variable.
+
+    a := "hello"
+    p := &a
 
 * Pointers ...
 

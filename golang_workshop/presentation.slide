@@ -451,6 +451,10 @@ Named collections of method signatures
 
 - Sends and receives block until the other side is ready
 
+* Hello HTTP
+
+.play code/hellohttp.go
+
 * WaitGroup
 
 - _sync.WaitGroup_ provides a goroutine synchronization mechanism in Golang

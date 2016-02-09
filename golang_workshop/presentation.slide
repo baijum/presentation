@@ -37,7 +37,8 @@ http://muthukadan.net
 - Classification (Capitalized are exported)
 - Fast build
 - Unused imports and variables raise compile error
-- Platforms: Windows, GNU/Linux, Mac OS X, Plan 9, *BSD
+- Operating Syatems: Windows, GNU/Linux, Mac OS X, *BSD
+- Architectures: amd64, 386, arm
 - Cross compilation
 - Standard library
 - No exceptions

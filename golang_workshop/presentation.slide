@@ -451,6 +451,15 @@ Named collections of method signatures
 
 - Sends and receives block until the other side is ready
 
+* WaitGroup
+
+- _sync.WaitGroup_ provides a goroutine synchronization mechanism in Golang
+- A WaitGroup waits for a collection of goroutines to finish
+- _sync.WaitGroup_ provides 3 methods: Add, Done and Wait.
+- _Add_ method is used to identify how many goroutines need to be waited
+- When a goroutine exits, it must call _Done_
+- The main goroutine blocks on _Wait_
+
 * Who uses Go?
 
 - Google

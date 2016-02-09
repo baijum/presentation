@@ -23,12 +23,12 @@ http://muthukadan.net
 - Created at Google by Robert Griesemer, Rob Pike and Ken Thompson
 - Development started in 2007 and publicly released in November 2009
 - C like syntax (no semicolons)
-- Object Oriented (Composition over inheritance)
+- Object Oriented (Composition over inheritance - no classes!)
 - Compiled (Statically linked)
 - Garbage collected
 - Statically typed
+- Strongly typed
 - built-in concurrency
-- no classes
 
 * Facts ...
 

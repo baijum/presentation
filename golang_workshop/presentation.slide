@@ -90,6 +90,7 @@ http://muthukadan.net
 - Type is explicitly specified but initialized with default zero values
 
     var age int
+    var tall boolean
     var name, place string
 
 - The zero value is 0 for numeric types, false for boolean type and empty string for strings.
@@ -97,6 +98,7 @@ http://muthukadan.net
 - Type is explicitly specified and initialized with given values
 
     var age int = 10
+    var tall = true
     var name, place string = "Jack", "USA"
 
 

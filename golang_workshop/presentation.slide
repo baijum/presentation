@@ -425,17 +425,6 @@ Named collections of method signatures
         Perimeter() float64
     }
 
-* Go Tools
-
-- build - compile packages and dependencies
-- fmt - run gofmt on package sources
-- get - download and install packages and dependencies
-- install - compile and install packages and dependencies
-- run - compile and run Go program
-- test - test packages
-- version - print Go version
-- vet - run go tool vet on packages
-
 * Concurrency
 
 - Goroutines are lightweight threads managed by the Go runtime
@@ -472,6 +461,17 @@ Named collections of method signatures
 - _Add_ method is used to identify how many goroutines need to be waited
 - When a goroutine exits, it must call _Done_
 - The main goroutine blocks on _Wait_
+
+* Go Tools
+
+- build - compile packages and dependencies
+- fmt - run gofmt on package sources
+- get - download and install packages and dependencies
+- install - compile and install packages and dependencies
+- run - compile and run Go program
+- test - test packages
+- version - print Go version
+- vet - run go tool vet on packages
 
 * Who uses Go?
 

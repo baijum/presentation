@@ -6,17 +6,6 @@ import (
 	"strconv"
 )
 
-type Number int
-
-func (num Number) Even() bool {
-	if num%2 == 0 {
-		return true
-	} else {
-		return false
-	}
-
-}
-
 func main() {
 	i := os.Args[1]
 	n, err := strconv.Atoi(i)
@@ -24,10 +13,10 @@ func main() {
 		fmt.Println("Not a number:", i)
 		os.Exit(1)
 	}
-	num := Number(n)
-	if num.Even() == true {
-		fmt.Println("even number:", num)
+
+	if n%2 == 0 {
+		fmt.Println("even number:", n)
 	} else {
-		fmt.Println("odd number:", num)
+		fmt.Println("odd number:", n)
 	}
 }

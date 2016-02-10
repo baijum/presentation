@@ -46,18 +46,18 @@ Update the previous program to use interfaces.
 
 \section*{Exercise 6}
 
+Rewrite the program in Exercise 2 using goroutine and channel.  The
+task is to print sum of all numbers below 50 completely divisible by 3
+or 5 (i.e., remainder 0)
+
+\section*{Exercise 7}
+
 Write a program to download a list of web pages concurrently using
 Goroutines.
 
 \noindent
 Hint: Use this tool for serving junk content for testing:
 https://github.com/baijum/lipsum
-
-\section*{Exercise 7}
-
-Rewrite the program in Exercise 2 using goroutine and channel.  The
-task is to print sum of all numbers below 50 completely divisible by 3
-or 5 (i.e., remainder 0)
 
 \newpage
 
@@ -286,7 +286,45 @@ func main() {
 
 \end{enumerate}
 
+
 \section*{Answer 6}
+\begin{enumerate}
+\item Content of the file {\it newsum.go}:
+\begin{verbatim}
+package main
+
+import "fmt"
+
+func Sum(s chan int) {
+        sum := 0
+        for i := 1; i < 50; i++ {
+                if i%3 == 0 {
+                        sum = sum + i
+                } else {
+                        if i%5 == 0 {
+                                sum = sum + i
+                        }
+                }
+        }
+        s <- sum
+}
+
+func main() {
+        t := make(chan int)
+        go Sum(t)
+        fmt.Println("Sum:", <-t)
+}
+\end{verbatim}
+
+\item Run program and verify output like this:
+\begin{verbatim}
+$ go run sum.go
+543
+\end{verbatim}
+
+\end{enumerate}
+
+\section*{Answer 7}
 \begin{enumerate}
 \item Content of the file {\it download.go}:
 \begin{verbatim}
@@ -326,43 +364,6 @@ func main() {
         wg.Wait()
 }
 \end{verbatim}
-\end{enumerate}
-
-\section*{Answer 7}
-\begin{enumerate}
-\item Content of the file {\it newsum.go}:
-\begin{verbatim}
-package main
-
-import "fmt"
-
-func Sum(s chan int) {
-        sum := 0
-        for i := 1; i < 50; i++ {
-                if i%3 == 0 {
-                        sum = sum + i
-                } else {
-                        if i%5 == 0 {
-                                sum = sum + i
-                        }
-                }
-        }
-        s <- sum
-}
-
-func main() {
-        t := make(chan int)
-        go Sum(t)
-        fmt.Println("Sum:", <-t)
-}
-\end{verbatim}
-
-\item Run program and verify output like this:
-\begin{verbatim}
-$ go run sum.go
-543
-\end{verbatim}
-
 \end{enumerate}
 
 \end{document}

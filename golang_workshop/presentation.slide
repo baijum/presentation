@@ -449,6 +449,14 @@ Named collections of method signatures
 
 - Sends and receives block until the other side is ready
 
+* Concurrency ...
+
+.play code/concurrency2.go /START OMIT/,/END OMIT/
+
+* Concurrency ...
+
+.play code/concurrency3.go /START OMIT/,/END OMIT/
+
 * Hello HTTP
 
 .play code/hellohttp.go

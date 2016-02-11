@@ -1,0 +1,56 @@
+Golang Workshop (Extras!)
+27 February 2016
+
+Baiju Muthukadan
+Architect, ZeOmega
+http://muthukadan.net
+@baijum
+
+* Iota
+
+* Closures
+
+* Variadic functions
+
+* Defer
+
+* Logging
+
+* Files
+
+* Handling panics
+
+* JSON
+
+* Godoc
+
+- Document exported variables, constants, functions etc.
+- Documents are regular comments just above the declarations
+- No blank between comment and declarations
+
+    // Package geometry provides methods to calculate area, perimeter etc.
+    package geometry
+
+    // Geometry interface type define methods required for any shape/geometry
+    type Geometry interface {
+        Area() float64
+        Perimeter() float64
+    }
+
+    // Pi represents an aproximate value of Pi
+    const Pi = 3.14
+
+* Godoc ...
+
+- To see documentation for a package:
+
+    godoc fmt
+
+- To see documentation for a particular fuction in a package:
+
+    godoc fmt Sscanf
+
+- Online documentaion: [[https://godoc.org][https://godoc.org]]
+
+* Testing
+

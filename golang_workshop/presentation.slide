@@ -430,7 +430,7 @@ Named collections of method signatures
 - Goroutines are lightweight threads managed by the Go runtime
 - Calling a function with _go_ keyword starts the goroutine
 
-    go Sum(x, y)
+.play code/concurrency1.go /START OMIT/,/END OMIT/
 
 - Goroutines can communicate to each other via channels (typed conduit)
 

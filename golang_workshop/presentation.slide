@@ -466,10 +466,6 @@ Named collections of method signatures
 
 .play code/concurrency3.go /START OMIT/,/END OMIT/
 
-* Hello HTTP
-
-.play code/hellohttp.go
-
 * WaitGroup
 
 - _sync.WaitGroup_ provides a goroutine synchronization mechanism in Golang
@@ -478,6 +474,10 @@ Named collections of method signatures
 - _Add_ method is used to identify how many goroutines need to be waited
 - When a goroutine exits, it must call _Done_
 - The main goroutine blocks on _Wait_
+
+* WaitGroup ...
+
+.play code/concurrency4.go /START OMIT/,/END OMIT/
 
 * Go Tools
 

@@ -18,7 +18,7 @@ http://muthukadan.net
 
 * Software Developer
 
-Software Developers should be confortable with:
+Software Developers should be comfortable with:
 
 - Programming Language
 - Text Editor
@@ -46,7 +46,7 @@ Software Developers should be confortable with:
 - Classification (Capitalized are exported)
 - Fast build
 - Unused imports and variables raise compile error
-- Operating Syatems: Windows, GNU/Linux, Mac OS X, *BSD
+- Operating Systems: Windows, GNU/Linux, Mac OS X, *BSD
 - CPU Architectures: amd64, 386, arm
 - Cross compilation
 - Standard library
@@ -88,7 +88,7 @@ Software Developers should be confortable with:
     go build hello.go
     ./hello
 
-(The first command produce a binary and second comand executs the binary)
+(The first command produce a binary and second command executes the binary)
 
 - The "go build" command produce a binary file native to the operating system and the architecture of the CPU (i386, x86_64 etc.)
 

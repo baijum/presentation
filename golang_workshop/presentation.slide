@@ -92,7 +92,7 @@ Software Developers should be comfortable with:
 
 - The "go build" command produce a binary file native to the operating system and the architecture of the CPU (i386, x86_64 etc.)
 
-
+(*Exercise*: 1)
 
 * Variables
 
@@ -148,6 +148,8 @@ complex64, complex128
 
 .play code/struct1.go /START OMIT/,/END OMIT/
 
+- [[https://golang.org/pkg/fmt/]]
+
 * Go Types (Slices and Arrays)
 
 
@@ -161,9 +163,9 @@ complex64, complex128
 
 * Go Types (Maps)
 
-- A map maps keys to values
-- Maps must be created with make before use
-- the nil map is empty and cannot be assigned to
+- A *map* maps keys to values
+- Maps must be created with *make* before use
+- the *nil* map is empty and cannot be assigned to
 
     map[string]int
 
@@ -238,7 +240,7 @@ Made clearer by naming the return values:
 
 * Errors
 
-- Go programs express error state with _error_ values
+- Go programs express error state with *error* values
 - The error type is a built-in interface
 
     type error interface {
@@ -247,7 +249,7 @@ Made clearer by naming the return values:
 
 * Errors ...
 
-- Functions often return an error value, and calling code should handle errors by testing whether the error equals nil.
+- Functions often return an error value, and calling code should handle errors by testing whether the error equals *nil*.
 
     i, err := strconv.Atoi("42")
     if err != nil {
@@ -260,13 +262,15 @@ Made clearer by naming the return values:
 
 * Command line arguments
 
-- os.Args provides access to raw command-line arguments
-- Go provides a "flag" package supporting basic command-line flag parsing
+- *os.Args* provides access to raw command-line arguments
+- Go provides a *flag* package supporting basic command-line flag parsing
+
+(*Exercise*: 2)
 
 * Packages
 
 - Package name must be declared in source files
-- To create executable use name of package as _main_
+- To create executable use name of package as *main*
 - Programs start running in package main
 
     package main
@@ -275,7 +279,7 @@ Made clearer by naming the return values:
 
 - Import give access to exported stuff from other packages
 - Package name is the same as the last element of the import path
-- Initialization logic for package goes into a function named _init_
+- Initialization logic for package goes into a function named *init*
 - Use alias to avoid package name ambiguity with package imports
 
     import (
@@ -286,7 +290,7 @@ Made clearer by naming the return values:
 
 * Packages ...
 
-- Use blank identifier (`_`) as import alias to invoke _init_ function without using the package
+- Use blank identifier (*_* - underscore) as import alias to invoke *init* function without using the package
 
 
     import (
@@ -315,6 +319,8 @@ Made clearer by naming the return values:
 - An infinite loop can be created by removing the loop condition
 
 .play code/for3.go /START OMIT/,/END OMIT/
+
+(*Exercise*: 3)
 
 * Switch statement
 
@@ -377,6 +383,8 @@ Constraint: Methods can be defined only on types declared in the same package.
     // This won't compile
     func (s string) Length() int { return len(s) }
 
+(*Exercise*: 4)
+
 * Pointers
 
 Use `&` to obtain the address of a variable.
@@ -434,6 +442,8 @@ Named collections of method signatures
         Perimeter() float64
     }
 
+(*Exercise*: 5)
+
 * Concurrency
 
 - Goroutines are lightweight threads managed by the Go runtime
@@ -462,6 +472,8 @@ Named collections of method signatures
 
 .play code/concurrency2.go /START OMIT/,/END OMIT/
 
+(*Exercise*: 6)
+
 * Concurrency ...
 
 .play code/concurrency3.go /START OMIT/,/END OMIT/
@@ -478,6 +490,8 @@ Named collections of method signatures
 * WaitGroup ...
 
 .play code/concurrency4.go /START OMIT/,/END OMIT/
+
+(*Exercise*: 7)
 
 * Go Tools
 

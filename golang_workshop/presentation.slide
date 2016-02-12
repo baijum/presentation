@@ -507,14 +507,14 @@ Named collections of method signatures
 
 - Use the word "golang" to search about Go in Google, Bing etc.
 - Twitter hashtag #golang #GopherCon #GopherConIndia
-- Official website: http://golang.org
-- Official blog: http://blog.golang.org
-- https://gobyexample.com
-- Forum/Mailing List: https://groups.google.com/forum/#!forum/golang-nuts
-- Subreddit: http://www.reddit.com/r/golang
+- Official website: [[http://golang.org][http://golang.org]]
+- Official blog: [[http://blog.golang.org][http://blog.golang.org]]
+- [[https://gobyexample.com][https://gobyexample.com]]
+- Forum/Mailing List: [[https://groups.google.com/forum/#!forum/golang-nuts][https://groups.google.com/forum/#!forum/golang-nuts]]
+- Subreddit: [[http://www.reddit.com/r/golang][http://www.reddit.com/r/golang]]
 - #go-nuts in the irc.freenode.org network
 - Slack: [[https://gophersinvite.herokuapp.com/][https://gophersinvite.herokuapp.com/]]
-- More: http://dave.cheney.net/resources-for-new-go-programmers
+- More: [[http://dave.cheney.net/resources-for-new-go-programmers][http://dave.cheney.net/resources-for-new-go-programmers]]
 
 * My Book: A Comprehensive Guide to Go Programming
 

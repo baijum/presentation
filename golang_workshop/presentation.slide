@@ -322,6 +322,17 @@ Made clearer by naming the return values:
 
 (*Exercise*: 3)
 
+* Go Tools
+
+- build - compile packages and dependencies
+- fmt - run gofmt on package sources
+- get - download and install packages and dependencies
+- install - compile and install packages and dependencies
+- run - compile and run Go program
+- test - test packages
+- version - print Go version
+- vet - run go tool vet on packages
+
 * Switch statement
 
 - The cases are evaluated top to bottom until a match is found
@@ -492,17 +503,6 @@ Named collections of method signatures
 .play code/concurrency4.go /START OMIT/,/END OMIT/
 
 (*Exercise*: 7)
-
-* Go Tools
-
-- build - compile packages and dependencies
-- fmt - run gofmt on package sources
-- get - download and install packages and dependencies
-- install - compile and install packages and dependencies
-- run - compile and run Go program
-- test - test packages
-- version - print Go version
-- vet - run go tool vet on packages
 
 * Who uses Go?
 

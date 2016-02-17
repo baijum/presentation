@@ -11,14 +11,8 @@ type Sounder interface {
 
 type Dog struct{}
 
-type Cat struct{}
-
 func (d Dog) Sound() string {
 	return "Woof"
-}
-
-func (c Cat) Sound() string {
-	return "Meow"
 }
 
 func AnimalSound(s Sounder) string {
@@ -26,9 +20,8 @@ func AnimalSound(s Sounder) string {
 }
 
 func main() {
-	d, c := Dog{}, Cat{}
+	d := Dog{}
 	fmt.Println(AnimalSound(d))
-	fmt.Println(AnimalSound(c))
 }
 
 // END OMIT

@@ -432,6 +432,14 @@ No pointer arithmetic, no pointers to unsafe memory.
         *x *= 2
     }
 
+* Pointers ...
+
+Why pass by reference instead of pass by value?
+
+- Modify the receiver ("read/write" vs "read")
+- Very large struct and a deep copy is expensive
+- Consistency: Let all methods have pointer receivers
+
 * Defer statement
 
 - Ensure a cleanup function is called later
@@ -452,6 +460,15 @@ Named collections of method signatures
         Area() float64
         Perimeter() float64
     }
+
+* Interfaces ...
+
+- An interface type is defined by a set of methods
+- A value of interface type can hold any value that implements those methods
+
+* Interfaces ...
+
+.play code/interface1.go /START OMIT/,/END OMIT/
 
 (*Exercise*: 5)
 

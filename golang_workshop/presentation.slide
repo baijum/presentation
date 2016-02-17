@@ -454,7 +454,9 @@ Why pass by reference instead of pass by value?
 
 * Interfaces
 
-Named collections of method signatures
+- Interfaces provide a way to specify the behavior of an object
+- A type can implement multiple interfaces
+- Named collections of method signatures
 
     type Geometry interface {
         Area() float64
@@ -465,6 +467,8 @@ Named collections of method signatures
 
 - An interface type is defined by a set of methods
 - A value of interface type can hold any value that implements those methods
+- Interfaces are satisfied implicitly
+- A type implements an interface by implementing the methods.
 
 * Interfaces ...
 

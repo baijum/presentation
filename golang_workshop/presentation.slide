@@ -157,8 +157,8 @@ complex64, complex128
 
 - An array's length is part of its type, so arrays cannot be resized.
 - A slice points to an array of values and also includes a length.
-- []T is a slice with elements of type T
-- len(s) returns the length of slice s
+- *[]T* is a slice with elements of type T
+- *len(s)* returns the length of slice s
 - Slices can contain any type, including other slices
 
 * Go Types (Maps)
@@ -184,11 +184,11 @@ complex64, complex128
 
 type [name] [specification]
 
-Example 1: Celsius is a float64 type
+Example 1: Celsius is a _float64_ type
 
     type Celsius float64
 
-Example 2: Person is a struct type
+Example 2: Person is a _struct_ type
 
     type Person struct {
         Name string
@@ -200,7 +200,7 @@ Example 2: Person is a struct type
 func [name] ([params]) [return value]
 func [name] ([params]) ([return values])
 
-A function to return sum of two int values:
+A function to return sum of two _int_ values:
 
     func sum(a int, b int) int {
         return a + b

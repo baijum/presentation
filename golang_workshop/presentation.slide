@@ -143,7 +143,7 @@ complex64, complex128
 
 * Go Types (Structs)
 
-- A struct is a collection of fields.
+- A *struct* is a collection of fields.
 - Struct fields are accessed using a dot.
 
 .play code/struct1.go /START OMIT/,/END OMIT/
@@ -191,8 +191,8 @@ Example 1: Celsius is a float64 type
 Example 2: Person is a struct type
 
     type Person struct {
-        name string
-        age  int
+        Name string
+        Age  int
     }
 
 * Function declarations
@@ -376,7 +376,7 @@ func ([receiver]) [name] ([params]) ([return values])
 A method on a struct:
 
     func (p Person) Major() bool {
-        return p.age >= 18
+        return p.Age >= 18
     }
 
 * Method declaration ...

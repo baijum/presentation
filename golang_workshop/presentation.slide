@@ -560,6 +560,7 @@ Why pass by reference instead of pass by value?
 - Twitter hashtag #golang #GopherCon #GopherConIndia
 - Official website: [[http://golang.org][http://golang.org]]
 - Official blog: [[http://blog.golang.org][http://blog.golang.org]]
+- Experiment and share Go source code: [[http://play.golang.org][http://play.golang.org]]
 - [[https://gobyexample.com][https://gobyexample.com]]
 - Forum/Mailing List: [[https://groups.google.com/forum/#!forum/golang-nuts][https://groups.google.com/forum/#!forum/golang-nuts]]
 - Subreddit: [[http://www.reddit.com/r/golang][http://www.reddit.com/r/golang]]

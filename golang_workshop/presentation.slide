@@ -263,7 +263,11 @@ Made clearer by naming the return values:
 
 * Command line arguments
 
-- *os.Args* provides access to raw command-line arguments
+- *os.Args* (slice) provides access to raw command-line arguments
+- The arguments can be accessed using slice index syntax:
+
+    os.Args[1]
+
 - Go provides a *flag* package supporting basic command-line flag parsing
 
 (*Exercise*: 2)

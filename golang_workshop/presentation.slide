@@ -46,8 +46,8 @@ Software Developers should be comfortable with:
 - Classification (Capitalized are exported)
 - Fast build
 - Unused imports and variables raise compile error
-- Operating Systems: Windows, GNU/Linux, Mac OS X, *BSD
-- CPU Architectures: amd64, 386, arm
+- Operating Systems: Windows, GNU/Linux, Mac OS X, *BSD etc.
+- CPU Architectures: amd64, 386, arm etc.
 - Cross compilation
 - Standard library
 - No exceptions

@@ -8,9 +8,69 @@ http://muthukadan.net
 
 * Iota
 
+- used in *const* to simplify definitions of incrementing numbers
+- values of iota is reset to 0 whenever the reserved word const appears
+- increments by one after each line
+
+- Ref: [[https://splice.com/blog/iota-elegant-constants-golang/]]
+
+* Iota ...
+
+    type ByteSize float64
+
+    const (
+        _           = iota // ignore first value by assigning to blank identifier
+        KB ByteSize = 1 << (10 * iota)
+        MB
+        GB
+        TB
+        PB
+        EB
+        ZB
+        YB
+    )
+
+- Ref: [[https://github.com/golang/go/wiki/Iota]]
+
+* Iota ...
+
+    // Token represents a lexical token.
+    type Token int
+
+    const (
+        // Illegal represents an illegal/invalid character
+        Illegal Token = iota
+
+        // Whitespace represents a white space (" ", \t, \r, \n) character
+        Whitespace
+
+        // EOF represents end of file
+        EOF
+
+        // MarkerID represents '\id' or '\id1' marker
+        MarkerID
+
+        // MarkerIde represents '\ide' marker
+        MarkerIde
+
 * Closures
 
+- https://gobyexample.com/closures
+- http://www.goinggo.net/2014/06/pitfalls-with-closures-in-go.html
+- http://blog.denevell.org/golang-closures-anonymous-functions.html
+
 * Variadic functions
+
+- can be called with any number of arguments
+- fmt.Println is a common variadic function
+- can be called with individual arguments
+- multiple args in a slice can be passed like this
+
+    func(slice... )
+
+* Variadic functions ...
+
+.play code/function1.go /START OMIT/,/END OMIT/
 
 * Logging
 

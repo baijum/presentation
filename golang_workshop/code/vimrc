@@ -1,0 +1,18 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'fatih/vim-go'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'nsf/gocode', { 'rtp': 'vim',
+  \ 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+
+call plug#end()
+
+nmap <F2> :NERDTreeToggle<CR>
+au FileType go nmap <F8> :TagbarToggle<CR>
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>i <Plug>(go-info)
+
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow

@@ -78,6 +78,8 @@ http://muthukadan.net
 
 * Handling panics
 
+- [[http://blog.golang.org/defer-panic-and-recover]]
+
 * JSON
 
 * Hello HTTP

@@ -59,10 +59,10 @@ Software Developers should be comfortable with:
 
 * Why Go ?
 
-- Simplicity (Small spec and small no. of keywords)
+- Simplicity (Small spec, 25 keywords)
 - Consistency
 - Readability
-- Safety (Type safety, no buffer overflows, no pointer arithmetic)
+- Safety (Type safety, Memory safety)
 - Built-in concurrency features
 - Speed
 

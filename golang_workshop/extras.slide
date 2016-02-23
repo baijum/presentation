@@ -86,6 +86,22 @@ http://muthukadan.net
 
 .play code/hellohttp.go
 
+* go vet
+
+- Checks for code correctness, beyond what is necessary to compile the code
+
+* Golint
+
+Installation:
+
+    go get -u github.com/golang/lint/golint
+
+Usage:
+
+- Invoke _golint_ with one or more filenames, a directory, or a package named by its import path.
+- Golint uses the same import path syntax as the _go_ command
+- supports relative import paths like ./...
+
 * Godoc
 
 - Document exported variables, constants, functions etc.

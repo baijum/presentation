@@ -16,6 +16,18 @@ http://muthukadan.net
 - In 2013, received the first Kenneth Gonsalves Award for my contributions to the Python community in India
 - In 2014, started using Go for hobby projects
 
+* Agenda
+
+- Format: talk, exercise, talk, exercise ... (short QA in between)
+- General facts
+- Running a hello world
+- Types
+- Control structures
+- Data structures
+- Functions
+- Interfaces
+- Concurrency
+
 * Software Developer
 
 Software Developers should be comfortable with:

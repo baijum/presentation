@@ -346,6 +346,16 @@ Made clearer by naming the return values:
 
 (*Exercise*: 3)
 
+* Range Loops
+
+- built-in function _range_ can iterate over array/slice of other types
+
+.play code/range1.go /START OMIT/,/END OMIT/
+
+* Range with Maps
+
+.play code/range2.go /START OMIT/,/END OMIT/
+
 * Nil slices
 
 - The zero value of a slice is _nil_

@@ -474,11 +474,7 @@ Why pass by reference instead of pass by value?
 - To recover from runtime panic
 - Executed in LIFO order
 
-    func main() {
-        defer fmt.Println("world")
-
-        fmt.Println("hello")
-    }
+.play code/defer1.go /START OMIT/,/END OMIT/
 
 * Interfaces
 

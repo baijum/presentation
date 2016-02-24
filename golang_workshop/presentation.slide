@@ -387,30 +387,13 @@ When ranging over a slice, two values are returned for each iteration.
 
 * Switch statement ...
 
-	switch os := runtime.GOOS; os {
-	case "darwin":
-		fmt.Println("OS X.")
-	case "linux":
-		fmt.Println("Linux.")
-	default:
-		// freebsd, openbsd,
-		// plan9, windows...
-		fmt.Printf("%s.", os)
-	}
+.play code/switch1.go /START OMIT/,/END OMIT/
 
 * Switch statement ...
 
 If the switch has no expression it switches on true (useful to write an if-else-if-else chain)
 
-	t := time.Now()
-	switch {
-	case t.Hour() < 12:
-		fmt.Println("Good morning!")
-	case t.Hour() < 17:
-		fmt.Println("Good afternoon.")
-	default:
-		fmt.Println("Good evening.")
-	}
+.play code/switch2.go /START OMIT/,/END OMIT/
 
 * Method declaration
 

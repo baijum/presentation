@@ -117,6 +117,8 @@ Software Developers should be comfortable with:
 
 .play code/variable1.go /START OMIT/,/END OMIT/
 
+- [[https://golang.org/pkg/fmt]]
+
 * Variables ...
 
 - Type is explicitly specified and initialized with given values
@@ -127,14 +129,11 @@ Software Developers should be comfortable with:
 
 - Type is inferred from the values that is given for initialization
 
-    var x = 42             // int
-    var s, b = "foo", true // string, bool
+.play code/variable3.go /START OMIT/,/END OMIT/
 
 - Short variable declaration inside functions (Similar to above - type is inferred from the values that is given for initialization)
 
-    x := 42             // int
-    s, b := "foo", true // string, bool
-
+.play code/variable4.go /START OMIT/,/END OMIT/
 
 * Constants
 
@@ -162,7 +161,6 @@ complex64, complex128
 
 .play code/struct1.go /START OMIT/,/END OMIT/
 
-- [[https://golang.org/pkg/fmt]]
 
 * Go Types (Slices and Arrays)
 

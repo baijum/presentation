@@ -348,9 +348,13 @@ Made clearer by naming the return values:
 
 * Range Loops
 
-- built-in function _range_ can iterate over array/slice of other types
+- The _range_ form of the _for_ loop iterates over a slice or map.
 
 .play code/range1.go /START OMIT/,/END OMIT/
+
+When ranging over a slice, two values are returned for each iteration.
+
+- The first is the index, and the second is a copy of the element at that index.
 
 * Range with Maps
 
@@ -362,14 +366,6 @@ Made clearer by naming the return values:
 - A _nil_ slice has a length and capacity of 0
 
 .play code/slice1.go /START OMIT/,/END OMIT/
-
-* Range
-
-The _range_ form of the _for_ loop iterates over a slice or map.
-
-When ranging over a slice, two values are returned for each iteration.
-
-- The first is the index, and the second is a copy of the element at that index.
 
 * Go Tools
 

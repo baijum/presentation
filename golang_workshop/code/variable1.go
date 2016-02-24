@@ -7,6 +7,6 @@ func main() {
 	var age int
 	var tall bool
 	var name, place string
-	fmt.Println(age, tall, name, place)
+	fmt.Printf("%#v, %#v, %#v, %#v\n", age, tall, name, place)
 	// END OMIT
 }

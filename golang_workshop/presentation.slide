@@ -420,6 +420,14 @@ Constraint: Methods can be defined only on types declared in the same package.
 
 * Pointers
 
+Why pass by reference instead of pass by value?
+
+- Modify the receiver ("read/write" vs "read")
+- Very large struct and a deep copy is expensive
+- Consistency: Let all methods have pointer receivers
+
+* Pointers ...
+
 Use `&` to obtain the address of a variable.
 
     a := "hello"
@@ -453,14 +461,6 @@ No pointer arithmetic, no pointers to unsafe memory.
     func double(x *int) {
         *x *= 2
     }
-
-* Pointers ...
-
-Why pass by reference instead of pass by value?
-
-- Modify the receiver ("read/write" vs "read")
-- Very large struct and a deep copy is expensive
-- Consistency: Let all methods have pointer receivers
 
 * Defer statement
 

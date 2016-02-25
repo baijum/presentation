@@ -114,11 +114,25 @@ Software Developers should be comfortable with:
 
 - Use "go get" command to get packages
 
-    go get github.com/baijum/lipsum
+    go get github.com/baijum/introduction
 
 - To update use "-u" flag
 
-    go get -u github.com/baijum/lipsum
+    go get -u github.com/baijum/introduction
+
+* Organizing Code
+
+- *$GOPATH* directory is a workspace (sources, packages, and binaries)
+- Three sub-directories under $GOPATH: bin, pkg and src
+- *bin* directory contains executable binaries (add to $PATH)
+- The *src* directory contains the source files.
+- The *pkg* directory contains package objects used by go tool to create the final executable
+
+    mygo
+    |-- bin
+    |-- pkg
+    `-- src
+
 
 * Primitive types
 
@@ -632,4 +646,3 @@ Don't panic.
 Subscribe for sample chapters!
 
 [[http://golang.muthukadan.net][http://golang.muthukadan.net]]
-

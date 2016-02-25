@@ -297,6 +297,7 @@ Made clearer by naming the return values:
 
 * Packages
 
+- Every Go program is made up of packages
 - Package name must be declared in source files
 - To create executable use name of package as *main*
 - Programs start running in package main
@@ -306,7 +307,9 @@ Made clearer by naming the return values:
 * Packages ...
 
 - Import give access to exported stuff from other packages
-- Package name is the same as the last element of the import path
+- Any "unexported" names are not accessible from outside the package
+- Foo is an exported name, as is FOO. The name foo is not exported
+- By convention, package name is the same as the last element of the import path
 - Initialization logic for package goes into a function named *init*
 - Use alias to avoid package name ambiguity with package imports
 

@@ -374,17 +374,6 @@ When ranging over a slice, two values are returned for each iteration.
 
 .play code/slice1.go /START OMIT/,/END OMIT/
 
-* Go Tools
-
-- build - compile packages and dependencies
-- fmt - run gofmt on package sources
-- get - download and install packages and dependencies
-- install - compile and install packages and dependencies
-- run - compile and run Go program
-- test - test packages
-- version - print Go version
-- vet - run go tool vet on packages
-
 * Switch statement
 
 - The cases are evaluated top to bottom until a match is found
@@ -555,6 +544,17 @@ No pointer arithmetic, no pointers to unsafe memory.
 .play code/concurrency4.go /START OMIT/,/END OMIT/
 
 (*Exercise*: 7)
+
+* Go Tools
+
+- build - compile packages and dependencies
+- fmt - run gofmt on package sources
+- get - download and install packages and dependencies
+- install - compile and install packages and dependencies
+- run - compile and run Go program
+- test - test packages
+- version - print Go version
+- vet - run go tool vet on packages
 
 * Who uses Go?
 

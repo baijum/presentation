@@ -76,9 +76,32 @@ http://muthukadan.net
 
 * Files
 
-* Handling panics
+* Defer, Panic, and Recover
 
-- [[http://blog.golang.org/defer-panic-and-recover]]
+- Yet another mechanism for control flow
+- A _panic_ causes the program stack to begin unwinding and _recover_ can stop it
+- Deferred functions are still executed as the stack unwinds
+- If _recover_ is called inside such a deferred function, the stack stops unwinding
+- The _recover_ returns the value (as an _interface{}_) that was passed to panic
+- A _panic_ cannot be recovered by a different goroutine
+- [[https://blog.golang.org/defer-panic-and-recover]]
+- [[https://github.com/golang/go/wiki/PanicAndRecover]]
+
+* Defer, Panic, and Recover ...
+
+.play code/panic1.go /START MAIN OMIT/,/END MAIN OMIT/
+
+* Defer, Panic, and Recover ...
+
+.play code/panic1.go /START HELPERS OMIT/,/END HELPERS OMIT/
+
+* Defer, Panic, and Recover ...
+
+.play code/panic1.go /START PARSE OMIT/,/END PARSE OMIT/
+
+* Defer, Panic, and Recover ...
+
+.play code/panic1.go /START FIELDS2NUMBERS OMIT/,/END FIELDS2NUMBERS OMIT/
 
 * JSON
 

@@ -110,6 +110,16 @@ Software Developers should be comfortable with:
 
 (*Exercise*: 1)
 
+* Getting third party packages
+
+- Use "go get" command to get packages
+
+    go get github.com/baijum/lipsum
+
+- To update use "-u" flag
+
+    go get -u github.com/baijum/lipsum
+
 * Variables
 
 - Type is explicitly specified but initialized with default zero values

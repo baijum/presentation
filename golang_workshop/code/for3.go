@@ -10,7 +10,7 @@ func main() {
 			break
 		}
 		i++
-		fmt.Println("Hello")
+		fmt.Println("Baiju")
 	}
 	// END OMIT
 }

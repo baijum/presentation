@@ -7,7 +7,7 @@ func main() {
 	var p = struct {
 		Name string
 		Age  int
-	}{"Jack", 6}
+	}{"Baiju", 36}
 	fmt.Printf("%v\n", p)
 	fmt.Printf("%+v\n", p)
 	fmt.Printf("%#v\n", p)

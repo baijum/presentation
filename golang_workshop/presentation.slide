@@ -247,7 +247,15 @@ complex64, complex128
 - This is known as "dereferencing" or "indirecting".
 - Unlike C, Go has no pointer arithmetic.
 
-* Go Types (Interface)
+* Pointers ...
+
+.play code/pointer1.go /START OMIT/,/END OMIT/
+
+* Interface
+
+- Interfaces provide a way to specify the behavior of an object
+- A type can implement multiple interfaces
+- Named collections of method signatures
 
     type Geometry interface {
         Area() float64
@@ -519,25 +527,14 @@ No pointer arithmetic, no pointers to unsafe memory.
 
 .play code/defer1.go /START OMIT/,/END OMIT/
 
-* Interfaces
-
-- Interfaces provide a way to specify the behavior of an object
-- A type can implement multiple interfaces
-- Named collections of method signatures
-
-    type Geometry interface {
-        Area() float64
-        Perimeter() float64
-    }
-
-* Interfaces ...
+* Interface ...
 
 - An interface type is defined by a set of methods
 - A value of interface type can hold any value that implements those methods
 - Interfaces are satisfied implicitly
 - A type implements an interface by implementing the methods.
 
-* Interfaces ...
+* Interface ...
 
 .play code/interface1.go /START OMIT/,/END OMIT/
 

@@ -133,6 +133,18 @@ Software Developers should be comfortable with:
     |-- pkg
     `-- src
 
+* Organizing Code ...
+
+If you are using GitHub for hosting code, you can create a directory structure under workspace like this:
+
+    src/github.com/<username>/<projectname>
+
+Replace the <username> with your GitHub username or organization name and <projectname> with the name of the project. For example:
+
+    src/github.com/baijum/introduction
+
+(Note: When you fork a project use "go get" or clone repository as per the upstream location)
+
 
 * Primitive types
 

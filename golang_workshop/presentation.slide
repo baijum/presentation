@@ -118,6 +118,8 @@ Software Developers should be comfortable with:
 
 (*Exercise*: 1)
 
+.image image/gopher5.png
+
 * Organizing Code
 
 - *$GOPATH* directory is a workspace (sources, packages, and binaries)

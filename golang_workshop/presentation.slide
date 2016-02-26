@@ -59,6 +59,8 @@ Software Developers should be comfortable with:
 - 25 keywords (less than C,C++,Python etc.)
 - Classification (Capitalized are exported)
 
+.image image/gopher2.png
+
 * Facts ...
 
 - Fast build
@@ -70,20 +72,21 @@ Software Developers should be comfortable with:
 - No exceptions
 - Pointers (No pointer arithmetic!)
 
+.image image/gopher3.png
+
 * Hello, ലോകമേ!
 
 .play code/hello.go
 
 * Why Go ?
 
-- Simplicity (Small spec, 25 keywords)
+- [[http://commandcenter.blogspot.in/2012/06/less-is-exponentially-more.html][Simplicity]] (Small spec, 25 keywords)
 - Consistency
 - Readability
 - Safety (Type safety, Memory safety)
-- Built-in concurrency features
 - Speed
 
-- [[http://commandcenter.blogspot.in/2012/06/less-is-exponentially-more.html][Less is exponentially more]] (Article by Robe Pike)
+.image image/gopher4.png
 
 * Installing Go Compiler
 

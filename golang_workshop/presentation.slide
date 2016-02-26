@@ -370,6 +370,7 @@ Made clearer by naming the return values:
 - Package name must be declared in source files
 - To create executable use name of package as *main*
 - Programs start running in package main
+- All the package files package resides in a directory
 
     package main
 

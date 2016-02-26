@@ -157,6 +157,9 @@ Usage:
 
 * Testing
 
+- Tests are distinguished by file name
+- Test file names end with *_test.go*
+
 * Vim configuration
 
 .code code/vimrc

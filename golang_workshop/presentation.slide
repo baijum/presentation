@@ -585,6 +585,10 @@ No pointer arithmetic, no pointers to unsafe memory.
 
 * WaitGroup ...
 
+.play code/concurrency5.go /START OMIT/,/END OMIT/
+
+* WaitGroup ...
+
 .play code/concurrency4.go /START OMIT/,/END OMIT/
 
 (*Exercise*: 7)

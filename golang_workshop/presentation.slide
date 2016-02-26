@@ -45,17 +45,22 @@ Software Developers should be comfortable with:
 - Development started in 2007 and publicly released in November 2009
 - C like syntax (no semicolons)
 - Object Oriented (Composition over inheritance - no classes!)
+
+.image image/gopher1.png
+
+* Facts ...
+
 - Compiled (Statically linked)
 - Garbage collected
 - Statically typed
 - Strongly typed
 - built-in concurrency
-
-* Facts ...
-
 - Two major compilers: gc & gccgo
 - 25 keywords (less than C,C++,Python etc.)
 - Classification (Capitalized are exported)
+
+* Facts ...
+
 - Fast build
 - Unused imports and variables raise compile error
 - Operating Systems: Windows, GNU/Linux, Mac OS X, *BSD etc.

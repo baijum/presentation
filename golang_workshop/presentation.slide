@@ -118,16 +118,6 @@ Software Developers should be comfortable with:
 
 (*Exercise*: 1)
 
-* Getting third party packages
-
-- Use "go get" command to get packages
-
-    go get github.com/baijum/introduction
-
-- To update use "-u" flag
-
-    go get -u github.com/baijum/introduction
-
 * Organizing Code
 
 - *$GOPATH* directory is a workspace (sources, packages, and binaries)
@@ -135,6 +125,7 @@ Software Developers should be comfortable with:
 - *bin* directory contains executable binaries (add to $PATH)
 - The *src* directory contains the source files.
 - The *pkg* directory contains package objects used by go tool to create the final executable
+- The Go tool understands the layout of a workspace
 
     mygo
     |-- bin
@@ -153,6 +144,19 @@ Replace the <username> with your GitHub username or organization name and <proje
 
 (Note: When you fork a project use "go get" or clone repository as per the upstream location)
 
+* Getting third party packages
+
+- The "go get" command download source repositories and places them in the workspace
+
+    go get github.com/baijum/introduction
+
+- Repo URL and package path will be same normally (This helps Go tool to fetch)
+
+- To update use "-u" flag
+
+    go get -u github.com/baijum/introduction
+
+- [[https://golang.org/cmd/go/]]
 
 * Primitive types
 

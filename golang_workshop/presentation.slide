@@ -610,6 +610,11 @@ No pointer arithmetic, no pointers to unsafe memory.
 
 * Go Tools
 
+- Run "go help" to see list of available commands
+- Use "go help [command]" for more information about a command
+
+Few commonly used commands:
+
 - build - compile packages and dependencies
 - fmt - run gofmt on package sources
 - get - download and install packages and dependencies

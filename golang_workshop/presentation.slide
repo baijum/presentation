@@ -160,6 +160,20 @@ Replace the <username> with your GitHub username or organization name and <proje
 
 - [[https://golang.org/cmd/go/]]
 
+* Comments
+
+- Two kinds of comments
+- C Style
+
+    /* This is a multi line comment
+       ... and this is a the second line
+    */
+
+- C++ style
+
+    // Single line number
+    // Starts with two slashes
+
 * Primitive types
 
 int, uint, int8, uint8, ...
@@ -306,7 +320,7 @@ A function to return sum of two _int_ values:
 
 A function with multiple returned values:
 
-    func div(a, b int) (int, int)
+    func div(a, b int) (int, int) {
         return a / b, a % b
     }
 
@@ -314,8 +328,9 @@ A function with multiple returned values:
 
 Made clearer by naming the return values:
 
-    func div(den, div int) (q, rem int)
-        return a / b, a % b
+    func div(a, b int) (q, rem int) {
+        q, rem = a / b, a % b
+        return
     }
 
 * If Conditions

@@ -97,10 +97,10 @@ Software Developers should be comfortable with:
 
 
     export GOROOT=$HOME/go
-    export PATH=$PATH:$GOROOT/bin
+    export PATH=$GOROOT/bin:$PATH
 
     export GOPATH=$HOME/mygo
-    export PATH=$PATH:$GOPATH/bin
+    export PATH=$GOPATH/bin:$PATH
 
 - [[https://golang.org/doc/install][https://golang.org/doc/install]]
 

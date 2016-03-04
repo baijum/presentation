@@ -118,6 +118,8 @@ Skills required for a software developers:
 
 - The "go build" command produce a binary file native to the operating system and the architecture of the CPU (i386, x86_64 etc.)
 
+- Specify targeted platform using enviroment variables: GOOS & GOARCH
+
 (*Exercise*: 1)
 
 .image image/gopher5.png
@@ -161,6 +163,14 @@ Replace the <username> with your GitHub username or organization name and <proje
     go get -u github.com/baijum/introduction
 
 - [[https://golang.org/cmd/go/]]
+
+* Formatting Go code
+
+- Use "go fmt" or "gofmt" to format code - no more debate about formatting!
+
+    go fmt file.go
+
+- *Proverb*: Gofmt's style is no one's favorite, yet gofmt is everyone's favorite.
 
 * Comments
 

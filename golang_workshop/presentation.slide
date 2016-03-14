@@ -348,7 +348,6 @@ Made clearer by naming the return values:
 * If Conditions
 
 - Syntax inspired by C
-- No parenthesis (not even optional)
 - Curly brace is mandatory
 
 .play code/if1.go /START OMIT/,/END OMIT/

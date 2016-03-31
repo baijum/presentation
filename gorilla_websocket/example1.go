@@ -7,13 +7,13 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-// START UPGRADER
+// START UPGRADER OMIT
 var upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool { return true },
 }
 
-// END UPGRADER
-// START READER
+// END UPGRADER OMIT
+// START READER OMIT
 func reader(ws *websocket.Conn) {
 	defer ws.Close()
 	for {
@@ -23,8 +23,8 @@ func reader(ws *websocket.Conn) {
 	}
 }
 
-// END READER
-// START WRITER
+// END READER OMIT
+// START WRITER OMIT
 func writer(ws *websocket.Conn) {
 	msgTicker := time.NewTicker(5 * time.Second)
 	defer func() {
@@ -42,8 +42,8 @@ func writer(ws *websocket.Conn) {
 	}
 }
 
-// END WRITER
-// START SERVE
+// END WRITER OMIT
+// START SERVE OMIT
 func serveWs(w http.ResponseWriter, r *http.Request) {
 	ws, _ := upgrader.Upgrade(w, r, nil)
 	go writer(ws)
@@ -55,4 +55,4 @@ func main() {
 	http.ListenAndServe(":8081", nil)
 }
 
-// END SERVE
+// END SERVE OMIT

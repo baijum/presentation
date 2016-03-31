@@ -22,16 +22,16 @@ http://muthukadan.net
 
 * Backend
 
-.code example1.go /START SERVE/,/END SERVE/
+.code example1.go /START SERVE OMIT/,/END SERVE OMIT/
 
 * Backend Contd.
 
-.code example1.go /START UPGRADER/,/END UPGRADER/
+.code example1.go /START UPGRADER OMIT/,/END UPGRADER OMIT/
 
 * Backend Contd.
 
-.code example1.go /START READER/,/END READER/
+.code example1.go /START READER OMIT/,/END READER OMIT/
 
 * Backend Contd.
 
-.code example1.go /START WRITER/,/END WRITER/
+.code example1.go /START WRITER OMIT/,/END WRITER OMIT/

@@ -8,8 +8,8 @@
     function onmessage(event) {
       console.log(event.data);
     };
-    var conn = new WebSocket("ws://localhost:8081/ws")
-    conn.onmessage = onmessage
+    var conn = new WebSocket("ws://localhost:8081/ws"); // HL
+    conn.onmessage = onmessage; // HL
   })();
   </script>
 </html>

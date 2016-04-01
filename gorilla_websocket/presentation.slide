@@ -3,7 +3,7 @@ Gorilla Websocket
 
 Baiju Muthukadan
 ZeOmega
-http://muthukadan.net
+https://muthukadan.net
 
 * Websocket
 
@@ -16,18 +16,26 @@ http://muthukadan.net
 - The WebSocket Protocol: [[https://tools.ietf.org/html/rfc6455][RFC 6455]]
 - The WebSocket API: [[http://www.w3.org/TR/websockets]]
 
-* API
+* Client API
 
 .code example1.html
 
-* Backend
+* Package import
 
-.code example1.go /START SERVE OMIT/,/END SERVE OMIT/
+.code example1.go /START IMPORT OMIT/,/END IMPORT OMIT/
 
-* Backend Contd.
+* Registering handler
+
+.code example1.go /START MAIN OMIT/,/END MAIN OMIT/
+
+* Upgrader
 
 .code example1.go /START UPGRADER OMIT/,/END UPGRADER OMIT/
 
-* Backend Contd.
+* Request handler
+
+.code example1.go /START SERVE OMIT/,/END SERVE OMIT/
+
+* Message writer
 
 .code example1.go /START WRITER OMIT/,/END WRITER OMIT/

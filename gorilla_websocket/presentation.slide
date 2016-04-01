@@ -5,16 +5,21 @@ Baiju Muthukadan
 ZeOmega
 https://muthukadan.net
 
-* Websocket
+* A full-duplex single socket connection
 
-- A full-duplex single socket connection
-- Alternative to HTTP polling
-- Two-way communication between client and server
+* Alternative to HTTP polling
 
-* Spec
+* Two-way communication between client and server
 
-- The WebSocket Protocol: [[https://tools.ietf.org/html/rfc6455][RFC 6455]]
-- The WebSocket API: [[http://www.w3.org/TR/websockets]]
+* The WebSocket Protocol
+
+- [[https://tools.ietf.org/html/rfc6455][RFC 6455]]
+- December 2011
+
+* The WebSocket API
+
+- [[http://www.w3.org/TR/websockets]]
+- W3C Candidate Recommendation 20 September 2012
 
 * Client API
 

@@ -30,8 +30,4 @@ http://muthukadan.net
 
 * Backend Contd.
 
-.code example1.go /START READER OMIT/,/END READER OMIT/
-
-* Backend Contd.
-
 .code example1.go /START WRITER OMIT/,/END WRITER OMIT/

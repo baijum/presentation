@@ -13,32 +13,15 @@ var upgrader = websocket.Upgrader{
 }
 
 // END UPGRADER OMIT
-// START READER OMIT
-func reader(ws *websocket.Conn) {
-	defer ws.Close()
-	for {
-		if _, _, err := ws.ReadMessage(); err != nil {
-			break
-		}
-	}
-}
 
 // END READER OMIT
 // START WRITER OMIT
 func writer(ws *websocket.Conn) {
-	msgTicker := time.NewTicker(5 * time.Second)
-	defer func() {
-		msgTicker.Stop()
-		ws.Close()
-	}()
+	defer ws.Close()
 
 	for {
-		select {
-		case <-msgTicker.C:
-			if err := ws.WriteMessage(websocket.TextMessage, []byte("hello")); err != nil {
-				return
-			}
-		}
+		ws.WriteMessage(websocket.TextMessage, []byte("hello"))
+		time.Sleep(2 * time.Second)
 	}
 }
 
@@ -47,7 +30,6 @@ func writer(ws *websocket.Conn) {
 func serveWs(w http.ResponseWriter, r *http.Request) {
 	ws, _ := upgrader.Upgrade(w, r, nil)
 	go writer(ws)
-	reader(ws)
 }
 
 func main() {

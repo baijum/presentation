@@ -82,7 +82,7 @@ Skills required for a software developers:
 
 * Why Go ?
 
-- [[http://commandcenter.blogspot.in/2012/06/less-is-exponentially-more.html][Simplicity]] (Small spec, 25 keywords)
+- [[http://commandcenter.blogspot.in/2012/06/less-is-exponentially-more.html][Simplicity]] (Small [[https://golang.org/ref/spec][spec]], 25 keywords)
 - Consistency
 - Readability
 - Safety (Type safety, Memory safety)
@@ -105,6 +105,7 @@ Skills required for a software developers:
     export PATH=$GOPATH/bin:$PATH
 
 - [[https://golang.org/doc/install][https://golang.org/doc/install]]
+- *Activity*: Run "go help" command and read the output for 1 minute
 
 * Building and Running
 
@@ -116,13 +117,19 @@ Skills required for a software developers:
 
 (The first command produce a binary and second command executes the binary)
 
-- The "go build" command produce a binary file native to the operating system and the architecture of the CPU (i386, x86_64 etc.)
-
-- Specify targeted platform using enviroment variables: GOOS & GOARCH
+- Use "go fmt <file.go>" to format Go source file (no more debate about formatting!)
+- *Proverb*: Gofmt's style is no one's favorite, yet gofmt is everyone's favorite.
 
 (*Exercise*: 1)
 
 .image image/gopher5.png
+
+* Building and Running ...
+
+- The "go build" command produce a binary file native to the operating system and the architecture of the CPU (i386, x86_64 etc.)
+- Specify targeted platform using environment variables: GOOS & GOARCH
+- List of environment variables: [[https://golang.org/doc/install/source#environment]]
+- *Activity*: Produce binary for different operating systems and architectures
 
 * Organizing Code
 
@@ -164,20 +171,14 @@ Replace the <username> with your GitHub username or organization name and <proje
 
 - [[https://golang.org/cmd/go/]]
 
-* Formatting Go code
-
-- Use "go fmt" or "gofmt" to format code - no more debate about formatting!
-
-    go fmt file.go
-
-- *Proverb*: Gofmt's style is no one's favorite, yet gofmt is everyone's favorite.
+- *Activity*: Run "go get" as given above
 
 * Comments
 
 - Two kinds of comments
 - C Style
 
-    /* This is a multi line comment
+    /* This is a multi-line comment
        ... and this is a the second line
     */
 
@@ -185,6 +186,8 @@ Replace the <username> with your GitHub username or organization name and <proje
 
     // Single line number
     // Starts with two slashes
+
+- *Activity*: Update the `hello.go` with few comments and run
 
 * Primitive types
 
@@ -200,7 +203,7 @@ complex64, complex128
 * Variables
 
 - Type is explicitly specified but initialized with default zero values
-- The zero value is 0 for numeric types, false for boolean type and empty string for strings.
+- The zero value is 0 for numeric types, false for Boolean type and empty string for strings.
 
 .play code/variable1.go /START OMIT/,/END OMIT/
 
@@ -223,7 +226,7 @@ complex64, complex128
 * Constants
 
 - Constants are declared like variables, but with the const keyword.
-- Constants can be character, string, boolean, or numeric values.
+- Constants can be character, string, Boolean, or numeric values.
 - Constants cannot be declared using the := syntax.
 
     const Male = true
@@ -231,6 +234,8 @@ complex64, complex128
     const Name = "Baiju"
 
 - [[https://blog.golang.org/constants]]
+
+- *Activity*: Create a program and define the constants given above and print it
 
 * Go Types (Structs)
 
@@ -246,7 +251,7 @@ complex64, complex128
     []int, [3]string, []struct{ Name string }
 
 - The type *[n]T* is an array of n values of type T
-- An array's length is part of its type, so arrays cannot be resized.
+- An array's length is part of its type, so arrays cannot be re-sized.
 - A slice points to an array of values and also includes a length.
 - *[]T* is a slice with elements of type T
 - *len(s)* returns the length of slice s
@@ -269,8 +274,8 @@ complex64, complex128
 - A pointer holds the memory address of a variable.
 - The type *T is a pointer to a T value. Its zero value is nil.
 
-    vap i *int
-    vap p *Person
+    var i *int
+    var p *Person
 
 - The & operator generates a pointer to its operand.
 

@@ -269,33 +269,6 @@ complex64, complex128
 
 - [[https://blog.golang.org/go-maps-in-action]]
 
-* Pointers
-
-- A pointer holds the memory address of a variable.
-- The type *T is a pointer to a T value. Its zero value is nil.
-
-    var i *int
-    var p *Person
-
-- The & operator generates a pointer to its operand.
-
-    i := 42
-    p = &i
-
-* Pointers ...
-
-- The * operator denotes the pointer's underlying value.
-
-    fmt.Println(*p) // read i through the pointer p
-    *p = 21         // set i through the pointer p
-
-- This is known as "dereferencing" or "indirecting".
-- Unlike C, Go has no pointer arithmetic.
-
-* Pointers ...
-
-.play code/pointer1.go /START OMIT/,/END OMIT/
-
 * Interface
 
 - Interfaces provide a way to specify the behavior of an object
@@ -523,32 +496,46 @@ Constraint: Methods can be defined only on types declared in the same package.
 
 * Pointers
 
+- A pointer holds the memory address of a variable.
+- The type *T is a pointer to a T value. Its zero value is nil.
+
+    var i *int
+    var p *Person
+
+- The & operator generates a pointer to its operand.
+
+    i := 42
+    p = &i
+
+* Pointers ...
+
+- The * operator denotes the pointer's underlying value.
+
+    fmt.Println(*p) // read i through the pointer p
+    *p = 21         // set i through the pointer p
+
+- This is known as "dereferencing" or "indirecting".
+
+* Pointers ...
+
+- Unlike C, Go has no pointer arithmetic.
+- No pointer arithmetic, no pointers to unsafe memory.
+
+    a := "hello"
+    p := &a
+    p += 4  // no, you can't
+
+* Pointers ...
+
+.play code/pointer1.go /START OMIT/,/END OMIT/
+
+* Pointers ...
+
 Why pass by reference instead of pass by value?
 
 - Modify the receiver ("read/write" vs "read")
 - Very large struct and a deep copy is expensive
 - Consistency: Let all methods have pointer receivers
-
-* Pointers ...
-
-Use `&` to obtain the address of a variable.
-
-    a := "hello"
-    p := &a
-
-* Pointers ...
-
-Use `*` to dereference the pointer.
-
-    fmt.Print(*p + ", world")
-
-* Pointers ...
-
-No pointer arithmetic, no pointers to unsafe memory.
-
-    a := "hello"
-    p := &a
-    p += 4  // no, you can't
 
 * Pointers ...
 

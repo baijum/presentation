@@ -237,7 +237,7 @@ complex64, complex128
 
 - *Activity*: Write a program to define the above constants and print it
 
-* Go Types (Structs)
+* Structs
 
 - A *struct* is a collection of fields.
 - Struct fields are accessed using a dot.
@@ -245,7 +245,7 @@ complex64, complex128
 .play code/struct1.go /START OMIT/,/END OMIT/
 
 
-* Go Types (Slices and Arrays)
+* Slices and Arrays
 
 
     []int, [3]string, []struct{ Name string }
@@ -259,7 +259,7 @@ complex64, complex128
 - [[http://blog.golang.org/go-slices-usage-and-internals]]
 - [[https://blog.golang.org/slices]]
 
-* Go Types (Maps)
+* Maps
 
 - A *map* maps keys to values
 - Maps must be created with *make* before use

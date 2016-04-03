@@ -237,6 +237,14 @@ complex64, complex128
 
 - *Activity*: Write a program to define the above constants and print it
 
+* Type declarations
+
+type [name] [specification]
+
+- Celsius is a _float64_ type
+
+    type Celsius float64
+
 * Structs
 
 - A *struct* is a collection of fields.
@@ -244,6 +252,14 @@ complex64, complex128
 
 .play code/struct1.go /START OMIT/,/END OMIT/
 
+* Structs ...
+
+- Person is a _struct_ type
+
+    type Person struct {
+        Name string
+        Age  int
+    }
 
 * Slices and Arrays
 
@@ -280,20 +296,6 @@ complex64, complex128
         Perimeter() float64
     }
 
-* Type declarations
-
-type [name] [specification]
-
-Example 1: Celsius is a _float64_ type
-
-    type Celsius float64
-
-Example 2: Person is a _struct_ type
-
-    type Person struct {
-        Name string
-        Age  int
-    }
 
 * Function declarations
 
@@ -302,26 +304,19 @@ func [name] ([params]) ([return values])
 
 A function to return sum of two _int_ values:
 
-    func sum(a int, b int) int {
-        return a + b
-    }
+.play code/functiondeclaration1.go /START OMIT/,/END OMIT/
 
 * Function declarations ...
 
 A function with multiple returned values:
 
-    func div(a, b int) (int, int) {
-        return a / b, a % b
-    }
+.play code/functiondeclaration2.go /START OMIT/,/END OMIT/
 
 * Function declarations ...
 
 Made clearer by naming the return values:
 
-    func div(a, b int) (q, rem int) {
-        q, rem = a / b, a % b
-        return
-    }
+.play code/functiondeclaration2.go /START OMIT/,/END OMIT/
 
 * If Conditions
 

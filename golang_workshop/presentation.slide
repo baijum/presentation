@@ -332,12 +332,18 @@ type [name] [specification]
 * Maps
 
 - A *map* maps keys to values
-- Maps must be created with *make* before use
-- the *nil* map is empty and cannot be assigned to
 
-    map[string]int
+.play code/maps1.go /START OMIT/,/END OMIT/
 
 - [[https://blog.golang.org/go-maps-in-action]]
+
+* Maps ...
+
+- Maps can be initialized with *make* before use
+
+.play code/maps2.go /START OMIT/,/END OMIT/
+
+- the *nil* map is empty and cannot be assigned to
 
 * Interface
 

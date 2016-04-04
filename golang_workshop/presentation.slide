@@ -345,18 +345,6 @@ type [name] [specification]
 
 - the *nil* map is empty and cannot be assigned to
 
-* Interface
-
-- Interfaces provide a way to specify the behavior of an object
-- A type can implement multiple interfaces
-- Named collections of method signatures
-
-    type Geometry interface {
-        Area() float64
-        Perimeter() float64
-    }
-
-
 * Function declarations
 
 func [name] ([params]) [return value]
@@ -614,6 +602,17 @@ Why pass by reference instead of pass by value?
 - Executed in LIFO order
 
 .play code/defer1.go /START OMIT/,/END OMIT/
+
+* Interface
+
+- Interfaces provide a way to specify the behavior of an object
+- A type can implement multiple interfaces
+- Named collections of method signatures
+
+    type Geometry interface {
+        Area() float64
+        Perimeter() float64
+    }
 
 * Interface ...
 

@@ -282,7 +282,7 @@ type [name] [specification]
 - an ordered container type with a fixed number of data
 - the arrays are the foundation for slices
 - use slice instead of an array
-- number of values in the array is called the length
+- number of values in the array is called it's length
 - An array's length is part of its type, so arrays cannot be re-sized.
 - The type *[n]T* is an array of n values of type T
 
@@ -307,7 +307,25 @@ type [name] [specification]
 - A slice points to an array of values and also includes a length.
 - *[]T* is a slice with elements of type T
 - *len(s)* returns the length of slice s
+- The length of slice can vary dynamically.
+- number of values in the slice is called it's length
+
+* Slices ...
+
 - Slices can contain any type, including other slices
+
+    colors := []string{"Red", "Green", "Blue"}
+    heights := []int{153, 146, 167, 170}
+
+* Slices ...
+
+- Slice values can be accessed using the index syntax
+- The expression *s[n]* accesses the nth element, starting from zero.
+
+    colors := []string{"Red", "Green", "Blue"}
+    i := colors[1]
+    fmt.Println(i)
+
 - [[http://blog.golang.org/go-slices-usage-and-internals]]
 - [[https://blog.golang.org/slices]]
 

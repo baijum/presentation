@@ -173,6 +173,21 @@ Replace the <username> with your GitHub username or organization name and <proje
 
 - *Activity*: Run "go get" as given above
 
+* Go Tools
+
+- Run "go help" to see list of available commands
+- Use "go help [command]" for more information about a command
+
+Few commonly used commands:
+
+- build - compile packages and dependencies
+- fmt - run gofmt on package sources
+- get - download and install packages and dependencies
+- install - compile and install packages and dependencies
+- run - compile and run Go program
+- test - test packages
+- version - print Go version
+
 * Comments
 
 - Two kinds of comments
@@ -641,28 +656,12 @@ Why pass by reference instead of pass by value?
 
 (*Exercise*: 7)
 
-* Go Tools
-
-- Run "go help" to see list of available commands
-- Use "go help [command]" for more information about a command
-
-Few commonly used commands:
-
-- build - compile packages and dependencies
-- fmt - run gofmt on package sources
-- get - download and install packages and dependencies
-- install - compile and install packages and dependencies
-- run - compile and run Go program
-- test - test packages
-- version - print Go version
-- vet - run go tool vet on packages
-
 * Who uses Go?
 
 - Google
+- Uber
 - Dropbox
 - BBC
-- Dailymotion
 - Docker
 - Disqus
 - SoundCloud

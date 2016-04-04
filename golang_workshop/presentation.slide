@@ -261,13 +261,33 @@ type [name] [specification]
         Age  int
     }
 
-* Slices and Arrays
+* Arrays
 
-
-    []int, [3]string, []struct{ Name string }
-
-- The type *[n]T* is an array of n values of type T
+- an ordered container type with a fixed number of data
+- the arrays are the foundation for slices
+- use slice instead of an array
+- number of values in the array is called the length
 - An array's length is part of its type, so arrays cannot be re-sized.
+- The type *[n]T* is an array of n values of type T
+
+    colors := [3]string{"Red", "Green", "Blue"}
+    heights := [4]int{153, 146, 167, 170}
+
+* Arrays ...
+
+- if the length is different for two arrays, those are distinct incompatible types
+- The built-in *len* function gives the length of array.
+- Array values can be accessed using the index syntax
+- The expression *s[n]* accesses the nth element, starting from zero.
+
+    colors := [3]string{"Red", "Green", "Blue"}
+    i := colors[1]
+    fmt.Println(i)
+
+* Slices
+
+    []int, []struct{ Name string }
+
 - A slice points to an array of values and also includes a length.
 - *[]T* is a slice with elements of type T
 - *len(s)* returns the length of slice s

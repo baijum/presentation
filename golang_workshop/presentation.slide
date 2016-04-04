@@ -162,6 +162,7 @@ Replace the <username> with your GitHub username or organization name and <proje
 - The "go get" command download source repositories and places them in the workspace
 
     go get github.com/baijum/introduction
+    go get golang.org/x/tools/...
 
 - Repo URL and package path will be same normally (This helps Go tool to fetch)
 

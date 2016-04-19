@@ -364,7 +364,7 @@ A function with multiple returned values:
 
 Made clearer by naming the return values:
 
-.play code/functiondeclaration2.go /START OMIT/,/END OMIT/
+.play code/functiondeclaration3.go /START OMIT/,/END OMIT/
 
 * If Conditions
 

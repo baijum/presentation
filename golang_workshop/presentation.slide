@@ -18,7 +18,7 @@ https://muthukadan.net
 
 * Software Developer Skills
 
-Skills required for a software developers:
+Skills required for a software developer:
 
 - Programming Language
 - Text Editor
@@ -59,19 +59,19 @@ Skills required for a software developers:
 - built-in concurrency
 - Two major compilers: gc & gccgo
 - 25 keywords (less than C,C++,Python etc.)
-- Classification (Capitalized are exported)
+- Classification (Capitalized are exported - public)
 
 .image image/gopher2.png
 
 * Facts ...
 
-- Fast build
+- Fast build (in seconds)
 - Unused imports and variables raise compile error
 - Operating Systems: Windows, GNU/Linux, Mac OS X, *BSD etc.
 - CPU Architectures: amd64, 386, arm etc.
 - Cross compilation
 - Standard library
-- No exceptions
+- No exceptions ([[https://blog.golang.org/errors-are-values][Errors are values]])
 - Pointers (No pointer arithmetic!)
 
 .image image/gopher3.png
@@ -79,6 +79,9 @@ Skills required for a software developers:
 * Hello, ലോകമേ!
 
 .play code/hello.go
+
+- To play with Go programming online: [[http://play.golang.org]]
+- *Activity*: Replace the Malayalam text with some other language
 
 * Why Go ?
 

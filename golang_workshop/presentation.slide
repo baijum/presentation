@@ -39,6 +39,13 @@ Skills required for a software developer:
 - Interfaces
 - Concurrency
 
+* Exercises and other activities
+
+- Exercises in ready to print format (Questions with answers): [[https://dl.dropboxusercontent.com/u/37164281/exercises.pdf][https://dl.dropboxusercontent.com/u/37164281/exercises.pdf]] 
+- Exercise sheets should be printed in A4 paper and given to participants
+- The slides are marked to stop for exercises like this: (*Exercise*: N)
+- Simple activities are mentioned in the slides itself
+
 * Facts
 
 - General Purpose Programming Language
@@ -81,7 +88,7 @@ Skills required for a software developer:
 .play code/hello.go
 
 - To play with Go programming online: [[http://play.golang.org]]
-- *Activity*: Replace the Malayalam text with some other language
+- *Activity*: Replace the Malayalam text with some other language text and run
 
 * Why Go ?
 
@@ -93,7 +100,7 @@ Skills required for a software developer:
 
 .image image/gopher4.png
 
-* Installing Go Compiler
+* Installing Go Compiler on GNU/Linux
 
 - Download Go compiler binary from [[https://golang.org/dl]]
 - Extract it into your home directory (`$HOME/go`)

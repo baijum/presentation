@@ -35,6 +35,18 @@ Skills required for a software developer:
 
 *Credit*: [[http://www.slideshare.net/spf13/go-firstapp][Steven Francia]]
 
+* Requirements
+
+- Experience in some other programming language (Python, Ruby, Java, C# etc.)
+- Know how to use [[http://git-scm.com/doc][Git version control system]]
+- Comfortable with one shell (Bash, Zsh, PowerShell etc.)
+- Comfortable with one text editor (Vim, Emacs, VS Code etc.)
+- Install Go plugin for your text editor/IDE: [[https://muthukadan.net/article/golang-vim.html][Vim]], [[http://tleyden.github.io/blog/2014/05/22/configure-emacs-as-a-go-editor-from-scratch/][Emacs]] or [[https://marketplace.visualstudio.com/items?itemName=lukehoban.Go][VS Code]]
+- Laptop with power adaptor, convertors and other peripherals
+- Internet connectivity should be ensured
+- Operating system with Go support (GNU/Linux or Mac OS or Windows)
+- [[https://muthukadan.net/golang/an-introduction-to-go-programming.html][Go 1.6 compiler]] should be installed
+
 * Agenda
 
 - Format: talk, exercise, talk, exercise ... (short Q&A in between)

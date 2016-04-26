@@ -149,14 +149,18 @@ Skills required for a software developer:
 
 (The first command produce a binary and second command executes the binary)
 
-- Use "go fmt <file.go>" to format Go source file (no more debate about formatting!)
+* Formatting Code
+
+- Use "go fmt <file.go>" to format Go source file
+- No more debate about formatting!
+- Can integrate with editors like Vim, Emacs etc.
 - *Proverb*: Gofmt's style is no one's favorite, yet gofmt is everyone's favorite.
 
 (*Exercise*: 1)
 
 .image image/gopher5.png
 
-* Building and Running ...
+* Cross Compiling
 
 - The "go build" command produce a binary file native to the operating system and the architecture of the CPU (i386, x86_64 etc.)
 - Specify targeted platform using environment variables: GOOS & GOARCH

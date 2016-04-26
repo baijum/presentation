@@ -25,7 +25,7 @@ Skills required for a software developer:
 - Source Code Management
 - Operating System
 
-(5 minute group discussion)
+*Activity*: 5 minute group discussion
 
 * Agenda
 
@@ -165,7 +165,7 @@ Replace the <username> with your GitHub username or organization name and <proje
 
     src/github.com/baijum/introduction
 
-(Note: When you fork a project use "go get" or clone repository as per the upstream location)
+(*Note*: When you fork a project in Github use "go get" with the upstream location)
 
 * Getting third party packages
 

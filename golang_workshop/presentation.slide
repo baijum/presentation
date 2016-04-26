@@ -267,9 +267,16 @@ complex64, complex128
 
 type [name] [specification]
 
-- Celsius is a _float64_ type
+- Custom types can be constructed based on built-in types (primitive or composite)
+- Examples:
 
+    // Celsius represent temperature in celsius (a float64 type)
     type Celsius float64
+
+    // Names represent an array of strings with length as 5
+    type Names [5]string
+
+- Types can have associated methods (more later)
 
 * Structs
 
@@ -761,6 +768,6 @@ Don't panic.
 
 * My Book: A Comprehensive Guide to Go Programming
 
-Subscribe for sample chapters!
-
-[[http://golang.muthukadan.net][http://golang.muthukadan.net]]
+- [[http://golang.muthukadan.net][http://golang.muthukadan.net]]
+- Subscribe to receive first three chapters for free!
+- Send your feedback to: baiju@muthukadan.net

@@ -37,9 +37,11 @@ Skills required for a software developer:
 
 * Agenda
 
-- Format: talk, exercise, talk, exercise ... (short QA in between)
+- Format: talk, exercise, talk, exercise ... (short Q&A in between)
 - General facts
 - Running a hello world
+- Reasons to use Go
+- Development enviroment setup
 - Types
 - Control structures
 - Data structures
@@ -49,7 +51,7 @@ Skills required for a software developer:
 
 * Exercises and other activities
 
-- Exercises in ready to print format (Questions with answers): [[https://dl.dropboxusercontent.com/u/37164281/exercises.pdf][https://dl.dropboxusercontent.com/u/37164281/exercises.pdf]] 
+- Exercises in ready to print format (Questions with answers): [[https://dl.dropboxusercontent.com/u/37164281/exercises.pdf][https://dl.dropboxusercontent.com/u/37164281/exercises.pdf]]
 - Exercise sheets should be printed in A4 paper and given to participants
 - The slides are marked to stop for exercises like this: (*Exercise*: N)
 - Simple activities are mentioned in the slides itself

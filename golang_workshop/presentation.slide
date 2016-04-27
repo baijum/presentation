@@ -607,7 +607,7 @@ Constraint: Methods can be defined only on types declared in the same package.
 * Pointers
 
 - A pointer holds the memory address of a variable.
-- The type *T is a pointer to a T value. Its zero value is nil.
+- The type *T is a pointer to a T value. Its zero value is _nil_.
 
     var i *int
     var p *Person
@@ -717,8 +717,10 @@ Why pass by reference instead of pass by value?
     ch := make(chan int)
 
 - Sends and receives block until the other side is ready
+- zero value for channel is _nil_
 
 * Concurrency ...
+
 
 .play code/concurrency2.go /START OMIT/,/END OMIT/
 

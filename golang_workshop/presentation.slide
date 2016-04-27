@@ -579,8 +579,9 @@ If the switch has no expression it switches on true (useful to write an if-else-
 
 - Method is a function bound to a type (receiver)
 
-func ([receiver]) [name] ([params]) ([return values])
+    func ([receiver]) [name] ([params]) ([return values])
 
+- A receiver could be any type with a name
 
 * Method declaration ...
 

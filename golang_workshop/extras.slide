@@ -72,6 +72,8 @@ https://muthukadan.net
 
 .play code/function1.go /START OMIT/,/END OMIT/
 
+* Embedding
+
 * Logging
 
 * Files

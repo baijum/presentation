@@ -326,7 +326,7 @@ type [name] [specification]
     // Names represent an array of strings with length as 5
     type Names [5]string
 
-- Types can have associated methods (more later)
+- Function can be bound to types - methods
 
 * Structs
 
@@ -577,11 +577,19 @@ If the switch has no expression it switches on true (useful to write an if-else-
 
 * Method declaration
 
+- Method is a function bound to a type (receiver)
+
 func ([receiver]) [name] ([params]) ([return values])
+
 
 * Method declaration ...
 
-A method on a struct:
+- Method bound to a struct:
+
+    type Person struct {
+        Name string
+        Age  int
+    }
 
     func (p Person) Major() bool {
         return p.Age >= 18
@@ -589,7 +597,10 @@ A method on a struct:
 
 * Method declaration ...
 
-But also a method on a float64:
+- Method bound to a custom type named Celsius (float64):
+
+    // Celsius represent temperature in celsius (a float64 type)
+    type Celsius float64
 
     func (c Celsius) Freezing() bool {
         return c <= 0
@@ -597,7 +608,7 @@ But also a method on a float64:
 
 * Method declaration ...
 
-Constraint: Methods can be defined only on types declared in the same package.
+- Constraint: Methods can be defined only on types declared in the same package.
 
     // This won't compile
     func (s string) Length() int { return len(s) }

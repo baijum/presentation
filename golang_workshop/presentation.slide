@@ -503,9 +503,11 @@ Made clearer by naming the return values:
            myfmt "github.com/baijum/fmt"
     )
 
-* Packages ...
+* Blank identifier
 
-- Use blank identifier (*_* - underscore) as import alias to invoke *init* function without using the package
+- Underscore (*_*) is the blank identifier
+
+- Blank identifier can be used as import alias to invoke *init* function without using the package
 
 
     import (
@@ -513,6 +515,10 @@ Made clearer by naming the return values:
 
            _ "github.com/lib/pq"
     )
+
+- Blank identifier can be used to ignore return values from function
+
+    x, _ := someFunc()
 
 * For Loop
 

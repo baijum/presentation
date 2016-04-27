@@ -9,7 +9,7 @@ https://muthukadan.net
 * About Me
 
 - Technical Architect (DevOps) at ZeOmega, Bangalore
-- Python Developer for 12+ years
+- Python Developer for 13+ years
 - FOSS Contributor (SMC, Zope, Koha, Salt etc.)
 - Founded the Swathanthra Malayalam Computing (SMC) project in 2001 while studying at REC Calicut (NIT Kozhikode)
 - Presented many technical talks and workshops in India
@@ -224,6 +224,30 @@ Few commonly used commands:
 - run - compile and run Go program
 - test - test packages
 - version - print Go version
+
+* Keywords
+
+- Keywords are reserved words
+- Cannot be used as identifiers
+- Provide structure and meaning to the language
+
+
+    break        default      func         interface    select
+    case         defer        go           map          struct
+    chan         else         goto         package      switch
+    const        fallthrough  if           range        type
+    continue     for          import       return       var
+
+* Built-In Functions
+
+- Close channel: close
+- Length and capacity: len, cap
+- Allocation: new
+- Making slices, maps and channels: make
+- Appending to and copying slices: append, copy
+- Deletion of map elements: delete
+- Manipulating complex numbers: complex, real, imag
+- Handling panics: panic, recover
 
 * Comments
 

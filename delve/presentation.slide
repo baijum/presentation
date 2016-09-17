@@ -1,0 +1,61 @@
+Delve - Go Debugger
+17 Septemnber 2016
+
+Baiju Muthukadan
+Red Hat
+http://muthukadan.net
+
+* Installation
+
+Linux/Windows:
+
+	go get github.com/derekparker/delve/cmd/dlv
+
+OSX:
+
+	brew install go-delve/delve/delve
+
+- [[https://github.com/derekparker/delve/blob/master/Documentation/installation/osx/install.md][Alternate OSX Installation]]
+
+* Usage
+
+Connect to a running program:
+
+	dlv attach <PID>
+	dlv attach $(pidof <program-path>)
+
+Set a breakpoint:
+
+	break <package>.<function>
+
+Continue after hitting a breakpoint:
+
+	continue
+
+Show a backtrace for the current location:
+
+	bt
+
+* Usage (Contd.)
+
+Exit debugger:
+
+	exit
+
+Restart debugger:
+
+	restart
+
+
+- [[https://github.com/derekparker/delve/tree/master/Documentation/cli][More commands]]
+
+* Demo
+
+* Known Bugs
+
+- When a function defines two (or more) variables with the same name delve is unable to distinguish between them: `locals` will print both variables, `print` will randomly pick one. See [[https://github.com/derekparker/delve/issues/106][Issue #106]]
+
+- [[https://github.com/derekparker/delve/blob/master/Documentation/KnownBugs.md][More]]
+- Use 64 bit systems
+- Use Go 1.7
+

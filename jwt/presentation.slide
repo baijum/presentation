@@ -1,0 +1,36 @@
+Json Web Token (JWT)
+22 Septemnber 2016
+
+Baiju Muthukadan
+Red Hat
+http://muthukadan.net
+
+* Represent claims securely between two parties
+
+- Securely transmitting information between parties
+- Payload format: JSON
+- Compact and self-contained
+- Digitally signed for verification
+
+* Standard (RFC)
+
+- https://tools.ietf.org/html/rfc7519
+
+* Signing
+
+- HMAC (secret key)
+- RSA (public/private key pair)
+
+* Compact
+
+- Smaller size
+- JWTs can be sent through an URL
+- POST parameter, or inside an HTTP header
+- Smaller size means transmission is fast
+
+* Self-contained
+
+- payload contains all the required information about the user
+- avoiding the need to query the database more than once
+
+https://jwt.io/introduction/

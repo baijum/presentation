@@ -45,7 +45,7 @@ Skills required for a software developer:
 - Laptop with power adaptor, convertors and other peripherals
 - Internet connectivity should be ensured
 - Operating system with Go support (GNU/Linux or Mac OS or Windows)
-- [[https://muthukadan.net/golang/an-introduction-to-go-programming.html][Go 1.6 compiler]] should be installed
+- [[https://muthukadan.net/golang/an-introduction-to-go-programming.html][Go 1.7 compiler]] should be installed
 
 * Agenda
 
@@ -240,14 +240,14 @@ Few commonly used commands:
 
 * Built-In Functions
 
-- Close channel: close
-- Length and capacity: len, cap
-- Allocation: new
-- Making slices, maps and channels: make
-- Appending to and copying slices: append, copy
-- Deletion of map elements: delete
-- Manipulating complex numbers: complex, real, imag
-- Handling panics: panic, recover
+- Close channel: *close*
+- Length and capacity: *len*, *cap*
+- Allocation: *new*
+- Making slices, maps and channels: *make*
+- Appending to and copying slices: *append*, *copy*
+- Deletion of map elements: *delete*
+- Manipulating complex numbers: *complex*, *real*, *imag*
+- Handling panics: *panic*, *recover*
 
 * Comments
 
@@ -326,7 +326,7 @@ type [name] [specification]
     // Names represent an array of strings with length as 5
     type Names [5]string
 
-- Function can be bound to types - methods
+- (Functions can bind to custom types - this is called methods)
 
 * Structs
 
@@ -495,7 +495,7 @@ Made clearer by naming the return values:
 - Foo is an exported name, as is FOO. The name foo is not exported
 - By convention, package name is the same as the last element of the import path
 - Initialization logic for package goes into a function named *init*
-- Use alias to avoid package name ambiguity with package imports
+- Use alias to avoid package name conflict with during imports
 
     import (
     	   "fmt"
@@ -555,6 +555,10 @@ When ranging over a slice, two values are returned for each iteration.
 
 * Range with Maps
 
+When ranging over a map, two values are returned for each iteration.
+
+- The first is the key, and the second is a copy of the value.
+
 .play code/range2.go /START OMIT/,/END OMIT/
 
 * Nil slices
@@ -563,6 +567,10 @@ When ranging over a slice, two values are returned for each iteration.
 - A _nil_ slice has a length and capacity of 0
 
 .play code/slice1.go /START OMIT/,/END OMIT/
+
+* Why capacity?
+
+.play code/cap1.go /START OMIT/,/END OMIT/
 
 * Switch statement
 
@@ -790,8 +798,8 @@ Why pass by reference instead of pass by value?
 - [[https://gobyexample.com][https://gobyexample.com]]
 - Forum/Mailing List: [[https://groups.google.com/forum/#!forum/golang-nuts][https://groups.google.com/forum/#!forum/golang-nuts]]
 - Subreddit: [[http://www.reddit.com/r/golang][http://www.reddit.com/r/golang]]
-- #go-nuts in the irc.freenode.org network
-- Slack: [[https://gophersinvite.herokuapp.com/][https://gophersinvite.herokuapp.com/]]
+- #go-nuts in the irc.freenode.net IRC network
+- Slack invitation: [[https://gophersinvite.herokuapp.com/][https://gophersinvite.herokuapp.com/]]
 - More: [[http://dave.cheney.net/resources-for-new-go-programmers][http://dave.cheney.net/resources-for-new-go-programmers]]
 
 * Go Proverbs

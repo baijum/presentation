@@ -42,18 +42,23 @@ Skills required for a software developer:
 - Comfortable with one shell (Bash, Zsh, PowerShell etc.)
 - Comfortable with one text editor (Vim, Emacs, VS Code etc.)
 - Install Go plugin for your text editor/IDE: [[https://muthukadan.net/article/golang-vim.html][Vim]], [[http://tleyden.github.io/blog/2014/05/22/configure-emacs-as-a-go-editor-from-scratch/][Emacs]] or [[https://marketplace.visualstudio.com/items?itemName=lukehoban.Go][VS Code]]
-- Laptop with power adaptor, convertors and other peripherals
+- Laptop with power adapter, converters and other peripherals
 - Internet connectivity should be ensured
 - Operating system with Go support (GNU/Linux or Mac OS or Windows)
 - [[https://muthukadan.net/golang/an-introduction-to-go-programming.html][Go 1.7 compiler]] should be installed
 
+* Format
+
+- Talk -> exercise -> talk -> exercise ...
+- Short Q&A in between
+- Work on activities mentioned in the slides (depending on time availability)
+
 * Agenda
 
-- Format: talk, exercise, talk, exercise ... (short Q&A in between)
 - General facts
 - Running a hello world
 - Reasons to use Go
-- Development enviroment setup
+- Development environment setup
 - Types
 - Control structures
 - Data structures
@@ -191,7 +196,7 @@ Replace the <username> with your GitHub username or organization name and <proje
 
     src/github.com/baijum/introduction
 
-(*Note*: When you fork a project in Github use "go get" with the upstream location)
+(*Note*: When you fork a project in GitHub use "go get" with the upstream location)
 
 * Getting third party packages
 
@@ -320,7 +325,7 @@ type [name] [specification]
 - Custom types can be constructed based on built-in types (primitive or composite)
 - Examples:
 
-    // Celsius represent temperature in celsius (a float64 type)
+    // Celsius represent temperature in Celsius (a float64 type)
     type Celsius float64
 
     // Names represent an array of strings with length as 5
@@ -614,7 +619,7 @@ If the switch has no expression it switches on true (useful to write an if-else-
 
 - Method bound to a custom type named Celsius (float64):
 
-    // Celsius represent temperature in celsius (a float64 type)
+    // Celsius represent temperature in Celsius (a float64 type)
     type Celsius float64
 
     func (c Celsius) Freezing() bool {
@@ -791,7 +796,7 @@ Why pass by reference instead of pass by value?
 * Go Resources
 
 - Use the word "golang" to search about Go in Google, Bing etc.
-- Twitter hashtag #golang #GopherCon #GopherConIndia
+- Twitter hash-tag #golang #GopherCon #GopherConIndia
 - Official website: [[http://golang.org][http://golang.org]]
 - Official blog: [[http://blog.golang.org][http://blog.golang.org]]
 - Experiment and share Go source code: [[http://play.golang.org][http://play.golang.org]]

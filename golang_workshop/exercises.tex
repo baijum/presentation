@@ -47,7 +47,7 @@ Update the previous program (Exercise 4) to use interfaces.
 
 \section*{Exercise 6}
 
-Rewrite the program in Exercise 2 using goroutine and channel.  The
+Rewrite the program in Exercise 3 using goroutine and channel.  The
 task is to print sum of all numbers below 50 completely divisible by 3
 or 5 (i.e., remainder 0)
 
@@ -203,9 +203,9 @@ func main() {
         if shape == "circle" {
 
                 r := os.Args[2]
-                radius, _ := strconv.Atoi(r)
+                radius, _ := strconv.ParseFloat(r, 64)
 
-                circle := Circle{float64(radius)}
+                circle := Circle{radius}
 
                 area := circle.Area()
                 fmt.Println("Area:", area)
@@ -217,10 +217,10 @@ func main() {
                 w := os.Args[2]
                 h := os.Args[3]
 
-                width, _ := strconv.Atoi(w)
-                height, _ := strconv.Atoi(h)
+                width, _ := strconv.ParseFloat(w, 64)
+                height, _ := strconv.ParseFloat(h, 64)
 
-                rectangle := Rectangle{float64(width), float64(height)}
+                rectangle := Rectangle{width, height}
 
                 area := rectangle.Area()
                 fmt.Println("Area:", area)
@@ -267,19 +267,19 @@ func main() {
         if shape == "circle" {
 
                 r := os.Args[2]
-                radius, _ := strconv.Atoi(r)
+                radius, _ := strconv.ParseFloat(r, 64)
 
-                circle := Circle{float64(radius)}
+                circle := Circle{radius}
                 Measure(circle)
 
         } else {
                 w := os.Args[2]
                 h := os.Args[3]
 
-                width, _ := strconv.Atoi(w)
-                height, _ := strconv.Atoi(h)
+                width, _ := strconv.ParseFloat(w, 64)
+                height, _ := strconv.ParseFloat(h, 64)
 
-                rectangle := Rectangle{float64(width), float64(height)}
+                rectangle := Rectangle{width, height}
                 Measure(rectangle)
         }
 }

@@ -5,8 +5,21 @@
 \usecolortheme{beaver}
 \usepackage{fontspec}
 \usepackage{listings}
+\usepackage{listings-golang}
+\usepackage{color}
 \usepackage{hyperref}
 \usepackage{fancyvrb}
+
+\lstset{ % add your own preferences
+    basicstyle=\ttfamily\scriptsize, % the size of the fonts that are used for the code
+    keywordstyle=\color{red},
+    numbers=none,
+    numbersep=5pt,
+    showstringspaces=false,
+    stringstyle=\color{blue},
+    tabsize=4,
+    language=Golang % this is it !
+}
 
 %Information to be included in the title page:
 \title{Testing Techniques in Go}
@@ -104,28 +117,28 @@ Numbers={Lining, Monospaced},
 
   \includegraphics[scale=.35]{images/PIA18017_hires.jpg}
   %% https://en.wikipedia.org/wiki/Low-Density_Supersonic_Decelerator
-  
+
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{go test}
 
-  \begin{lstlisting}
+  \begin{verbatim}
     go test -v
     go test ./some-package -v
     go test ./some-package -v -run TestPattern
     go test ./some-package -v -cover
-  \end{lstlisting}
-  
+  \end{verbatim}
+
   \url{https://golang.org/cmd/go/\#hdr-Test\_packages}
-  
+
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{File: hello\_test.go}
 
   \lstinputlisting{hello/hello_test.go}
-  
+
 \end{frame}
 
 
@@ -133,9 +146,23 @@ Numbers={Lining, Monospaced},
   \frametitle{File: hello.go}
 
   \lstinputlisting{hello/hello.go}
-  
+
 \end{frame}
 
+
+\begin{frame}[fragile]
+  \frametitle{File: wc\_test.go}
+
+  \lstinputlisting{table/wc_test.go}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{File: wc.go}
+
+  \lstinputlisting{table/wc.go}
+
+\end{frame}
 
 \begin{frame}%%     1
 \begin{center}

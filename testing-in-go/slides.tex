@@ -123,12 +123,12 @@ Numbers={Lining, Monospaced},
 \begin{frame}[fragile]
   \frametitle{go test}
 
-  \begin{verbatim}
-    go test -v
-    go test ./some-package -v
-    go test ./some-package -v -run TestPattern
-    go test ./some-package -v -cover
-  \end{verbatim}
+\begin{verbatim}
+  go test -v
+  go test ./some-package -v
+  go test ./some-package -v -run TestPattern
+  go test ./some-package -v -cover
+\end{verbatim}
 
   \url{https://golang.org/cmd/go/\#hdr-Test\_packages}
 
@@ -181,7 +181,16 @@ Numbers={Lining, Monospaced},
 \begin{frame}[fragile]
   \frametitle{File: suite\_test.go}
 
-  \lstinputlisting[firstline=15, lastline=26]{suite/suite_test.go}
+  \lstinputlisting[firstline=15, lastline=30]{suite/suite_test.go}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Filtering test cases}
+
+\begin{verbatim}
+go test . -v -run TestSomeTestSuite -testify.m TestSome
+\end{verbatim}
 
 \end{frame}
 

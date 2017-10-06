@@ -8,11 +8,12 @@ import (
 
 func TestSomething(t *testing.T) {
 
-	assert.Equal(t, "hello", "hello", "some message")
+	assert := assert.New(t)
+	assert.Equal("hello", "hello", "some message")
 
-	assert.NotEqual(t, 12, 67, "message")
+	assert.NotEqual(12, 67, "message")
 
 	var a *string
 
-	assert.Nil(t, a)
+	assert.Nil(a)
 }

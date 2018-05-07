@@ -1,0 +1,135 @@
+\documentclass{beamer}
+ 
+\usepackage[utf8]{inputenc}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\usepackage{fontspec}
+\usepackage{listings}
+ 
+%Information to be included in the title page:
+\title{Typeface}
+\author{Baiju Muthukadan}
+\institute{Red Hat, Bangalore}
+\date{06-April-2017}
+ 
+\logo{\includegraphics[height=1.5cm]{Logo_RH_RGB_Default.png}}
+ 
+\begin{document}
+
+\setmainfont
+[ Path = fonts/,
+UprightFont = DejaVuSerif.ttf,
+ItalicFont = DejaVuSerif-Italic.ttf,
+BoldFont = DejaVuSerif-Bold.ttf,
+BoldItalicFont = DejaVuSerif-BoldItalic.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Serif}
+
+\setsansfont
+[ Path = fonts/,
+UprightFont = DejaVuSans.ttf,
+ItalicFont = DejaVuSans-Oblique.ttf,
+BoldFont = DejaVuSans-Bold.ttf,
+BoldItalicFont = DejaVuSans-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans}
+
+\setmonofont
+[ Path = fonts/,
+UprightFont = DejaVuSansMono.ttf,
+ItalicFont = DejaVuSansMono-Oblique.ttf,
+BoldFont = DejaVuSansMono-Bold.ttf,
+BoldItalicFont = DejaVuSansMono-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans Mono}
+
+
+\newfontfamily{\vollkorn}
+[ Path = fonts/,
+UprightFont = Vollkorn-Regular.otf,
+ItalicFont = Vollkorn-Italic.otf,
+BoldFont = Vollkorn-Bold.otf,
+BoldItalicFont = Vollkorn-BoldItalic.otf,
+Numbers={Lining, Monospaced},
+] {Vollkorn}
+
+\newfontfamily{\dejavusans}
+[ Path = fonts/,
+UprightFont = DejaVuSans.ttf,
+ItalicFont = DejaVuSans-Oblique.ttf,
+BoldFont = DejaVuSans-Bold.ttf,
+BoldItalicFont = DejaVuSans-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans}
+
+\newfontfamily{\dejavumono}
+[ Path = fonts/,
+UprightFont = DejaVuSansMono.ttf,
+ItalicFont = DejaVuSansMono-Oblique.ttf,
+BoldFont = DejaVuSansMono-Bold.ttf,
+BoldItalicFont = DejaVuSansMono-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans Mono}
+
+\frame{\titlepage}
+ 
+\begin{frame}
+  \frametitle{Wikipedia Definition}
+
+  In typography, a typeface (also known as font family) is a set of
+  one or more fonts each composed of glyphs that share common design
+  features.  \footnote{\url{https://en.wikipedia.org/wiki/Typeface}}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Legibility \& Readability}
+
+  \vollkorn{\Large In typography, a typeface (also known as font family) is a
+    set of one or more fonts each composed of glyphs that share common
+    design features}.\\[1cm]
+
+  \dejavusans{\Large In typography, a typeface (also known as font
+    family) is a set of one or more fonts each composed of glyphs that
+    share common design features.}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Sans-Serif vs. Serif}
+
+  \vollkorn{\Huge FIRST}\\[1cm]
+
+  \dejavusans{\Huge FIRST}
+
+\end{frame}
+
+\begin{frame}[fragile=singleslide]\frametitle{Monospace}
+
+ 
+
+\begin{lstlisting}
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, Typeface!")
+}
+\end{lstlisting}
+    
+
+\begin{lstlisting}
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, Typeface!")
+}
+\end{lstlisting}
+    
+
+\end{frame}
+
+\end{document}

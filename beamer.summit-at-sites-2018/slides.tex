@@ -1,0 +1,230 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\usepackage{fontspec}
+\usepackage{listings}
+\usepackage{fancyvrb}
+
+%Information to be included in the title page:
+\title{\LaTeX\ Beamer for Creating Presentation Slides}
+%\subtitle{}
+\author{Baiju Muthukadan}
+\institute{Red Hat}
+\date{@nogenerics}
+
+\logo{\includegraphics[height=1.5cm]{Logo_RH_RGB_Default.png}}
+
+\begin{document}
+\beamertemplatenavigationsymbolsempty
+
+\setmainfont
+[ Path = ../fonts/,
+UprightFont = DejaVuSerif.ttf,
+ItalicFont = DejaVuSerif-Italic.ttf,
+BoldFont = DejaVuSerif-Bold.ttf,
+BoldItalicFont = DejaVuSerif-BoldItalic.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Serif}
+
+\setsansfont
+[ Path = ../fonts/,
+UprightFont = DejaVuSans.ttf,
+ItalicFont = DejaVuSans-Oblique.ttf,
+BoldFont = DejaVuSans-Bold.ttf,
+BoldItalicFont = DejaVuSans-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans}
+
+\setmonofont
+[ Path = ../fonts/,
+UprightFont = DejaVuSansMono.ttf,
+ItalicFont = DejaVuSansMono-Oblique.ttf,
+BoldFont = DejaVuSansMono-Bold.ttf,
+BoldItalicFont = DejaVuSansMono-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans Mono}
+
+
+\newfontfamily{\vollkorn}
+[ Path = ../fonts/,
+UprightFont = Vollkorn-Regular.otf,
+ItalicFont = Vollkorn-Italic.otf,
+BoldFont = Vollkorn-Bold.otf,
+BoldItalicFont = Vollkorn-BoldItalic.otf,
+Numbers={Lining, Monospaced},
+] {Vollkorn}
+
+\newfontfamily{\dejavuserif}
+[ Path = ../fonts/,
+UprightFont = DejaVuSerif.ttf,
+ItalicFont = DejaVuSerif-Italic.ttf,
+BoldFont = DejaVuSerif-Bold.ttf,
+BoldItalicFont = DejaVuSerif-BoldItalic.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Serif}
+
+\newfontfamily{\dejavusans}
+[ Path = ../fonts/,
+UprightFont = DejaVuSans.ttf,
+ItalicFont = DejaVuSans-Oblique.ttf,
+BoldFont = DejaVuSans-Bold.ttf,
+BoldItalicFont = DejaVuSans-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans}
+
+\newfontfamily{\dejavumono}
+[ Path = ../fonts/,
+UprightFont = DejaVuSansMono.ttf,
+ItalicFont = DejaVuSansMono-Oblique.ttf,
+BoldFont = DejaVuSansMono-Bold.ttf,
+BoldItalicFont = DejaVuSansMono-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans Mono}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{About Me}
+
+  \begin{itemize}
+  \item<1-> Senior Software Engineer, Red Hat
+  \item<2-> FOSS Contributor (SMC, Koha, Zope, SaltStack, fabric8 etc.)
+  \item<3-> Founded the Swathanthra Malayalam Computing (SMC) project in 2001 while studying at REC Calicut (NIT Kozhikode)
+  \item<4-> Received the first Kenneth Gonsalves Award for contributions to the Python community in India
+  \item<5-> Author of the book: A Comprehensive Guide to Go Programming \footnote{\url{https://golang.muthukadan.net}}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{\TeX}
+
+  \begin{itemize}
+    \item<1-> Typesetting System
+  \item<2-> Donald Knuth (Author of The Art of Computer Programming)
+  \item<3-> Initial release: 1978; 40 years ago
+
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{\LaTeX}
+
+  \begin{itemize}
+  \item<1-> Document Preparation System (non-WYSIWYG)
+  \item<2-> Leslie Lamport (Paxos)
+  \item<3-> Initial release: 1983; 35 years ago
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Beamer}
+
+  \begin{itemize}
+  \item<1-> LaTeX document class for creating slides for presentations
+  \item<2-> Initial release: March 2003; 15 years ago
+  \item<3-> \url{https://github.com/josephwright/beamer}
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Installation}
+
+  Fedora:
+
+  \begin{Verbatim}[fontsize=\small]
+    dnf install texlive-scheme-full
+  \end{Verbatim}
+
+  Debian:
+
+  \begin{Verbatim}[fontsize=\small]
+    apt-get install texlive-full
+  \end{Verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Source Text}
+
+  
+  \begin{Verbatim}[fontsize=\small]
+    \documentclass{beamer}
+    \begin{document}
+    \begin{frame}
+      \frametitle{This is the first slide}
+      %Content goes here
+    \end{frame}
+    \begin{frame}
+      \frametitle{This is the second slide}
+      \framesubtitle{A bit more information about this}
+      %More content goes here
+    \end{frame}
+    % etc
+    \end{document}
+
+  \end{Verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Source Text}
+
+  
+  \begin{Verbatim}[fontsize=\small]
+    \begin{frame}
+      \frametitle{\LaTeX}
+
+      \begin{itemize}
+      \item<1-> Document Preparation System (non-WYSIWYG)
+      \item<2-> Leslie Lamport (Paxos)
+      \item<3-> Initial release: 1983; 35 years ago
+      \end{itemize}
+
+    \end{frame}
+
+  \end{Verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Source Code Example}
+
+\begin{Verbatim}[fontsize=\small]
+package main
+
+import "net/http"
+
+func main() {
+        http.ListenAndServe(":8080", nil)
+}
+\end{Verbatim}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why \LaTeX\ \& Beamer?}
+
+  \begin{itemize}
+  \item<1-> Plain text
+  \item<2-> Version controll
+  \item<3-> Use Vim, Emacs or any text editor
+  \item<4-> High quality PDF output
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    {\huge Thank You!}\\[1cm]
+    {\large \href{https://twitter.com/nogenerics}{@nogenerics}}
+  \end{center}
+\end{frame}
+
+\end{document}

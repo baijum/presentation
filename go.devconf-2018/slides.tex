@@ -9,9 +9,9 @@
 
 %Information to be included in the title page:
 \title{RESTful API Development using Go}
-%\subtitle{}
+\subtitle{Workshop}
 \author{Baiju Muthukadan}
-%\institute{Red Hat}
+\institute{Red Hat}
 \date{@nogenerics}
 
 \logo{\includegraphics[height=1.5cm]{images/gopher4.png}}
@@ -141,7 +141,7 @@ Numbers={Lining, Monospaced},
 \begin{frame}[fragile]
   \frametitle{Basic example}
 
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\tiny]
 package main
 
 import "net/http"
@@ -156,7 +156,7 @@ func main() {
 \begin{frame}[fragile]
   \frametitle{Serve content example}
 
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\tiny]
 package main
 
 import "net/http"
@@ -183,7 +183,7 @@ func main() {
   \item \url{https://github.com/gorilla/mux}
   \end{itemize}
 
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\tiny]
 go get -u github.com/gorilla/mux
 \end{Verbatim}
   
@@ -193,7 +193,7 @@ go get -u github.com/gorilla/mux
 \begin{frame}[fragile]
   \frametitle{Gorilla Mux Example}
 
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\tiny]
 package main
 
 import (
@@ -218,7 +218,7 @@ func main() {
 \begin{frame}[fragile]
   \frametitle{Negroni Example}
 
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\tiny]
 func main() {
         r := mux.NewRouter()
         r.HandleFunc("/", homeHandler)
@@ -234,7 +234,7 @@ func main() {
 
   An exaple from \small{\url{https://github.com/kaaryasthan/kaaryasthan/blob/master/route/route.go}}
   
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\tiny]
 n = negroni.New(negroni.NewRecovery(),
                 negroni.NewLogger(),
                 negroni.NewStatic(web.AssetFS()))
@@ -247,7 +247,7 @@ Middlewares: gzip, jwt, cors, csp
 \begin{frame}[fragile]
   \frametitle{Paths with variable}
 
-  \begin{Verbatim}[fontsize=\small]
+  \begin{Verbatim}[fontsize=\tiny]
     r := mux.NewRouter()
     r.HandleFunc("/products/{key}", ProductHandler)
     r.HandleFunc("/articles/{category}/", ArticlesCategoryHandler)

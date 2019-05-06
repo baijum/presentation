@@ -1,0 +1,319 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\usepackage{fontspec}
+\usepackage{listings}
+\usepackage{fancyvrb}
+
+\title{Test your Kubernetes operator with OLM}
+\author{Baiju Muthukadan \and Avni Sharma}
+\date{May 15, 2019}
+\logo{\includegraphics[height=1.5cm]{images/Logo-RedHat-B-Color-RGB.png}}
+
+\begin{document}
+\beamertemplatenavigationsymbolsempty
+
+\setmainfont
+[ Path = ../fonts/,
+UprightFont = DejaVuSerif.ttf,
+ItalicFont = DejaVuSerif-Italic.ttf,
+BoldFont = DejaVuSerif-Bold.ttf,
+BoldItalicFont = DejaVuSerif-BoldItalic.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Serif}
+
+\setsansfont
+[ Path = ../fonts/,
+UprightFont = DejaVuSans.ttf,
+ItalicFont = DejaVuSans-Oblique.ttf,
+BoldFont = DejaVuSans-Bold.ttf,
+BoldItalicFont = DejaVuSans-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans}
+
+\setmonofont
+[ Path = ../fonts/,
+UprightFont = DejaVuSansMono.ttf,
+ItalicFont = DejaVuSansMono-Oblique.ttf,
+BoldFont = DejaVuSansMono-Bold.ttf,
+BoldItalicFont = DejaVuSansMono-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans Mono}
+
+
+\newfontfamily{\vollkorn}
+[ Path = ../fonts/,
+UprightFont = Vollkorn-Regular.otf,
+ItalicFont = Vollkorn-Italic.otf,
+BoldFont = Vollkorn-Bold.otf,
+BoldItalicFont = Vollkorn-BoldItalic.otf,
+Numbers={Lining, Monospaced},
+] {Vollkorn}
+
+\newfontfamily{\dejavuserif}
+[ Path = ../fonts/,
+UprightFont = DejaVuSerif.ttf,
+ItalicFont = DejaVuSerif-Italic.ttf,
+BoldFont = DejaVuSerif-Bold.ttf,
+BoldItalicFont = DejaVuSerif-BoldItalic.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Serif}
+
+\newfontfamily{\dejavusans}
+[ Path = ../fonts/,
+UprightFont = DejaVuSans.ttf,
+ItalicFont = DejaVuSans-Oblique.ttf,
+BoldFont = DejaVuSans-Bold.ttf,
+BoldItalicFont = DejaVuSans-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans}
+
+\newfontfamily{\dejavumono}
+[ Path = ../fonts/,
+UprightFont = DejaVuSansMono.ttf,
+ItalicFont = DejaVuSansMono-Oblique.ttf,
+BoldFont = DejaVuSansMono-Bold.ttf,
+BoldItalicFont = DejaVuSansMono-BoldOblique.ttf,
+Numbers={Lining, Monospaced},
+] {DejaVu Sans Mono}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{About Us}
+
+  \begin{itemize}
+  \item<1-> Baiju is a Senior Software Engineer
+  \item<2-> Avni is an Associate Software Engineer
+  \item<3-> Both of us works on DevConsole Operator
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{DevConsole Operator}
+
+  \includegraphics[scale=.15]{images/Logo-Red_Hat-OpenShift_4-A-Standard-RGB.png}\\[.25in]
+  
+  Provides a developer-focused view in OpenShift 4
+
+\end{frame}
+
+\begin{frame}
+
+  \includegraphics[scale=.25]{images/devconsole.png}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Operator Framework}
+
+  \includegraphics[scale=.50]{images/operator_logo_framework_color.png}
+  
+  A toolkit to manage Kubernetes native applications, called Operators.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Operator Framework Parts}
+
+  \includegraphics[scale=.50]{images/operator_logo_sdk_color.png}
+
+  \includegraphics[scale=.50]{images/operator_logo_lifecycle_manager_color.png}
+
+  \includegraphics[scale=.50]{images/operator_logo_metering_color.png}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Operator Lifecycle Manager (OLM)}
+
+  Oversees installation, updates, and management of the lifecycle of
+  all of the Operators (and their associated services) running across
+  a Kubernetes cluster.
+
+\end{frame}
+
+\begin{frame}
+
+  \frametitle{Two resources}
+
+CatalogSource
+
+a repository of CSVs, CRDs, and packages that define an application
+
+Subscription
+
+used to keep CSVs up to date by tracking a channel in a package
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Makefile}
+
+  \begin{Verbatim}[fontsize=\small]
+.PHONY: test-e2e-olm-ci
+test-e2e-olm-ci: ./vendor
+  $(Q)sed -e "s,REPLACE_IMAGE,registry.svc.ci.openshift.org/
+    ${OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator-registry,"
+    ./test/e2e/catalog_source_OS4.yaml | oc apply -f -
+  $(Q)oc apply -f ./test/e2e/subscription_OS4.yaml
+  $(eval DEPLOYED_NAMESPACE := openshift-operators)
+  $(Q)./hack/check-crds.sh
+  $(Q)operator-sdk test local ./test/e2e --no-setup
+    --go-test-flags "-v -timeout=15m"
+
+./vendor: Gopkg.toml Gopkg.lock
+  $(Q)dep ensure ${V_FLAG} -vendor-only
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{CatalogSource}
+
+  \begin{Verbatim}[fontsize=\small]
+# Ref. https://github.com/operator-framework/operator-lifecycle-manager
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: my-catalog
+  namespace: openshift-operator-lifecycle-manager
+spec:
+  sourceType: grpc
+  image: REPLACE_IMAGE
+  displayName: Community Operators
+  publisher: Red Hat
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Subscription}
+
+  \begin{Verbatim}[fontsize=\small]
+# Ref. https://github.com/operator-framework/operator-lifecycle-manager
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: my-devconsole
+  namespace: openshift-operators
+spec:
+  channel: alpha
+  name: devconsole
+  source: my-catalog
+  sourceNamespace: openshift-operator-lifecycle-manager
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{OpenShift CI Configuration}
+
+  \begin{Verbatim}[fontsize=\small]
+base_images:
+  operator-registry:
+    name: "4.0"
+    namespace: ocp
+    tag: operator-registry
+images:
+- from: operator-registry
+  dockerfile_path: openshift-ci/Dockerfile.registry.intermediate
+  to: operator-registry-base
+- from: operator-registry-base
+  dockerfile_path: openshift-ci/Dockerfile.registry.build
+  to: devconsole-operator-registry
+tests:
+- as: e2e-olm-ci
+  commands: make test-e2e-olm-ci
+  openshift_installer_src:
+    cluster_profile: aws
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{File: openshift-ci/Dockerfile.registry.intermediate}
+
+  \begin{Verbatim}[fontsize=\small]
+FROM quay.io/openshift/origin-operator-registry:latest
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{File: openshift-ci/Dockerfile.registry.build}
+
+  \begin{Verbatim}[fontsize=\small]
+FROM quay.io/openshift/origin-operator-registry:latest
+
+ARG version=0.1.0
+
+COPY manifests manifests
+COPY deploy/crds/*.yaml manifests/devconsole/${version}/
+
+RUN sed -e "s,REPLACE_IMAGE,registry.svc.ci.openshift.org/
+  ${OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator,"
+  -i manifests/devconsole/${version}/devconsole-operator.v${version}
+  .clusterserviceversion.yaml
+RUN initializer
+
+USER 1001
+EXPOSE 50051
+CMD ["registry-server", "--termination-log=log.txt"]
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+
+  \frametitle{Directory: manifests/}
+  
+  \begin{Verbatim}[fontsize=\small]
+.
+└── devconsole
+    ├── 0.1.0
+    │   └── devconsole-operator.v0.1.0.clusterserviceversion.yaml
+    └── devconsole.package.yaml
+  \end{Verbatim}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \frametitle{File: manifests/devconsole/devconsole.package.yaml}
+  
+  \begin{Verbatim}[fontsize=\small]
+packageName: devconsole
+channels:
+- name: alpha
+  currentCSV: devconsole-operator.v0.1.0
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+
+  \frametitle{File: manifests/devconsole/0.1.0/devconsole-operator.v0.1.0.clusterserviceversion.yaml}
+  
+  \begin{Verbatim}[fontsize=\small]
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    capabilities: Full Lifecycle
+    description: The operator that enables a developer-focused perspective in OpenShift 4
+    categories: "Developer Tools"
+  name: devconsole-operator.v0.1.0
+  namespace: placeholder
+spec:
+  apiservicedefinitions: {}
+  customresourcedefinitions:
+
+  ...
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    {\huge Thank You!}\\[1cm]
+    \url{https://github.com/redhat-developer/devconsole-operator}
+  \end{center}
+\end{frame}
+
+\end{document}

@@ -87,7 +87,7 @@ Numbers={Lining, Monospaced},
   \begin{itemize}
   \item<1-> Baiju is a Senior Software Engineer
   \item<2-> Avni is an Associate Software Engineer
-  \item<3-> Both of us works on DevConsole Operator
+  \item<3-> Both of us work on DevConsole Operator
   \end{itemize}
 
 \end{frame}
@@ -96,7 +96,7 @@ Numbers={Lining, Monospaced},
   \frametitle{DevConsole Operator}
 
   \includegraphics[scale=.15]{images/Logo-Red_Hat-OpenShift_4-A-Standard-RGB.png}\\[.25in]
-  
+
   Provides a developer-focused view in OpenShift 4
 
 \end{frame}
@@ -104,14 +104,14 @@ Numbers={Lining, Monospaced},
 \begin{frame}
 
   \includegraphics[scale=.25]{images/devconsole.png}
-  
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Operator Framework}
 
   \includegraphics[scale=.50]{images/operator_logo_framework_color.png}
-  
+
   A toolkit to manage Kubernetes native applications, called Operators.
 
 \end{frame}
@@ -130,23 +130,39 @@ Numbers={Lining, Monospaced},
 \begin{frame}
   \frametitle{Operator Lifecycle Manager (OLM)}
 
-  Oversees installation, updates, and management of the lifecycle of
-  all of the Operators (and their associated services) running across
-  a Kubernetes cluster.
+  Oversees operator:
+  \begin{itemize}
+  \item Installation
+  \item Updates
+  \item Lifecycle
+  \end{itemize}
 
 \end{frame}
 
 \begin{frame}
 
-  \frametitle{Two resources}
+  \frametitle{Catalog Source}
 
-CatalogSource
+  \begin{itemize}
+  \item Repository of Cluster Service Version (CSV) files and CRDs
+  \item Two types
+    \begin{itemize}
+    \item gRPC
+    \item Internal (based on ConfigMap)
+    \end{itemize}
+  \item Public repository: \url{https://www.operatorhub.io}
+  \end{itemize}
 
-a repository of CSVs, CRDs, and packages that define an application
+  To create a custom gRPC use this base image:\\
+  quay.io/openshift/origin-operator-registry:latest
 
-Subscription
+\end{frame}
 
-used to keep CSVs up to date by tracking a channel in a package
+\begin{frame}
+
+  \frametitle{Subscription}
+
+  used to keep CSVs up to date by tracking a channel in a package
 
 \end{frame}
 
@@ -264,7 +280,7 @@ CMD ["registry-server", "--termination-log=log.txt"]
 \begin{frame}[fragile]
 
   \frametitle{Directory: manifests/}
-  
+
   \begin{Verbatim}[fontsize=\small]
 .
 └── devconsole
@@ -278,7 +294,7 @@ CMD ["registry-server", "--termination-log=log.txt"]
 \begin{frame}[fragile]
 
   \frametitle{File: manifests/devconsole/devconsole.package.yaml}
-  
+
   \begin{Verbatim}[fontsize=\small]
 packageName: devconsole
 channels:
@@ -290,7 +306,7 @@ channels:
 \begin{frame}[fragile]
 
   \frametitle{File: manifests/devconsole/0.1.0/devconsole-operator.v0.1.0.clusterserviceversion.yaml}
-  
+
   \begin{Verbatim}[fontsize=\small]
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion

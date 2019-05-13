@@ -93,6 +93,17 @@ Numbers={Lining, Monospaced},
 \end{frame}
 
 \begin{frame}
+  \frametitle{Problem Statement}
+
+  As a development team, we need to run end-to-end test for our
+  operator.  To run end-to-end test, we need a method to setup the
+  infrastructure which includes DevConsole operator deployment and
+  other dependent resources (CRDs, service account, role, and role
+  binding).
+
+\end{frame}
+
+\begin{frame}
   \frametitle{Agenda}
 
   \begin{itemize}
@@ -346,7 +357,7 @@ test-e2e-ci: get-test-namespace ./vendor
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Makefile}
+  \frametitle{Setup operator resources with OLM}
 
   \begin{Verbatim}[fontsize=\small]
 .PHONY: test-e2e-olm-ci

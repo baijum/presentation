@@ -140,6 +140,18 @@ Numbers={Lining, Monospaced},
 \end{frame}
 
 \begin{frame}
+  \frametitle{OLM CRDs}
+  \begin{itemize}
+    \item {\bf catalogsources.operators.coreos.com}
+    \item clusterserviceversions.operators.coreos.com
+    \item installplans.operators.coreos.com
+    \item operatorgroups.operators.coreos.com
+    \item {\bf subscriptions.operators.coreos.com}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
 
   \frametitle{Catalog Source}
 
@@ -158,32 +170,44 @@ Numbers={Lining, Monospaced},
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
+  \frametitle{Manifests directory structure}
 
-  \frametitle{Subscription}
-
-  used to keep CSVs up to date by tracking a channel in a package
-
+  \begin{Verbatim}[fontsize=\small]
+manifests/
+└── devconsole
+    ├── 0.1.0
+    │   ├── devconsole-operator.v0.1.0.clusterserviceversion.yaml
+    │   ├── devconsole_v1alpha1_component_crd.yaml
+    │   ├── devconsole_v1alpha1_gitsourceanalysis_crd.yaml
+    │   └── devconsole_v1alpha1_gitsource_crd.yaml
+    └── devconsole.package.yaml
+  \end{Verbatim}
+  
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Makefile}
+  \frametitle{Dockerfile to create registry}
 
   \begin{Verbatim}[fontsize=\small]
-.PHONY: test-e2e-olm-ci
-test-e2e-olm-ci: ./vendor
-  $(Q)sed -e "s,REPLACE_IMAGE,registry.svc.ci.openshift.org/
-    ${OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator-registry,"
-    ./test/e2e/catalog_source_OS4.yaml | oc apply -f -
-  $(Q)oc apply -f ./test/e2e/subscription_OS4.yaml
-  $(eval DEPLOYED_NAMESPACE := openshift-operators)
-  $(Q)./hack/check-crds.sh
-  $(Q)operator-sdk test local ./test/e2e --no-setup
-    --go-test-flags "-v -timeout=15m"
+FROM quay.io/openshift/origin-operator-registry:latest
 
-./vendor: Gopkg.toml Gopkg.lock
-  $(Q)dep ensure ${V_FLAG} -vendor-only
+ARG image=quay.io/redhat-developer/devconsole-operator
+ARG version=0.1.0
+
+COPY manifests manifests
+COPY deploy/crds/*.yaml manifests/devconsole/${version}/
+
+USER root
+RUN sed -e "s,REPLACE_IMAGE,${image}," -i
+  manifests/devconsole/${version}/devconsole-operator.v${version}.
+  clusterserviceversion.yaml
+USER 1001
+
+RUN initializer
+CMD ["registry-server", "--termination-log=log.txt"]
   \end{Verbatim}
+  
 \end{frame}
 
 \begin{frame}[fragile]
@@ -204,6 +228,14 @@ spec:
   \end{Verbatim}
 \end{frame}
 
+\begin{frame}
+
+  \frametitle{Subscription}
+
+  Keep CSVs up to date by tracking a channel in a package.
+
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{Subscription}
 
@@ -219,6 +251,59 @@ spec:
   name: devconsole
   source: my-catalog
   sourceNamespace: openshift-operator-lifecycle-manager
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+
+  \frametitle{File: manifests/devconsole/devconsole.package.yaml}
+
+  \begin{Verbatim}[fontsize=\small]
+packageName: devconsole
+channels:
+- name: alpha
+  currentCSV: devconsole-operator.v0.1.0
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Setup operator resources without OLM}
+
+  \begin{Verbatim}[fontsize=\small]
+.PHONY: test-e2e-ci
+test-e2e-ci: get-test-namespace ./vendor
+  $(Q)oc new-project $(TEST_NAMESPACE)
+  $(Q)-oc apply -f ./deploy/crds/devconsole_v1alpha1_component_crd.yaml
+  $(Q)-oc apply -f ./deploy/crds/devconsole_v1alpha1_gitsource_crd.yaml
+  $(Q)-oc apply -f ./deploy/crds/devconsole_v1alpha1_gitsourceanalysis_crd.yaml
+  $(Q)-oc apply -f ./deploy/service_account.yaml --namespace $(TEST_NAMESPACE)
+  $(Q)-oc apply -f ./deploy/role.yaml --namespace $(TEST_NAMESPACE)
+  $(Q)sed -e 's|REPLACE_NAMESPACE|$(TEST_NAMESPACE)|g' ./deploy/test/role_binding_test.yaml | oc apply -f -
+  $(Q)sed -e 's|REPLACE_IMAGE|registry.svc.ci.openshift.org/$
+    {OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator|g'
+    ./deploy/test/operator_test.yaml | oc apply -f - --namespace $(TEST_NAMESPACE)
+  $(eval DEPLOYED_NAMESPACE := $(TEST_NAMESPACE))
+  $(Q)operator-sdk test local ./test/e2e --namespace $(TEST_NAMESPACE) --no-setup --go-test-flags "-v -timeout=15m"
+  \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Makefile}
+
+  \begin{Verbatim}[fontsize=\small]
+.PHONY: test-e2e-olm-ci
+test-e2e-olm-ci: ./vendor
+  $(Q)sed -e "s,REPLACE_IMAGE,registry.svc.ci.openshift.org/
+    ${OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator-registry,"
+    ./test/e2e/catalog_source_OS4.yaml | oc apply -f -
+  $(Q)oc apply -f ./test/e2e/subscription_OS4.yaml
+  $(eval DEPLOYED_NAMESPACE := openshift-operators)
+  $(Q)./hack/check-crds.sh
+  $(Q)operator-sdk test local ./test/e2e --no-setup
+    --go-test-flags "-v -timeout=15m"
+
+./vendor: Gopkg.toml Gopkg.lock
+  $(Q)dep ensure ${V_FLAG} -vendor-only
   \end{Verbatim}
 \end{frame}
 
@@ -246,84 +331,72 @@ tests:
   \end{Verbatim}
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{File: openshift-ci/Dockerfile.registry.intermediate}
+%% \begin{frame}[fragile]
+%%   \frametitle{File: openshift-ci/Dockerfile.registry.intermediate}
 
-  \begin{Verbatim}[fontsize=\small]
-FROM quay.io/openshift/origin-operator-registry:latest
-  \end{Verbatim}
-\end{frame}
+%%   \begin{Verbatim}[fontsize=\small]
+%% FROM quay.io/openshift/origin-operator-registry:latest
+%%   \end{Verbatim}
+%% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{File: openshift-ci/Dockerfile.registry.build}
+%% \begin{frame}[fragile]
+%%   \frametitle{File: openshift-ci/Dockerfile.registry.build}
 
-  \begin{Verbatim}[fontsize=\small]
-FROM quay.io/openshift/origin-operator-registry:latest
+%%   \begin{Verbatim}[fontsize=\small]
+%% FROM quay.io/openshift/origin-operator-registry:latest
 
-ARG version=0.1.0
+%% ARG version=0.1.0
 
-COPY manifests manifests
-COPY deploy/crds/*.yaml manifests/devconsole/${version}/
+%% COPY manifests manifests
+%% COPY deploy/crds/*.yaml manifests/devconsole/${version}/
 
-RUN sed -e "s,REPLACE_IMAGE,registry.svc.ci.openshift.org/
-  ${OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator,"
-  -i manifests/devconsole/${version}/devconsole-operator.v${version}
-  .clusterserviceversion.yaml
-RUN initializer
+%% RUN sed -e "s,REPLACE_IMAGE,registry.svc.ci.openshift.org/
+%%   ${OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator,"
+%%   -i manifests/devconsole/${version}/devconsole-operator.v${version}
+%%   .clusterserviceversion.yaml
+%% RUN initializer
 
-USER 1001
-EXPOSE 50051
-CMD ["registry-server", "--termination-log=log.txt"]
-  \end{Verbatim}
-\end{frame}
+%% USER 1001
+%% EXPOSE 50051
+%% CMD ["registry-server", "--termination-log=log.txt"]
+%%   \end{Verbatim}
+%% \end{frame}
 
-\begin{frame}[fragile]
+%% \begin{frame}[fragile]
 
-  \frametitle{Directory: manifests/}
+%%   \frametitle{Directory: manifests/}
 
-  \begin{Verbatim}[fontsize=\small]
-.
-└── devconsole
-    ├── 0.1.0
-    │   └── devconsole-operator.v0.1.0.clusterserviceversion.yaml
-    └── devconsole.package.yaml
-  \end{Verbatim}
-\end{frame}
+%%   \begin{Verbatim}[fontsize=\small]
+%% .
+%% └── devconsole
+%%     ├── 0.1.0
+%%     │   └── devconsole-operator.v0.1.0.clusterserviceversion.yaml
+%%     └── devconsole.package.yaml
+%%   \end{Verbatim}
+%% \end{frame}
 
 
-\begin{frame}[fragile]
+%% \begin{frame}[fragile]
 
-  \frametitle{File: manifests/devconsole/devconsole.package.yaml}
+%%   \frametitle{File: manifests/devconsole/0.1.0/devconsole-operator.v0.1.0.clusterserviceversion.yaml}
 
-  \begin{Verbatim}[fontsize=\small]
-packageName: devconsole
-channels:
-- name: alpha
-  currentCSV: devconsole-operator.v0.1.0
-  \end{Verbatim}
-\end{frame}
+%%   \begin{Verbatim}[fontsize=\small]
+%% apiVersion: operators.coreos.com/v1alpha1
+%% kind: ClusterServiceVersion
+%% metadata:
+%%   annotations:
+%%     capabilities: Full Lifecycle
+%%     description: The operator that enables a developer-focused perspective in OpenShift 4
+%%     categories: "Developer Tools"
+%%   name: devconsole-operator.v0.1.0
+%%   namespace: placeholder
+%% spec:
+%%   apiservicedefinitions: {}
+%%   customresourcedefinitions:
 
-\begin{frame}[fragile]
-
-  \frametitle{File: manifests/devconsole/0.1.0/devconsole-operator.v0.1.0.clusterserviceversion.yaml}
-
-  \begin{Verbatim}[fontsize=\small]
-apiVersion: operators.coreos.com/v1alpha1
-kind: ClusterServiceVersion
-metadata:
-  annotations:
-    capabilities: Full Lifecycle
-    description: The operator that enables a developer-focused perspective in OpenShift 4
-    categories: "Developer Tools"
-  name: devconsole-operator.v0.1.0
-  namespace: placeholder
-spec:
-  apiservicedefinitions: {}
-  customresourcedefinitions:
-
-  ...
-  \end{Verbatim}
-\end{frame}
+%%   ...
+%%   \end{Verbatim}
+%% \end{frame}
 
 \begin{frame}
   \begin{center}

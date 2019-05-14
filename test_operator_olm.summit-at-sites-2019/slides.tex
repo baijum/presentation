@@ -6,11 +6,22 @@
 \usepackage{fontspec}
 \usepackage{listings}
 \usepackage{fancyvrb}
+\usepackage{xcolor}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+    pdftitle={Test your Kubernetes operator with OLM},
+    bookmarks=true,
+    pdfpagemode=FullScreen,
+}
 
 \title{Test your Kubernetes operator with OLM}
 \author{Baiju Muthukadan \and Avni Sharma}
 \date{May 15, 2019}
-\logo{\includegraphics[height=1.5cm]{images/Logo-RedHat-B-Color-RGB.png}}
+\logo{\includegraphics[height=1.0cm]{images/Logo-RedHat-B-Color-RGB.png}}
 
 \begin{document}
 \beamertemplatenavigationsymbolsempty
@@ -85,8 +96,8 @@ Numbers={Lining, Monospaced},
   \frametitle{About Us}
 
   \begin{itemize}
-  \item Baiju is a Senior Software Engineer
-  \item Avni is an Associate Software Engineer
+  \item \href{https://github.com/Avni-Sharma}{Baiju} is a Senior Software Engineer
+  \item \href{https://github.com/baijum}{Avni} is an Associate Software Engineer
   \item Both of us work on DevConsole Operator
   \end{itemize}
 
@@ -96,10 +107,9 @@ Numbers={Lining, Monospaced},
   \frametitle{Problem Statement}
 
   As a development team, we need to run end-to-end test for our
-  operator.  To run end-to-end test, we need a method to setup the
-  infrastructure which includes DevConsole operator deployment and
-  other dependent resources (CRDs, service account, role, and role
-  binding).
+  operator.  To run end-to-end test, we need a mechanism to setup the
+  infrastructure which includes the operator deployment and other
+  dependent resources (CRDs, service account, role, and role binding).
 
 \end{frame}
 
@@ -140,6 +150,17 @@ Numbers={Lining, Monospaced},
 \end{frame}
 
 \begin{frame}
+  \frametitle{Example Operators}
+
+  \begin{itemize}
+  \item \url{https://github.com/redhat-developer/devconsole-operator}
+  \item \url{https://github.com/openshift/tektoncd-pipeline-operator}
+  \item \url{https://github.com/operator-framework/operator-marketplace}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
   \frametitle{Operator Framework Parts}
 
   \includegraphics[scale=.50]{images/operator_logo_sdk_color.png}
@@ -147,6 +168,8 @@ Numbers={Lining, Monospaced},
   \includegraphics[scale=.50]{images/operator_logo_lifecycle_manager_color.png}
 
   \includegraphics[scale=.50]{images/operator_logo_metering_color.png}
+
+  \url{https://github.com/operator-framework}
 
 \end{frame}
 
@@ -228,7 +251,7 @@ manifests/
     │   └── devconsole_v1alpha1_gitsource_crd.yaml
     └── devconsole.package.yaml
   \end{Verbatim}
-  
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -252,7 +275,7 @@ USER 1001
 RUN initializer
 CMD ["registry-server", "--termination-log=log.txt"]
   \end{Verbatim}
-  
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -352,7 +375,8 @@ test-e2e-ci: get-test-namespace ./vendor
     {OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator|g'
     ./deploy/test/operator_test.yaml | oc apply -f - --namespace $(TEST_NAMESPACE)
   $(eval DEPLOYED_NAMESPACE := $(TEST_NAMESPACE))
-  $(Q)operator-sdk test local ./test/e2e --namespace $(TEST_NAMESPACE) --no-setup --go-test-flags "-v -timeout=15m"
+  $(Q)operator-sdk test local ./test/e2e --namespace
+    $(TEST_NAMESPACE) --no-setup --go-test-flags "-v -timeout=15m"
   \end{Verbatim}
 \end{frame}
 

@@ -254,6 +254,12 @@ manifests/
 
 \end{frame}
 
+\begin{frame}
+  \begin{center}
+    \includegraphics[scale=.50]{images/dockerfile.png}
+  \end{center}
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{Dockerfile to create registry}
 
@@ -276,6 +282,34 @@ RUN initializer
 CMD ["registry-server", "--termination-log=log.txt"]
   \end{Verbatim}
 
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \includegraphics[scale=.50]{images/operator-registry.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Manifests directory structure}
+
+  \begin{Verbatim}[fontsize=\small]
+manifests/
+└── devconsole
+    ├── 0.1.0
+    │   ├── devconsole-operator.v0.1.0.clusterserviceversion.yaml
+    │   ├── devconsole_v1alpha1_component_crd.yaml
+    │   ├── devconsole_v1alpha1_gitsourceanalysis_crd.yaml
+    │   └── devconsole_v1alpha1_gitsource_crd.yaml
+    └── devconsole.package.yaml
+  \end{Verbatim}
+
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \includegraphics[scale=.50]{images/catalog.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -320,6 +354,12 @@ channels:
 - name: alpha
   currentCSV: devconsole-operator.v0.1.0
   \end{Verbatim}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \includegraphics[scale=.50]{images/subscription2.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}[fragile]

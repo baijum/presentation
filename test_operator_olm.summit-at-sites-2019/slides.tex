@@ -18,6 +18,8 @@
     pdfpagemode=FullScreen,
 }
 
+\newcommand*{\fvtextcolor}[2]{\textcolor{#1}{#2}}
+
 \title{Test your Kubernetes operator with OLM}
 \author{Baiju Muthukadan \and Avni Sharma}
 \date{May 15, 2019}
@@ -263,7 +265,7 @@ manifests/
 \begin{frame}[fragile]
   \frametitle{Dockerfile to create registry}
 
-  \begin{Verbatim}[fontsize=\small]
+  \begin{Verbatim}[fontsize=\small,commandchars=&\[\]]
 FROM quay.io/openshift/origin-operator-registry:latest
 
 ARG image=quay.io/redhat-developer/devconsole-operator
@@ -273,9 +275,9 @@ COPY manifests manifests
 COPY deploy/crds/*.yaml manifests/devconsole/${version}/
 
 USER root
-RUN sed -e "s,REPLACE_IMAGE,${image}," -i
+RUN sed -e "s,&fvtextcolor[red][REPLACE_IMAGE],${image}," -i
   manifests/devconsole/${version}/devconsole-operator.v${version}.
-  clusterserviceversion.yaml
+  &fvtextcolor[red][clusterserviceversion.yaml]
 USER 1001
 
 RUN initializer
@@ -315,7 +317,7 @@ manifests/
 \begin{frame}[fragile]
   \frametitle{CatalogSource}
 
-  \begin{Verbatim}[fontsize=\small]
+  \begin{Verbatim}[fontsize=\small,commandchars=&\[\]]
 # Ref. https://github.com/operator-framework/operator-lifecycle-manager
 apiVersion: operators.coreos.com/v1alpha1
 kind: CatalogSource
@@ -324,7 +326,7 @@ metadata:
   namespace: openshift-operator-lifecycle-manager
 spec:
   sourceType: grpc
-  image: REPLACE_IMAGE
+  image: &fvtextcolor[red][REPLACE_IMAGE]
   displayName: Community Operators
   publisher: Red Hat
   \end{Verbatim}
@@ -401,7 +403,7 @@ spec:
 \begin{frame}[fragile]
   \frametitle{Setup operator resources without OLM}
 
-  \begin{Verbatim}[fontsize=\small]
+  \begin{Verbatim}[fontsize=\small,commandchars=&\[\]]
 .PHONY: test-e2e-ci
 test-e2e-ci: get-test-namespace ./vendor
   $(Q)oc new-project $(TEST_NAMESPACE)
@@ -411,9 +413,9 @@ test-e2e-ci: get-test-namespace ./vendor
   $(Q)-oc apply -f ./deploy/service_account.yaml --namespace $(TEST_NAMESPACE)
   $(Q)-oc apply -f ./deploy/role.yaml --namespace $(TEST_NAMESPACE)
   $(Q)sed -e 's|REPLACE_NAMESPACE|$(TEST_NAMESPACE)|g' ./deploy/test/role_binding_test.yaml | oc apply -f -
-  $(Q)sed -e 's|REPLACE_IMAGE|registry.svc.ci.openshift.org/$
+  $(Q)sed -e 's|&fvtextcolor[red][REPLACE_IMAGE]|registry.svc.ci.openshift.org/$
     {OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator|g'
-    ./deploy/test/operator_test.yaml | oc apply -f - --namespace $(TEST_NAMESPACE)
+    ./deploy/test/&fvtextcolor[red][operator_test.yaml] | oc apply -f - --namespace $(TEST_NAMESPACE)
   $(eval DEPLOYED_NAMESPACE := $(TEST_NAMESPACE))
   $(Q)operator-sdk test local ./test/e2e --namespace
     $(TEST_NAMESPACE) --no-setup --go-test-flags "-v -timeout=15m"
@@ -423,12 +425,12 @@ test-e2e-ci: get-test-namespace ./vendor
 \begin{frame}[fragile]
   \frametitle{Setup operator resources with OLM}
 
-  \begin{Verbatim}[fontsize=\small]
+  \begin{Verbatim}[fontsize=\small,commandchars=&\[\]]
 .PHONY: test-e2e-olm-ci
 test-e2e-olm-ci: ./vendor
-  $(Q)sed -e "s,REPLACE_IMAGE,registry.svc.ci.openshift.org/
+  $(Q)sed -e "s,&fvtextcolor[red][REPLACE_IMAGE],registry.svc.ci.openshift.org/
     ${OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator-registry,"
-    ./test/e2e/catalog_source_OS4.yaml | oc apply -f -
+    ./test/e2e/&fvtextcolor[red][catalog_source_OS4.yaml] | oc apply -f -
   $(Q)oc apply -f ./test/e2e/subscription_OS4.yaml
   $(eval DEPLOYED_NAMESPACE := openshift-operators)
   $(Q)./hack/check-crds.sh
@@ -475,7 +477,7 @@ FROM quay.io/openshift/origin-operator-registry:latest
 \begin{frame}[fragile]
   \frametitle{File: openshift-ci/Dockerfile.registry.build}
 
-  \begin{Verbatim}[fontsize=\small]
+  \begin{Verbatim}[fontsize=\small,commandchars=&\[\]]
 FROM quay.io/openshift/origin-operator-registry:latest
 
 ARG version=0.1.0
@@ -483,10 +485,10 @@ ARG version=0.1.0
 COPY manifests manifests
 COPY deploy/crds/*.yaml manifests/devconsole/${version}/
 
-RUN sed -e "s,REPLACE_IMAGE,registry.svc.ci.openshift.org/
+RUN sed -e "s,&fvtextcolor[red][REPLACE_IMAGE],registry.svc.ci.openshift.org/
   ${OPENSHIFT_BUILD_NAMESPACE}/stable:devconsole-operator,"
   -i manifests/devconsole/${version}/devconsole-operator.v${version}
-  .clusterserviceversion.yaml
+  &fvtextcolor[red][.clusterserviceversion.yaml]
 RUN initializer
 
 USER 1001

@@ -475,11 +475,6 @@ images:
 - from: operator-registry-base
   dockerfile_path: openshift-ci/Dockerfile.registry.build
   to: devconsole-operator-registry
-tests:
-- as: e2e-olm-ci
-  commands: make test-e2e-olm-ci
-  openshift_installer_src:
-    cluster_profile: aws
   \end{Verbatim}
 \end{frame}
 
@@ -516,9 +511,17 @@ CMD ["registry-server", "--termination-log=log.txt"]
 
 \begin{frame}
   \begin{center}
-    {\huge Thank You!}\\[1cm]
     \url{https://github.com/redhat-developer/devconsole-operator}
   \end{center}
 \end{frame}
+
+\begin{frame}
+  \begin{center}
+    {\huge Thank You!}\\[1cm]
+    bmuthuka@redhat.com\\
+    avsharma@redhat.com
+  \end{center}
+\end{frame}
+
 
 \end{document}
